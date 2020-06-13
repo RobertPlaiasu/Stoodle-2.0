@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class County extends Migration
+class CreateSubjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,10 @@ class County extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('subjects', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +26,6 @@ class County extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('subjects');
     }
 }

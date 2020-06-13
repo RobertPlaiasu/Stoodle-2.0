@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Profil extends Migration
+class CreateCountiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,10 @@ class Profil extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('counties', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +26,6 @@ class Profil extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('counties');
     }
 }
