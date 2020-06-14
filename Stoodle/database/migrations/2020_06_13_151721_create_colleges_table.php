@@ -15,7 +15,20 @@ class CreateCollegesTable extends Migration
     {
         Schema::create('colleges', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
+            $table->boolean('admittance');
+            $table->boolean('job');
+            $table->boolean('social');
+            $table->boolean('stress');
+            $table->boolean('sport');
+            $table->foreign('university')->references('name')->on('universities');
+            $table->foreign('county')->references('county')->on('counties');
+            $table->foreign('profil')->references('profil')->on('profils');
+            $table->foreign('passion')->references('passion')->on('passions');
+            $table->foreign('subject1')->references('subject')->on('subjects');
+            $table->foreign('subject2')->references('subject')->on('subjects');
+            $table->foreign('subject3')->references('subject')->on('subjects');
+            $table->foreign('book')->references('book')->on('books');
             $table->timestamps();
         });
     }

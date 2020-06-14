@@ -15,7 +15,7 @@ class CreateCountiesTable extends Migration
     {
         Schema::create('counties', function (Blueprint $table) {
             $table->id();
-            $table->string('county');
+            $table->string('county')->unique();
             $table->timestamps();
         });
     }
