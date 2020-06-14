@@ -20,6 +20,19 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->boolean('admittance');
+            $table->boolean('job');
+            $table->boolean('social');
+            $table->boolean('stress');
+            $table->boolean('sport');
+            $table->foreign('university')->references('name')->on('universities');
+            $table->foreign('county')->references('county')->on('counties');
+            $table->foreign('profil')->references('profil')->on('profils');
+            $table->foreign('passion')->references('passion')->on('passions');
+            $table->foreign('subject1')->references('subject')->on('subjects');
+            $table->foreign('subject2')->references('subject')->on('subjects');
+            $table->foreign('subject3')->references('subject')->on('subjects');
+            $table->foreign('book')->references('book')->on('books');
             $table->timestamps();
         });
     }
