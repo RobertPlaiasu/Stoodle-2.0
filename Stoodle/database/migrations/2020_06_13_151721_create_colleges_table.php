@@ -21,6 +21,14 @@ class CreateCollegesTable extends Migration
             $table->boolean('social');
             $table->boolean('stress');
             $table->boolean('sport');
+            $table->string('university');
+            $table->string('county');
+            $table->string('profil');
+            $table->string('passion');
+            $table->string('subject1');
+            $table->string('subject2');
+            $table->string('subject3');
+            $table->string('book');
             $table->foreign('university')->references('name')->on('universities');
             $table->foreign('county')->references('county')->on('counties');
             $table->foreign('profil')->references('profil')->on('profils');
