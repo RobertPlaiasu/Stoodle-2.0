@@ -34,6 +34,17 @@ class CreateCollegesTable extends Migration
             $table->foreign('subject3')->references('subject')->on('subjects')->onDelete('cascade');
             $table->timestamps();
         });
+
+
+        Schema::create('colleges_subjects', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('subject_id')->constrained();
+            $table->foreignId('college_id')->constrained();
+
+            $table->unique(['subject_id','college_id']);
+
+            $table->timestamps();
+        });
     }
 
     /**

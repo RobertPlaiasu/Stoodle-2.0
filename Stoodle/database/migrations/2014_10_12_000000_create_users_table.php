@@ -25,16 +25,21 @@ class CreateUsersTable extends Migration
             $table->boolean('social')->nullable();
             $table->boolean('stress')->nullable();
             $table->boolean('sport')->nullable();
-            $table->unsignedBigInteger('subject1_id')->nullable();
-            $table->unsignedBigInteger('subject2_id')->nullable();
-            $table->unsignedBigInteger('subject3_id')->nullable();
             $table->foreignId('county_id')->constrained()->nullable();
             $table->foreignId('profil_id')->constrained()->nullable();
             $table->foreignId('passion_id')->constrained()->nullable();
             $table->foreignId('book_id')->constrained()->nullable();
-            $table->foreign('subject1_id')->references('id')->on('subjects')->onDelete('cascade');
-            $table->foreign('subject2_id')->references('id')->on('subjects')->onDelete('cascade');
-            $table->foreign('subject3_id')->references('id')->on('subjects')->onDelete('cascade');
+            $table->timestamps();
+        });
+
+
+        Schema::create('subjects_users', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('subject_id')->constrained();
+            $table->foreignId('user_id')->constrained();
+
+            $table->unique(['subject_id','user_id']);
+
             $table->timestamps();
         });
     }
@@ -47,5 +52,6 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+        Schema::dropIfExists('subjects_users');
     }
 }
