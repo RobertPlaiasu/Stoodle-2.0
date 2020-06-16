@@ -20,19 +20,26 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->boolean('admittance');
-            $table->boolean('job');
-            $table->boolean('social');
-            $table->boolean('stress');
-            $table->boolean('sport');
-            $table->foreign('university')->references('name')->on('universities');
-            $table->foreign('county')->references('county')->on('counties');
-            $table->foreign('profil')->references('profil')->on('profils');
-            $table->foreign('passion')->references('passion')->on('passions');
-            $table->foreign('subject1')->references('subject')->on('subjects');
-            $table->foreign('subject2')->references('subject')->on('subjects');
-            $table->foreign('subject3')->references('subject')->on('subjects');
-            $table->foreign('book')->references('book')->on('books');
+            $table->string('rank')->default('normal');
+            $table->boolean('job')->nullable();
+            $table->boolean('social')->nullable();
+            $table->boolean('stress')->nullable();
+            $table->boolean('sport')->nullable();
+            $table->foreignId('county_id')->constrained()->nullable();
+            $table->foreignId('profil_id')->constrained()->nullable();
+            $table->foreignId('passion_id')->constrained()->nullable();
+            $table->foreignId('book_id')->constrained()->nullable();
+            $table->timestamps();
+        });
+
+
+        Schema::create('subjects_users', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('subject_id')->constrained();
+            $table->foreignId('user_id')->constrained();
+
+            $table->unique(['subject_id','user_id']);
+
             $table->timestamps();
         });
     }
@@ -45,5 +52,6 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+        Schema::dropIfExists('subjects_users');
     }
 }

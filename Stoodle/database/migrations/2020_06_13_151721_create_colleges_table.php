@@ -21,14 +21,28 @@ class CreateCollegesTable extends Migration
             $table->boolean('social');
             $table->boolean('stress');
             $table->boolean('sport');
-            $table->foreign('university')->references('name')->on('universities');
-            $table->foreign('county')->references('county')->on('counties');
-            $table->foreign('profil')->references('profil')->on('profils');
-            $table->foreign('passion')->references('passion')->on('passions');
-            $table->foreign('subject1')->references('subject')->on('subjects');
-            $table->foreign('subject2')->references('subject')->on('subjects');
-            $table->foreign('subject3')->references('subject')->on('subjects');
-            $table->foreign('book')->references('book')->on('books');
+            $table->foreignId('university_id')->constrained();
+            $table->foreignId('county_id')->constrained();
+            $table->foreignId('profil_id')->constrained();
+            $table->foreignId('passion_id')->constrained();
+            $table->foreignId('book_id')->constrained();
+            $table->string('subject1');
+            $table->string('subject2');
+            $table->string('subject3');
+            $table->foreign('subject1')->references('subject')->on('subjects')->onDelete('cascade');
+            $table->foreign('subject2')->references('subject')->on('subjects')->onDelete('cascade');
+            $table->foreign('subject3')->references('subject')->on('subjects')->onDelete('cascade');
+            $table->timestamps();
+        });
+
+
+        Schema::create('colleges_subjects', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('subject_id')->constrained();
+            $table->foreignId('college_id')->constrained();
+
+            $table->unique(['subject_id','college_id']);
+
             $table->timestamps();
         });
     }
