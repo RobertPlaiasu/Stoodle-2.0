@@ -31,11 +31,11 @@
             <div class="text-center">
                 <div class="container">
                     <div class="row">
-                        <div class="col">
+                        <div class="col mb-5">
                             <h1 id="main-title"> 
                                 Dezvolta-te in viata si in cariera
                             </h1>
-                            <p class="mb-5">
+                            <p class="mb-3">
                             Viața ta începe în momentul în care începi să iei decizii. Decizii 
                         importante care îți marchează tot <br> viitorul. Și sigur nu vrei să fie unele 
                         greșite. Pentru a fi sigur că te îndrepți spre reușită, ia cele mai <br> bune 
@@ -61,5 +61,14 @@
             </div>
 
         </div>
+        <script>
+            const cookieContainer = document.querySelector(".cookie-container");
+            const cookieButton = document.querySelector(".cookie-btn");
+            
+            cookieButton.addEventListener("click", () => {
+                cookieContainer.classList.add("hidden");
+                localStorage.setItem("cookieBannerDisplayed", "true");
+            });
+        </script>
     </body>
 </html>
