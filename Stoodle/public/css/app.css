@@ -4,7 +4,7 @@
 
 :root {
   --blue: #82D2EE;
-  --indigo: #6574cd;
+  --indigo: #283054;
   --purple: #9561e2;
   --pink: #f66d9b;
   --red: #EE6C87;
@@ -10983,6 +10983,39 @@ a.text-dark:focus {
 
 i {
   margin-left: 3px;
+}
+
+.college-card {
+  width: 20%;
+  background-color: #283054;
+  padding: 4em 2em;
+  margin: 10em;
+  color: #F7CE74 !important;
+  font-weight: 700;
+}
+
+.college-card a {
+  color: #F7CE74 !important;
+  font-size: 1.7em;
+}
+
+.college-card a:hover {
+  color: #FCFCFC !important;
+  transition: 0.3s;
+}
+
+.college-card img {
+  border-radius: 50%;
+  width: 40%;
+  position: absolute;
+  top: -35%;
+  left: 30%;
+}
+
+.college-card:last-of-type > img {
+  width: 50%;
+  left: 25;
+  top: -30%;
 }
 
 html,

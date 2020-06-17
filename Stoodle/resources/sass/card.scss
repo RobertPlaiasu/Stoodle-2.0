@@ -59,3 +59,34 @@ i {
     margin-left: 3px;
 }
 
+.college-card {
+    width: 20%;
+    background-color: $indigo;
+    padding: 4em 2em;
+    margin: 10em;
+    color: $yellow!important;
+    font-weight: 700;
+
+    a {
+        color: $yellow!important;
+        font-size: 1.7em;
+        &:hover {
+            color: $white!important;
+            transition: .3s;
+        }
+    }
+
+    img {
+        border-radius: 50%;
+        width: 40%;
+        position: absolute;
+        top: -35%;
+        left: 30%;
+    }
+
+    &:last-of-type > img{
+        width: 50%;
+        left: 25;
+        top: -30%;
+    }
+}
