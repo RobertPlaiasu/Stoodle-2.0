@@ -1,11 +1,14 @@
-// // Fonts
-// @import url('https://fonts.googleapis.com/css?family=Nunito');
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,700;1,400&display=swap');
 
-// // Variables
-// @import 'variables';
+// Variables
+@import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+@import 'card';
 
 html, body {
     background-color: #fff;
@@ -70,4 +73,3 @@ html, body {
 .hidden{
     display: none;
 }
-
