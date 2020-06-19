@@ -19,7 +19,7 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">logare</a>
+                        <a href="{{ route('login') }}">autentificare</a>
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}">inregistrare</a>
@@ -32,17 +32,18 @@
                 <div class="container">
                     <div class="row">
                         <div class="col mb-5">
-                            <h1 id="main-title"> 
+                            <h1> 
                                 Dezvolta-te in viata si in cariera
                             </h1>
                             <p class="mb-3">
-                            Viața ta începe în momentul în care începi să iei decizii. Decizii 
-                        importante care îți marchează tot <br> viitorul. Și sigur nu vrei să fie unele 
-                        greșite. Pentru a fi sigur că te îndrepți spre reușită, ia cele mai <br> bune 
-                        decizii pentru tine, în funcție de aptitudinile pe care le ai.
+                                Viața ta începe în momentul în care începi să iei decizii. Decizii 
+                                importante care îți marchează tot <br> 
+                                viitorul. Și sigur nu vrei să fie unele greșite. Pentru a fi sigur 
+                                că te îndrepți spre reușită, ia cele mai <br> 
+                                bune decizii pentru tine, în funcție de aptitudinile pe care le ai.
                             </p>
                             <div class="links">
-                            <a href="{{ route('login') }}"> Incepe </a>
+                                <a href="{{ route('login') }}"> Incepe </a>
                             </div>
                         </div>
                     </div>
@@ -55,15 +56,13 @@
                     Folosim cookie-uri pe acest site web pentru a vă oferi cea mai bună experiență pe site-ul nostru și pentru a vă afișa reclame relevante. Pentru a afla mai multe, citiți
                     <a href="#">politica noastră de confidențialitate</a> și <a href="#">olitica privind cookie-urile</a>.
                 </p>
-                <button class="cookie-btn">
-                Okay
-                </button>
+                <button id="cookie-btn"> Okay </button>
             </div>
 
         </div>
         <script>
             const cookieContainer = document.querySelector(".cookie-container");
-            const cookieButton = document.querySelector(".cookie-btn");
+            const cookieButton = document.querySelector("#cookie-btn");
             
             cookieButton.addEventListener("click", () => {
                 cookieContainer.classList.add("hidden");
