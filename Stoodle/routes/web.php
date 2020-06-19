@@ -17,8 +17,28 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/acasa', function () {
+    return view('home');
+});
+
+Route::get('/formular', function () {
+    return view('form');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+Route::get('/facultati-favorite', function () {
+    return view('favorites');
+});
+
+Route::get('/intrebari', function () {
+    return view('questions');
+});
+
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 

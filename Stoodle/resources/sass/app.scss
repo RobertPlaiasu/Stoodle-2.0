@@ -1,8 +1,107 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,700;1,400&display=swap');
 
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// Cards scss
+@import 'card';
+
+// Login system scss
+@import 'login';
+
+
+/* BUTTON */
+.button {
+    background: $green;
+    background: linear-gradient(90deg, $light-green 0%, $green 100%); 
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+    padding: 1em;
+    border: 0;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+}
+
+.button:hover {
+    background: $light-green;
+    background: linear-gradient(90deg, $green 0%, $light-green 100%); 
+    transition: .1s ease-in;
+    color: $white;
+    text-decoration: none;
+}
+
+.hidden {
+    display: none;
+}
+
+
+html, body {
+    background-color: #fff;
+    color: #636b6f;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    height: 100vh;
+    margin: 0;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content {
+    text-align: center;
+}
+
+.title {
+    font-size: 84px;
+}
+
+.links > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.m-b-md {
+    margin-bottom: 30px;
+}
+
+.hidden{
+    display: none;
+}
+
+.cookie-container{
+    position: absolute;
+    max-width: 1000px;
+    left: 2em;
+    bottom: 4em;
+    margin: 2em;
+}

@@ -1,0 +1,123 @@
+h1{
+    color: var(--green);
+    margin: 1em 0 0;
+    font-weight: 800;
+}
+
+.container{
+    max-width: 800px;
+    text-align: center;
+}
+
+form{
+    margin: 1em 0;;
+}
+
+.form-group label{
+    margin: 0;
+    font-weight: 800;
+    color: $black;
+}
+
+[type="radio"]:checked,
+[type="radio"]:not(:checked){
+	position: absolute;
+	left: -9999px;
+	width: 0;
+	height: 0;
+	visibility: hidden;
+}
+
+
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label {
+	position: relative;
+	display: inline-block;
+	padding: 0;
+	margin: 0 auto;
+	text-align: center;
+	margin: 17px 0;
+	/* margin-top: 100px; */
+	border-radius: 4px;
+	z-index: 100 !important;
+}
+
+.radio:checked + label,
+.radio:not(:checked) + label{
+	position: relative;
+	display: inline-block;
+	width: 3em;
+	font-size: 28px;
+	line-height: 52px;
+	font-weight: 700;
+	letter-spacing: 1px;
+	margin: .25em;
+	text-align: center;
+	border-radius: 8px;
+	overflow: hidden;
+	cursor: pointer;
+	text-transform: uppercase;
+	-webkit-transition: all 300ms linear;
+	transition: all 300ms linear; 
+	-webkit-text-stroke: 1px $white;
+    // text-stroke: 1px $white;
+    -webkit-text-fill-color: transparent;
+    // text-fill-color: transparent;
+    color: transparent;
+}
+.radio:not(:checked) + label{
+	background-color: $black; 
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1); 
+}
+
+.radio:not(:checked) + label:hover{
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); 
+}
+.radio:checked + label::before,
+.radio:not(:checked) + label::before{
+	position: absolute;
+	content: '';
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 4px;
+    background-image: linear-gradient(138deg, $green, $light-green);
+	z-index: -1;
+}
+.radio:checked + label span,
+.radio:not(:checked) + label span{
+	position: relative;
+    display: block;
+    font-family: 'Barlow', sans-serif;
+}
+.radio:checked + label span::before,
+.radio:not(:checked) + label span::before{
+	position: absolute;
+	content: attr(data-hover);
+	top: 0;
+	left: 0;
+	width: 100%;
+	overflow: hidden;
+	-webkit-text-stroke: transparent;
+    // text-stroke: transparent;
+    -webkit-text-fill-color: $white; 
+    // text-fill-color: $white; 
+    color: $white; 
+	-webkit-transition: max-height 0.3s;
+	-moz-transition: max-height 0.3s;
+	transition: max-height 0.3s;
+}
+.radio:not(:checked) + label span::before{
+	max-height: 0;
+}
+.radio:checked + label span::before{
+	max-height: 100%;
+}
+
+.checkbox:checked ~ .section .container .row .col-xl-10 .radio:not(:checked) + label{
+	background-color: $light;
+	-webkit-text-stroke: 1px $indigo; 
+    // text-stroke: 1px $indigo; 
+	box-shadow: 0 1x 4px 0 rgba(0, 0, 0, 0.05); 
+}
