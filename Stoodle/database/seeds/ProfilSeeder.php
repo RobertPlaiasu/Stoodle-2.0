@@ -11,6 +11,13 @@ class ProfilSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('profils')->insert(array(
+            array(
+              'profil' => 'Mate-info'
+            ),
+            array(
+               'profil' => 'Filologie'
+            ),
+          ));
     }
 }

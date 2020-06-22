@@ -35,7 +35,7 @@
         </div>
 
         <div class="form-group">
-        <input id="password-confirm" type="password" class="form-control" name="password" placeholder=" " required autocomplete="current-password">
+        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder=" " required autocomplete="current-password">
             <label for="password-confirm">{{ __('Confirma parola') }}</label>
         </div>
 
@@ -43,7 +43,9 @@
             <a href="{{ route('login') }}">Conecteaza-te!</a><br>
         </div>
 
-        <input type="submit" name="loginsubmit" value="Trimite" class="button" />
+        <button type="submit" class="btn btn-primary">
+            {{ __('Register') }}
+        </button>
     </form>
 </div>
 @endsection
