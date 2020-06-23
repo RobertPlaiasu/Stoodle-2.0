@@ -11111,6 +11111,127 @@ i {
   font-weight: 800 !important;
 }
 
+.form h1 {
+  color: var(--green);
+  margin: 1em 0 0;
+  font-weight: 800;
+}
+
+.form .container {
+  max-width: 800px;
+  text-align: center;
+}
+
+.form form {
+  margin: 1em 0;
+}
+
+.form .form-group label {
+  margin: 0;
+  font-weight: 800;
+  color: #0a0a0a;
+}
+
+.form [type=radio]:checked,
+.form [type=radio]:not(:checked) {
+  position: absolute;
+  left: -9999px;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+.form [type=radio]:checked + label,
+.form [type=radio]:not(:checked) + label {
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  margin: 0 auto;
+  text-align: center;
+  margin: 17px 0;
+  /* margin-top: 100px; */
+  border-radius: 4px;
+  z-index: 100 !important;
+}
+
+.form .radio:checked + label,
+.form .radio:not(:checked) + label {
+  position: relative;
+  display: inline-block;
+  width: 3em;
+  font-size: 28px;
+  line-height: 52px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0.25em;
+  text-align: center;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 300ms linear;
+  -webkit-text-stroke: 1px #FCFCFC;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.form .radio:not(:checked) + label {
+  background-color: #0a0a0a;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.form .radio:not(:checked) + label:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.form .radio:checked + label::before,
+.form .radio:not(:checked) + label::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background-image: linear-gradient(138deg, #00A089, #00EDCB);
+  z-index: -1;
+}
+
+.form .radio:checked + label span,
+.form .radio:not(:checked) + label span {
+  position: relative;
+  display: block;
+  font-family: "Barlow", sans-serif;
+}
+
+.form .radio:checked + label span::before,
+.form .radio:not(:checked) + label span::before {
+  position: absolute;
+  content: attr(data-hover);
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  -webkit-text-stroke: transparent;
+  -webkit-text-fill-color: #FCFCFC;
+  color: #FCFCFC;
+  transition: max-height 0.3s;
+}
+
+.form .radio:not(:checked) + label span::before {
+  max-height: 0;
+}
+
+.form .radio:checked + label span::before {
+  max-height: 100%;
+}
+
+.form .checkbox:checked ~ .section .container .row .col-xl-10 .radio:not(:checked) + label {
+  background-color: #f8f9fa;
+  -webkit-text-stroke: 1px #283054;
+  box-shadow: 0 1x 4px 0 rgba(0, 0, 0, 0.05);
+}
+
 /* BUTTON */
 
 .button {
