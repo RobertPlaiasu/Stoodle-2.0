@@ -44,6 +44,8 @@ Route::get('/admin', function () {
 
 Auth::routes(['verify' => true]);
 
+Route::resource('facultati','CollegeController');
+
 // Route::get('/home', 'HomeController@index')->name('home');
 
 
