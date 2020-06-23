@@ -37,6 +37,11 @@ Route::get('/intrebari', function () {
     return view('questions');
 });
 
+Route::get('/admin', function () {
+    return view('admin');
+});
+
+
 Auth::routes(['verify' => true]);
 
 // Route::get('/home', 'HomeController@index')->name('home');

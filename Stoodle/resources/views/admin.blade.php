@@ -1,0 +1,48 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+</head>
+
+@include('inc.navbar')
+
+<div class="form">
+<div class="container">
+            <h1>Inregistrare facultate in baza de date</h1>
+            <p>Completeaza formularul de mai jos pentru a putea termina inregistrarea.</p>
+            <form action="./formular.php" method="post" id="formular">
+                <div class="form-group">
+                    <label for="name">Numele facultatii.</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Numele facultatii">
+                    <!-- <select class="custom-select" id="name" name="name"></select> -->
+                </div>
+                <div class="form-group">
+                    <label for="university">Universitatea de care apartine facultatea.</label>
+                    <input type="text" id="university" name="university" class="form-control" placeholder="Universitatea de care apartine facultatea">
+                </div>
+                <div class="form-group">
+                    <label for="county">Judetul in care se afla facultatea.</label>
+                    <select class="custom-select" id ="county" name="county"></select>
+                </div>
+                <div class="form-group">
+                    <label for="branch">Link catre facultate.</label>
+                    <textarea name="county" id="conuty" class="form-control"></textarea>
+                </div>
+                <input type="submit" value="Trimite Formular" name="formularsubmit" class="button">
+            </form>
+        </div>
+</div>
