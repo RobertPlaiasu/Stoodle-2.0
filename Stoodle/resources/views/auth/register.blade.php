@@ -43,9 +43,7 @@
             <a href="{{ route('login') }}">Conecteaza-te!</a><br>
         </div>
 
-        <button type="submit" class="btn btn-primary">
-            {{ __('Register') }}
-        </button>
+        <input type="submit" name="loginsubmit" value="Trimite" class="button" />
     </form>
 </div>
 @endsection

@@ -28,7 +28,6 @@
                 <div class="form-group">
                     <label for="name">Numele facultatii.</label>
                     <input type="text" id="name" name="name" class="form-control" placeholder="Numele facultatii">
-                    <!-- <select class="custom-select" id="name" name="name"></select> -->
                 </div>
                 <div class="form-group">
                     <label for="university">Universitatea de care apartine facultatea.</label>
@@ -40,7 +39,7 @@
                 </div>
                 <div class="form-group">
                     <label for="branch">Link catre facultate.</label>
-                    <textarea name="county" id="conuty" class="form-control"></textarea>
+                    <textarea name="county" id="conuty" rows="15" class="form-control"></textarea>
                 </div>
                 <input type="submit" value="Trimite Formular" name="formularsubmit" class="button">
             </form>
