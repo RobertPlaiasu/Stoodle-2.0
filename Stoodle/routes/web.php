@@ -39,6 +39,8 @@ Route::get('/intrebari', function () {
 
 Auth::routes(['verify' => true]);
 
+Route::resource('facultati','CollegeController');
+
 // Route::get('/home', 'HomeController@index')->name('home');
 
 
