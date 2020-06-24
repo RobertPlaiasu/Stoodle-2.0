@@ -16,7 +16,7 @@ class BookSeeder extends Seeder
             'book' => 'Filozofie'
           ),
           array(
-              'book' => 'Fantasy'
+            'book' => 'Fantasy'
           ),
         ));
     }

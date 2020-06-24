@@ -16,7 +16,7 @@ class UniversitySeeder extends Seeder
               'name' => 'Politehnica Bucuresti'
             ),
             array(
-               'name' => 'UniBuc'
+              'name' => 'UniBuc'
             ),
             array(
               'name' => 'dabdayub'

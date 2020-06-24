@@ -16,7 +16,7 @@ class CountySeeder extends Seeder
             'county' => 'Prahova'
           ),
           array(
-              'county' => 'Cluj'
+            'county' => 'Cluj'
           ),
         ));
     }

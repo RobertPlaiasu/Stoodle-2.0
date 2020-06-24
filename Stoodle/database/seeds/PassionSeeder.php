@@ -16,7 +16,7 @@ class PassionSeeder extends Seeder
             'passion' => 'Matematica'
           ),
           array(
-              'passion' => 'Fizica'
+            'passion' => 'Fizica'
           ),
         ));
     }

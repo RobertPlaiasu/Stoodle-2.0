@@ -16,7 +16,7 @@ class SubjectSeeder extends Seeder
             'subject' => 'Matetica'
           ),
           array(
-              'subject' => 'Fizica'
+            'subject' => 'Fizica'
           ),
         ));
     }

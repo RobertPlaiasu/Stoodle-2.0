@@ -16,7 +16,7 @@ class ProfilSeeder extends Seeder
             'profil' => 'Mate-info'
           ),
           array(
-              'profil' => 'Filologie'
+            'profil' => 'Filologie'
           ),
         ));
     }
