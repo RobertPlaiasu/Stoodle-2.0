@@ -19,6 +19,9 @@
                     <a href="{{ url('/contact') }}" class="nav-link">Contact</a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ url('/admin') }}" class="nav-link">Admin</a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ url('/facultati-favorite') }}" class="nav-link">Facultati favorite</a>
                 </li>
                 <li class="nav-item">

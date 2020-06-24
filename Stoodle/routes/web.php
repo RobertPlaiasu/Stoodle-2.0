@@ -33,9 +33,12 @@ Route::get('/facultati-favorite', function () {
     return view('favorites');
 });
 
-Route::get('/intrebari', function () {
-    return view('questions');
+Route::get('/intrebari', 'QuestionController@index');
+
+Route::get('/admin', function () {
+    return view('admin');
 });
+
 
 Auth::routes(['verify' => true]);
 
