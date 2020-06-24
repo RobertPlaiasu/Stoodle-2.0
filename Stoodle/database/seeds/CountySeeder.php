@@ -13,124 +13,124 @@ class CountySeeder extends Seeder
     {
         DB::table('counties')->insert(array(
           array(
-            'county' => 'Alba'
+            'name' => 'Alba'
           ),
           array(
-            'county' => 'Arad'
+            'name' => 'Arad'
           ),
           array(
-            'county' => 'Arges'
+            'name' => 'Arges'
           ),
           array(
-            'county' => 'Bacau'
+            'name' => 'Bacau'
           ),
           array(
-            'county' => 'Bihor'
+            'name' => 'Bihor'
           ),
           array(
-            'county' => 'Bistrita-Nasaud'
+            'name' => 'Bistrita-Nasaud'
           ),
           array(
-            'county' => 'Botosani'
+            'name' => 'Botosani'
           ),
           array(
-            'county' => 'Braila'
+            'name' => 'Braila'
           ),
           array(
-            'county' => 'Brasov'
+            'name' => 'Brasov'
           ),
           array(
-            'county' => 'Buzau'
+            'name' => 'Buzau'
           ),
           array(
-            'county' => 'Calarasi'
+            'name' => 'Calarasi'
           ),
           array(
-            'county' => 'Cluj'
+            'name' => 'Cluj'
           ),
           array(
-            'county' => 'Caras-Severin'
+            'name' => 'Caras-Severin'
           ),
           array(
-            'county' => 'Constanta'
+            'name' => 'Constanta'
           ),
           array(
-            'county' => 'Covasna'
+            'name' => 'Covasna'
           ),
           array(
-            'county' => 'Dambovita'
+            'name' => 'Dambovita'
           ),
           array(
-            'county' => 'Dolj'
+            'name' => 'Dolj'
           ),
           array(
-            'county' => 'Galati'
+            'name' => 'Galati'
           ),
           array(
-            'county' => 'Giurgiu'
+            'name' => 'Giurgiu'
           ),
           array(
-            'county' => 'Harghita'
+            'name' => 'Harghita'
           ),
           array(
-            'county' => 'Hunedoara'
+            'name' => 'Hunedoara'
           ),
           array(
-            'county' => 'Ialomita'
+            'name' => 'Ialomita'
           ),
           array(
-            'county' => 'Iasi'
+            'name' => 'Iasi'
           ),
           array(
-            'county' => 'Ilfov'
+            'name' => 'Ilfov'
           ),
           array(
-            'county' => 'Maramures'
+            'name' => 'Maramures'
           ),
           array(
-            'county' => 'Mehedinti'
+            'name' => 'Mehedinti'
           ),
           array(
-            'county' => 'Mures'
+            'name' => 'Mures'
           ),
           array(
-            'county' => 'Neamt'
+            'name' => 'Neamt'
           ),
           array(
-            'county' => 'Olt'
+            'name' => 'Olt'
           ),
           array(
-            'county' => 'Prahova'
+            'name' => 'Prahova'
           ),
           array(
-            'county' => 'Salaj'
+            'name' => 'Salaj'
           ),
           array(
-            'county' => 'Satu-Mare'
+            'name' => 'Satu-Mare'
           ),
           array(
-            'county' => 'Sibiu'
+            'name' => 'Sibiu'
           ),
           array(
-            'county' => 'Suceava'
+            'name' => 'Suceava'
           ),
           array(
-            'county' => 'Teleorman'
+            'name' => 'Teleorman'
           ),
           array(
-            'county' => 'Timis'
+            'name' => 'Timis'
           ),
           array(
-            'county' => 'Tulcea'
+            'name' => 'Tulcea'
           ),
           array(
-            'county' => 'Valcea'
+            'name' => 'Valcea'
           ),
           array(
-            'county' => 'Vaslui'
+            'name' => 'Vaslui'
           ),
           array(
-            'county' => 'Vrancea'
+            'name' => 'Vrancea'
           ),
         ));
     }

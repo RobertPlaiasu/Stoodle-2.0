@@ -31,7 +31,7 @@ class SubjectSeeder extends Seeder
           'subject' => 'Fizica'
         ),
         array(
-          'subject' => 'Matetica'
+          'subject' => 'Matematica'
         ),
         array(
           'subject' => 'Educatie fizica'
@@ -53,9 +53,6 @@ class SubjectSeeder extends Seeder
         ),
         array(
           'subject' => 'Muzica'
-        ),
-        array(
-          'subject' => 'Matetica'
         ),
         array(
           'subject' => 'Biologie'
