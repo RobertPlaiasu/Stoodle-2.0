@@ -13,13 +13,13 @@ class UniversitySeeder extends Seeder
     {
         DB::table('universities')->insert(array(
             array(
-              'name' => 'Politehnica Bucuresti'
+              'name' => 'Universitatea Babes-Bolyai'
             ),
             array(
               'name' => 'UniBuc'
             ),
             array(
-              'name' => 'dabdayub'
+              'name' => 'Universitatea Tehnica Cluj'
             )
         ));
     }
