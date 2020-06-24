@@ -2,7 +2,7 @@
 
 @section('content')
 <div id="search">
-    <input onkeyup="sort()" class="form-control w-75"
+    <input onkeyup="sort()" class="form-control w-75 mx-auto"
         type="text" placeholder="cauta" id="search_field" aria-label="Search">
 </div>
 

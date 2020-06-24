@@ -22,7 +22,7 @@
 <body>
     <div id="app">
         @include('inc.navbar')
-        <main class="py-4">
+        <main class="mx-auto" style="max-width: 1200px">
             @yield('content')
         </main>
     </div>
