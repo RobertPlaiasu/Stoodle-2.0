@@ -18,7 +18,7 @@
                 <label for="county">Judetul in care se afla facultatea.</label>
                 <select class="custom-select" id ="county" name="county">
                 @foreach ($counties as $county)
-                    <option value="{{ $county->county }}"> {{ $county->county }} </option>
+                    <option value="{{ $county->name }}"> {{ $county->name }} </option>
                 @endforeach
                 </select>
             </div>
