@@ -16,7 +16,11 @@
             </div>
             <div class="form-group">
                 <label for="county">Judetul in care se afla facultatea.</label>
-                <select class="custom-select" id ="county" name="county"></select>
+                <select class="custom-select" id ="county" name="county">
+                @foreach ($counties as $county)
+                    <option value="{{ $county->county }}"> {{ $county->county }} </option>
+                @endforeach
+                </select>
             </div>
             <div class="form-group">
                 <label for="branch">Link catre facultate.</label>

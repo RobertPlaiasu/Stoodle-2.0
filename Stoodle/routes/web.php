@@ -33,10 +33,7 @@ Route::get('/facultati-favorite', function () {
 
 Route::get('/intrebari', 'QuestionController@index');
 
-Route::get('/admin', function () {
-    return view('admin');
-});
-
+Route::get('/admin', 'CountyController@index');
 
 Auth::routes(['verify' => true]);
 
