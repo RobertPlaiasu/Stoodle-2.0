@@ -32,9 +32,11 @@
                     <li class="nav-item">
                         <a href="{{ url('/contact') }}" class="nav-link">Contact</a>
                     </li>
+                    @if (Auth::user()->rank == "admin")
                     <li class="nav-item">
                         <a href="{{ url('/admin') }}" class="nav-link">Admin</a>
                     </li>
+                    @endif
                     <li class="nav-item">
                         <a href="{{ url('/facultati-favorite') }}" class="nav-link">Facultati favorite</a>
                     </li>
