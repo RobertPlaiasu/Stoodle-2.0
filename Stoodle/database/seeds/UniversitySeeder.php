@@ -18,6 +18,9 @@ class UniversitySeeder extends Seeder
             array(
                'name' => 'UniBuc'
             ),
-          ));
+            array(
+              'name' => 'dabdayub'
+            )
+        ));
     }
 }

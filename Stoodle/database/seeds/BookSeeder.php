@@ -12,12 +12,12 @@ class BookSeeder extends Seeder
     public function run()
     {
         DB::table('books')->insert(array(
-     array(
-       'book' => 'Filozofie'
-     ),
-     array(
-        'book' => 'Fantasy'
-     ),
-   ));
+          array(
+            'book' => 'Filozofie'
+          ),
+          array(
+              'book' => 'Fantasy'
+          ),
+        ));
     }
 }

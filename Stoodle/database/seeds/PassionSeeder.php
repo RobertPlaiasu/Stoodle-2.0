@@ -12,12 +12,12 @@ class PassionSeeder extends Seeder
     public function run()
     {
         DB::table('passions')->insert(array(
-            array(
-              'passion' => 'Matematica'
-            ),
-            array(
-               'passion' => 'Fizica'
-            ),
-          ));
+          array(
+            'passion' => 'Matematica'
+          ),
+          array(
+              'passion' => 'Fizica'
+          ),
+        ));
     }
 }

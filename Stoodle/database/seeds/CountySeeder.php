@@ -12,12 +12,12 @@ class CountySeeder extends Seeder
     public function run()
     {
         DB::table('counties')->insert(array(
-            array(
-              'county' => 'Prahova'
-            ),
-            array(
-               'county' => 'Cluj'
-            ),
-          ));
+          array(
+            'county' => 'Prahova'
+          ),
+          array(
+              'county' => 'Cluj'
+          ),
+        ));
     }
 }
