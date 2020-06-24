@@ -12,12 +12,33 @@ class ProfilSeeder extends Seeder
     public function run()
     {
         DB::table('profils')->insert(array(
-            array(
-              'profil' => 'Mate-info'
-            ),
-            array(
-               'profil' => 'Filologie'
-            ),
-          ));
+          array(
+            'profil' => 'Teologic'
+          ),
+          array(
+            'profil' => 'Filologie'
+          ),
+          array(
+            'profil' => 'Stiinte ale naturii'
+          ),
+          array(
+            'profil' => 'Sportiv'
+          ),
+          array(
+            'profil' => 'Mate-info'
+          ),
+          array(
+            'profil' => 'Tehnologic'
+          ),
+          array(
+            'profil' => 'Arhitectura'
+          ),
+          array(
+            'profil' => 'Actorie'
+          ),
+          array(
+            'profil' => 'Stiinte-sociale'
+          ),
+        ));
     }
 }

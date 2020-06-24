@@ -17,9 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/acasa', function () {
-    return view('home');
-});
+Route::get('/acasa', 'HomeController@index')->name('home');
 
 Route::get('/formular', function () {
     return view('form');
@@ -35,14 +33,11 @@ Route::get('/facultati-favorite', function () {
 
 Route::get('/intrebari', 'QuestionController@index');
 
-Route::get('/admin', function () {
-    return view('admin');
-});
-
+Route::get('/admin', 'CountyController@index');
 
 Auth::routes(['verify' => true]);
 
-Route::resource('facultati','CollegeController');
+// Route::resource('facultati','CollegeController');
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
