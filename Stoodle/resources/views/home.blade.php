@@ -55,7 +55,7 @@
     @endforeach
 @else 
 
-    <h1>No Colleges</h1>
+    <h1>Nu fost gasite facultati</h1>
     
 @endif
 
