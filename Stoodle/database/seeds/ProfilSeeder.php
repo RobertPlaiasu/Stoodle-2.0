@@ -13,10 +13,31 @@ class ProfilSeeder extends Seeder
     {
         DB::table('profils')->insert(array(
           array(
-            'profil' => 'Mate-info'
+            'profil' => 'Teologic'
           ),
           array(
             'profil' => 'Filologie'
+          ),
+          array(
+            'profil' => 'Stiinte ale naturii'
+          ),
+          array(
+            'profil' => 'Sportiv'
+          ),
+          array(
+            'profil' => 'Mate-info'
+          ),
+          array(
+            'profil' => 'Tehnologic'
+          ),
+          array(
+            'profil' => 'Arhitectura'
+          ),
+          array(
+            'profil' => 'Actorie'
+          ),
+          array(
+            'profil' => 'Stiinte-sociale'
           ),
         ));
     }
