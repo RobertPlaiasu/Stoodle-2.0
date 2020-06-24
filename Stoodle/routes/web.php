@@ -17,9 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/acasa', function () {
-    return view('home');
-});
+Route::get('/acasa', 'HomeController@index')->name('home');
 
 Route::get('/formular', function () {
     return view('form');
@@ -42,7 +40,7 @@ Route::get('/admin', function () {
 
 Auth::routes(['verify' => true]);
 
-Route::resource('facultati','CollegeController');
+// Route::resource('facultati','CollegeController');
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
