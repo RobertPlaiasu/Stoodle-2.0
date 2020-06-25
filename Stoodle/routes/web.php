@@ -19,9 +19,7 @@ Route::get('/', function () {
 
 Route::get('/acasa', 'HomeController@index')->name('home');
 
-Route::get('/formular', function () {
-    return view('form');
-});
+Route::get('/formular', 'FormController@index');
 
 Route::get('/contact', function () {
     return view('contact');

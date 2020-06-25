@@ -8,7 +8,11 @@
         <form action="./formular.php" method="post" id="formular">
             <div class="form-group">
                 <label for="passion">De ce esti pasionat?</label>
-                <select class="custom-select" id="passionSelect" name="passion"></select>
+                <select class="custom-select" id="passionSelect" name="passion">
+                    @foreach ( $passions as $passion )
+                        <option value="{{ $passion->name }}"> {{ $passion->name }} </option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
             <label for="passion-metter">Cat de pasionat esti?</label> <br>
@@ -35,13 +39,29 @@
             </div>
             <div class="form-group">
                 <label for="classes">Ce materii iti plac?</label>
-                <select class="custom-select mb-2 classSelect" name="class-1" class="classSelect"></select>
-                <select class="custom-select mb-2 classSelect" name="class-2" class="classSelect"></select>
-                <select class="custom-select mb-2 classSelect" name="class-3" class="classSelect"></select>
+                <select class="custom-select mb-2 classSelect" name="class-1" class="classSelect">
+                    @foreach ( $subjects as $subject )
+                        <option value="{{ $subject->name }}">{{ $subject->name }}</option>
+                    @endforeach
+                </select>
+                <select class="custom-select mb-2 classSelect" name="class-2" class="classSelect">
+                    @foreach ( $subjects as $subject )
+                        <option value="{{ $subject->name }}">{{ $subject->name }}</option>
+                    @endforeach
+                </select>
+                <select class="custom-select mb-2 classSelect" name="class-3" class="classSelect">
+                    @foreach ( $subjects as $subject )
+                        <option value="{{ $subject->name }}">{{ $subject->name }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
                 <label for="branch">Pe ce profil esti?</label>
-                <select class="custom-select" name="branch" id="branchSelect"></select>
+                <select class="custom-select" name="branch" id="branchSelect">
+                    @foreach ( $profils as $profil )
+                        <option value="{{ $profil->name }}">{{ $profil->name }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
                 <label for="stress">Poti face fata unor situatii strsante?</label>
@@ -59,11 +79,19 @@
             </div>
             <div class="form-group">
                 <label for="books">Ce tip de carti citesti?</label>
-                <select class="custom-select" name="books" id="booksSelect"></select>
+                <select class="custom-select" name="books" id="booksSelect">
+                    @foreach ( $books as $book )
+                        <option value="{{ $book->name }}">{{ $book->name }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
                 <label for="county">Din ce judet esti?</label>
-                <select class="custom-select" name="county" id="countyPassion"></select>
+                <select class="custom-select" name="county" id="countyPassion">
+                    @foreach ( $counties as $county )
+                        <option value="{{ $county->name }}">{{ $county->name }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
                 <label for="social">Te consideri o persoana sociabila?</label>
