@@ -17,21 +17,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/acasa', 'HomeController@index')->name('home');
+Route::get('/acasa', 'HomeController@index')->name('home')->middleware('auth');
 
-Route::get('/formular', 'FormController@index');
+Route::get('/formular', 'FormController@index')->middleware('auth');
 
 Route::get('/contact', function () {
     return view('contact');
-});
+})->middleware('auth');
 
 Route::get('/facultati-favorite', function () {
     return view('favorites');
-});
+})->middleware('auth');
 
-Route::get('/intrebari', 'QuestionController@index');
+Route::get('/intrebari', 'QuestionController@index')->middleware('auth');
 
-Route::get('/admin', 'CountyController@index');
+Route::get('/admin', 'CountyController@index')->middleware('auth');
 
 Auth::routes(['verify' => true]);
 
