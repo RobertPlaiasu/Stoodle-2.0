@@ -11325,3 +11325,15 @@ body {
   margin: 2em;
 }
 
+.cookie-container .js-cookie-consent.cookie-consent {
+  display: flex;
+  flex-direction: column;
+}
+
+.cookie-container .js-cookie-consent.cookie-consent button {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.25em 0.5em;
+}
+

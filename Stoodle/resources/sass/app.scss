@@ -105,4 +105,12 @@ html, body {
     left: 2em;
     bottom: 4em;
     margin: 2em;
+    .js-cookie-consent.cookie-consent{
+        display: flex;
+        flex-direction: column;
+        button{
+            width: fit-content;
+            padding: .25em .5em;
+        }
+    }
 }
