@@ -29,9 +29,9 @@ class CreateCollegesTable extends Migration
             $table->string('subject1');
             $table->string('subject2');
             $table->string('subject3');
-            $table->foreign('subject1')->references('subject')->on('subjects')->onDelete('cascade');
-            $table->foreign('subject2')->references('subject')->on('subjects')->onDelete('cascade');
-            $table->foreign('subject3')->references('subject')->on('subjects')->onDelete('cascade');
+            $table->foreign('subject1')->references('name')->on('subjects')->onDelete('cascade');
+            $table->foreign('subject2')->references('name')->on('subjects')->onDelete('cascade');
+            $table->foreign('subject3')->references('name')->on('subjects')->onDelete('cascade');
             $table->timestamps();
         });
 

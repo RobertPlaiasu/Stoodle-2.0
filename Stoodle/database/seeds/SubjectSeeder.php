@@ -13,76 +13,76 @@ class SubjectSeeder extends Seeder
     {
       DB::table('subjects')->insert(array(
         array(
-          'subject' => 'Limba si literatura romana'
+          'name' => 'Limba si literatura romana'
         ),
         array(
-          'subject' => 'Engleza'
+          'name' => 'Engleza'
         ),
         array(
-          'subject' => 'Franceza'
+          'name' => 'Franceza'
         ),
         array(
-          'subject' => 'Germana'
+          'name' => 'Germana'
         ),
         array(
-          'subject' => 'Spaniola'
+          'name' => 'Spaniola'
         ),
         array(
-          'subject' => 'Fizica'
+          'name' => 'Fizica'
         ),
         array(
-          'subject' => 'Matematica'
+          'name' => 'Matematica'
         ),
         array(
-          'subject' => 'Educatie fizica'
+          'name' => 'Educatie fizica'
         ),
         array(
-          'subject' => 'Religie'
+          'name' => 'Religie'
         ),
         array(
-          'subject' => 'Informatica'
+          'name' => 'Informatica'
         ),
         array(
-          'subject' => 'TIC'
+          'name' => 'TIC'
         ),
         array(
-          'subject' => 'Educatie civica'
+          'name' => 'Educatie civica'
         ),
         array(
-          'subject' => 'Desen'
+          'name' => 'Desen'
         ),
         array(
-          'subject' => 'Muzica'
+          'name' => 'Muzica'
         ),
         array(
-          'subject' => 'Biologie'
+          'name' => 'Biologie'
         ),
         array(
-          'subject' => 'Chimie'
+          'name' => 'Chimie'
         ),
         array(
-          'subject' => 'Istorie'
+          'name' => 'Istorie'
         ),
         array(
-          'subject' => 'Geografie'
+          'name' => 'Geografie'
         ),
         array(
-          'subject' => 'Economie'
+          'name' => 'Economie'
         ),
         array(
-          'subject' => 'ATP'
+          'name' => 'ATP'
         ),
         array(
-          'subject' => 'Latina'
+          'name' => 'Latina'
         ),
         array(
-          'subject' => 'Psihologie'
+          'name' => 'Psihologie'
         ),
         array(
-          'subject' => 'Sociologie'
+          'name' => 'Sociologie'
         ),
         array(
-          'subject' => 'Nici una din cele de mai sus'
+          'name' => 'Nici una din cele de mai sus'
         ),
       ));
     }

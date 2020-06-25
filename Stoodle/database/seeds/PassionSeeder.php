@@ -13,115 +13,115 @@ class PassionSeeder extends Seeder
     {
         DB::table('passions')->insert(array(
           array(
-            'passion' => 'Medicina'
+            'name' => 'Medicina'
           ),
           array(
-            'passion' => 'Matematica'
+            'name' => 'Matematica'
           ),
           array(
-            'passion' => 'Agricultura'
+            'name' => 'Agricultura'
           ),
           array(
-            'passion' => 'Ecologie'
+            'name' => 'Ecologie'
           ),
           array(
-            'passion' => 'Programare / Calculatoare'
+            'name' => 'Programare / Calculatoare'
           ),
           array(
-            'passion' => 'Literatura'
+            'name' => 'Literatura'
           ),
           array(
-            'passion' => 'Muzica'
+            'name' => 'Muzica'
           ),
           array(
-            'passion' => 'Desen'
+            'name' => 'Desen'
           ),
           array(
-            'passion' => 'Arhitectura'
+            'name' => 'Arhitectura'
           ),
           array(
-            'passion' => 'Astronomie'
+            'name' => 'Astronomie'
           ),
           array(
-            'passion' => 'Sport'
+            'name' => 'Sport'
           ),
           array(
-            'passion' => 'Religie'
+            'name' => 'Religie'
           ),
           array(
-            'passion' => 'Economie'
+            'name' => 'Economie'
           ),
           array(
-            'passion' => 'Business'
+            'name' => 'Business'
           ),
           array(
-            'passion' => 'Politica'
+            'name' => 'Politica'
           ),
           array(
-            'passion' => 'Limbi straine'
+            'name' => 'Limbi straine'
           ),
           array(
-            'passion' => 'Filozofie'
+            'name' => 'Filozofie'
           ),
           array(
-            'passion' => 'Drept'
+            'name' => 'Drept'
           ),
           array(
-            'passion' => 'Biologie'
+            'name' => 'Biologie'
           ),
           array(
-            'passion' => 'Geografie'
+            'name' => 'Geografie'
           ),
           array(
-            'passion' => 'Geologie'
+            'name' => 'Geologie'
           ),
           array(
-            'passion' => 'Istorie'
+            'name' => 'Istorie'
           ),
           array(
-            'passion' => 'Jurnalism'
+            'name' => 'Jurnalism'
           ),
           array(
-            'passion' => 'Design'
+            'name' => 'Design'
           ),
           array(
-            'passion' => 'Constructii'
+            'name' => 'Constructii'
           ),
           array(
-            'passion' => 'Serviciul militar'
+            'name' => 'Serviciul militar'
           ),
           array(
-            'passion' => 'Actorie'
+            'name' => 'Actorie'
           ),
           array(
-            'passion' => 'Regie'
+            'name' => 'Regie'
           ),
           array(
-            'passion' => 'Editare video/sunet'
+            'name' => 'Editare video/sunet'
           ),
           array(
-            'passion' => 'Chimie'
+            'name' => 'Chimie'
           ),
           array(
-            'passion' => 'Animale'
+            'name' => 'Animale'
           ),
           array(
-            'passion' => 'Limba romana'
+            'name' => 'Limba romana'
           ),
           array(
-            'passion' => 'Serviciul in cadrul politiei'
+            'name' => 'Serviciul in cadrul politiei'
           ),
           array(
-            'passion' => 'Electronica'
+            'name' => 'Electronica'
           ),
           array(
-            'passion' => 'Inginerie electrica'
+            'name' => 'Inginerie electrica'
           ),
           array(
-            'passion' => 'Cibernetica'
+            'name' => 'Cibernetica'
           ),
           array(
-            'passion' => 'Inginerie Aerospatila'
+            'name' => 'Inginerie Aerospatila'
           ),
         ));
     }

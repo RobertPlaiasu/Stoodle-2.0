@@ -15,7 +15,7 @@ class CreatePassionsTable extends Migration
     {
         Schema::create('passions', function (Blueprint $table) {
             $table->id();
-            $table->string('passion')->unique();
+            $table->string('name')->unique();
             $table->timestamps();
         });
     }
