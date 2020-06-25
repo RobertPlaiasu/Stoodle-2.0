@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 
 class QuestionController extends Controller {
     public function index(){
-        $questions = DB::select('select * from questions');
+        $questions = Question::all();
         return view('questions', [ 'questions' => $questions ] );
     }
 }
