@@ -13,32 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/acasa', 'HomeController@index')->name('home');
-
-Route::get('/formular', function () {
-    return view('form');
-});
-
-Route::get('/contact', function () {
-    return view('contact');
-});
-
-Route::get('/facultati-favorite', function () {
-    return view('favorites');
-});
-
-Route::get('/intrebari', 'QuestionController@index');
-
-Route::get('/admin', 'CountyController@index');
+Route::view('/', 'welcome');
+Route::get('/acasa', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('/formular', 'FormController@index')->name('form')->middleware('auth');
+Route::view('/contact', 'contact')->name('contact')->middleware('auth');
+Route::view('/facultati-favorite', 'favorites')->name('favorites')->middleware('auth');
+Route::get('/intrebari', 'QuestionController@index')->name('questions')->middleware('auth');
+Route::get('/admin', 'CountyController@index')->name('admin')->middleware('auth');
 
 Auth::routes(['verify' => true]);
-
-Route::resource('facultati','CollegeController');
-
-// Route::get('/home', 'HomeController@index')->name('home');
 
 
