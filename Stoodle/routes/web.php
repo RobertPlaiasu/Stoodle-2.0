@@ -37,7 +37,7 @@ Route::get('/admin', 'CountyController@index');
 
 Auth::routes(['verify' => true]);
 
-// Route::resource('facultati','CollegeController');
+Route::resource('facultati','CollegeController');
 
 // Route::get('/home', 'HomeController@index')->name('home');
 

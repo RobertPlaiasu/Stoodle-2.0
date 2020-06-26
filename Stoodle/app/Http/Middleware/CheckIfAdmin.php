@@ -3,9 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\User;
 
-class CheckFormCompleted
+class CheckIfAdmin
 {
     /**
      * Handle an incoming request.
@@ -16,9 +15,10 @@ class CheckFormCompleted
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() &&  Auth::user()->job == NULL) 
+
+        if (Auth::user() &&  Auth::user()->admin == 1) {
             return $next($request);
-     
-        return redirect('/form');
+     }
+        return redirect()->back();
     }
 }
