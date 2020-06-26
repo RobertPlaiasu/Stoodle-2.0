@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Logare')
+
 @section('content')
 <div class="container login">
     <div class="headline">
@@ -26,18 +28,6 @@
                <small> {{ $message }} </small>
             @enderror
         </div>
-
-            <!-- <div class="form-group row">
-                <div class="col-md-6 offset-md-4">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                        <label class="form-check-label" for="remember">
-                            {{ __('Remember Me') }}
-                        </label>
-                    </div>
-                </div>
-            </div> -->
 
         <div class="form-group m-0">
             <a href="{{ route('register') }}">Creeaza-ti un cont!</a><br>

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Formular')
+
 @section('content')
 <div class="form">
     <div class="container">

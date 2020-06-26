@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Intrebari')
+
 @section('content')
 <div class="container">
     @foreach ($questions as $question)

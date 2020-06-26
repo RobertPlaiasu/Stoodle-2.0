@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Acasa')
+
 @section('content')
 <div id="search">
     <input onkeyup="sort()" class="form-control w-75 mx-auto"
