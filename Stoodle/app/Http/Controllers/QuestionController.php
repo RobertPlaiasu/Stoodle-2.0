@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Question;
 
-use DB;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
-class QuestionController extends Controller {
-    public function index(){
+class QuestionController extends Controller 
+{
+    public function index()
+    {
         $questions = Question::all();
         return view('questions', [ 'questions' => $questions ] );
     }
