@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Contact')
+
 @section('content')
 <div id="showcase">
     <div class="content d-flex align-items-center justify-content-center">

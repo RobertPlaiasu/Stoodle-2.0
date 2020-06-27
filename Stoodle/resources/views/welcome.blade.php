@@ -15,7 +15,7 @@
     <body>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
-                <div class="top-right links">
+                <div class="top-right links m-5">
                     @auth
                         <a href="{{ url('/acasa') }}">acasa</a>
                     @else
@@ -52,22 +52,9 @@
 
 
             <div class="cookie-container">
-                <p class="p-2">
-                    Folosim cookie-uri pe acest site web pentru a vă oferi cea mai bună experiență pe site-ul nostru și pentru a vă afișa reclame relevante. Pentru a afla mai multe, citiți
-                    <a href="#">politica noastră de confidențialitate</a> și <a href="#">olitica privind cookie-urile</a>.
-                </p>
-                <button id="cookie-btn"> Okay </button>
+                @include('cookieConsent::index')
             </div>
 
         </div>
-        <script>
-            const cookieContainer = document.querySelector(".cookie-container");
-            const cookieButton = document.querySelector("#cookie-btn");
-            
-            cookieButton.addEventListener("click", () => {
-                cookieContainer.classList.add("hidden");
-                localStorage.setItem("cookieBannerDisplayed", "true");
-            });
-        </script>
     </body>
 </html>

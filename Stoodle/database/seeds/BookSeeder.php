@@ -13,73 +13,73 @@ class BookSeeder extends Seeder
     {
         DB::table('books')->insert(array(
           array(
-            'book' => 'Culinare'
+            'name' => 'Culinare'
           ),
           array(
-            'book' => 'Arte, tehnica'
+            'name' => 'Arte, tehnica'
           ),
           array(
-            'book' => 'Enciclopedii'
+            'name' => 'Enciclopedii'
           ),
           array(
-            'book' => 'Biografii, memorii'
+            'name' => 'Biografii, memorii'
           ),
           array(
-            'book' => 'Lingvistica'
+            'name' => 'Lingvistica'
           ),
           array(
-            'book' => 'Limbi straine'
+            'name' => 'Limbi straine'
           ),
           array(
-            'book' => 'Teatru'
+            'name' => 'Teatru'
           ),
           array(
-            'book' => 'Poezie / Literatura'
+            'name' => 'Poezie / Literatura'
           ),
           array(
-            'book' => 'Atlase, ghiduri turistice'
+            'name' => 'Atlase, ghiduri turistice'
           ),
           array(
-            'book' => 'Istorie'
+            'name' => 'Istorie'
           ),
           array(
-            'book' => 'Filozofie'
+            'name' => 'Filozofie'
           ),
           array(
-            'book' => 'Psihologie'
+            'name' => 'Psihologie'
           ),
           array(
-            'book' => 'Stiinte sociale, politica'
+            'name' => 'Stiinte sociale, politica'
           ),
           array(
-            'book' => 'Marketing si comunicare'
+            'name' => 'Marketing si comunicare'
           ),
           array(
-            'book' => 'Business si economie'
+            'name' => 'Business si economie'
           ),
           array(
-            'book' => 'Drept'
+            'name' => 'Drept'
           ),
           array(
-            'book' => 'Medicina'
+            'name' => 'Medicina'
           ),
           array(
-            'book' => 'Stiinte exacte'
+            'name' => 'Stiinte exacte'
           ),
           array(
-            'book' => 'Natura si mediu'
+            'name' => 'Natura si mediu'
           ),
           array(
-            'book' => 'Tehnica si tehnologie'
+            'name' => 'Tehnica si tehnologie'
           ),
           array(
-            'book' => 'Computere si internet'
+            'name' => 'Computere si internet'
           ),
           array(
-            'book' => 'Dezvoltare personala'
+            'name' => 'Dezvoltare personala'
           ),
           array(
-            'book' => 'Lifestyle, sport'
+            'name' => 'Lifestyle, sport'
           ),
         ));
     }

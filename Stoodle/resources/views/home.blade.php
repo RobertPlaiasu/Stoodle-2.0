@@ -1,14 +1,15 @@
 @extends('layouts.app')
 
+@section('title', 'Acasa')
+
 @section('content')
 <div id="search">
     <input onkeyup="sort()" class="form-control w-75 mx-auto"
         type="text" placeholder="cauta" id="search_field" aria-label="Search">
 </div>
 
-@if (count($colleges) > 1)
+@if (count($colleges) > 0)
     @foreach($colleges as $college)
-
         <div class="col card">
             <!--Image Background-->
             <div class="row-lg-4 backgrounded"></div>
@@ -17,6 +18,7 @@
             <div class="row-lg-2 name">
                 {{ $college->name }}                 
             </div>
+
             <div class="row-lg-3 prop text-center">
                 <div class="col">
                     <div class="row">
@@ -29,13 +31,12 @@
                             {{ $college->compability }}}
                             <i class="fas fa-percentage"></i></div>
                         <div class="col">
-                            $this->countyCollege
+                            {{ $college->countyCollege }}
                             <i class="fas fa-city"></i>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            
                             {{ $college->profilColllege }}
                             <i class="fas fa-code-branch"></i>
                         </div>
@@ -44,7 +45,6 @@
             </div>
             <div class="row-lg-3 fav text-center">
                 <form action="./favoriteAlg.php" method="post">
-                    
                     {{ $college->favoriteCollegeFound() }}
                 </form>
             </div>
@@ -55,13 +55,16 @@
     @endforeach
 @else 
 
-    <h1>Nu fost gasite facultati</h1>
+    <div class="text-center display-4">
+        <h1>Nu fost gasite facultati</h1>
+    </div>
     
 @endif
 
 
 <script>
-    function sort() {
+    function sort() 
+    {
         // Declare variables
         var input = document.getElementById('search_field');
         var filter = input.value.toUpperCase();
@@ -69,9 +72,11 @@
         var cards = document.getElementsByClassName("card");
 
         // Loop through all list items, and hide those who don't match the search query
-        for (i = 0; i < faculties.length; i++) {
+        for (i = 0; i < faculties.length; i++) 
+        {
             txtValue = facultati[i].textContent || faculties[i].innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            if (txtValue.toUpperCase().indexOf(filter) > -1) 
+            {
                 cards[i].style.display = "";
             } else {
                 cards[i].style.display = "none";

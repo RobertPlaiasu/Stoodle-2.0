@@ -22,5 +22,3 @@ Route::get('/intrebari', 'QuestionController@index')->name('questions')->middlew
 Route::get('/admin', 'CountyController@index')->name('admin')->middleware('auth');
 
 Auth::routes(['verify' => true]);
-
-

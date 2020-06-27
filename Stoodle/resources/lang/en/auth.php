@@ -13,7 +13,12 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    // TODO: create a way to change beetwen romanian and english
+    
+    // 'failed' => 'These credentials do not match our records.',
+    'failed' => 'Aceste acreditări nu corespund înregistrărilor noastre.',
+    
+    // 'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'throttle' => 'Prea multe încercări de conectare. Încercați din nou în :seconds de secunde.',
 
 ];
