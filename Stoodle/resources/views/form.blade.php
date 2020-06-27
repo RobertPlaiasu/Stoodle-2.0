@@ -8,12 +8,15 @@
         <h1>Bun venit in familia Stoodle!</h1>
         <p>Completeaza formularul de mai jos pentru a putea termina inregistrarea.</p>
         <form action="./formular.php" method="post" id="formular">
+            @csrf
             <div class="form-group">
                 <label for="passion">De ce esti pasionat?</label>
                 <select class="custom-select" id="passionSelect" name="passion">
+
                     @foreach ( $passions as $passion )
                         <option value="{{ $passion->name }}"> {{ $passion->name }} </option>
                     @endforeach
+
                 </select>
             </div>
             <div class="form-group">
