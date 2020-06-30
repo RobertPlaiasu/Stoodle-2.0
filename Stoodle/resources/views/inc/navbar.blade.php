@@ -35,7 +35,7 @@
                         <a href="{{ url('/contact') }}" class="nav-link">Contact</a>
                     </li>
 
-                    @if (Auth::user()->rank == "admin")
+                    @if (Auth::user()->admin == 1)
                     <li class="nav-item">
                         <a href="{{ url('/admin') }}" class="nav-link">Admin</a>
                     </li>
