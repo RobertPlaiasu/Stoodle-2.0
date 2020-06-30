@@ -36,7 +36,7 @@ class CreateCollegesTable extends Migration
         });
 
 
-        Schema::create('colleges_subjects', function (Blueprint $table) {
+        Schema::create('college_subject', function (Blueprint $table) {
             $table->id();
             $table->foreignId('subject_id')->constrained();
             $table->foreignId('college_id')->constrained();

@@ -12,6 +12,13 @@ class CollegeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+    public function __construct()
+    {
+        $this->middleware(['auth','admin','checkForm'])->except('index');
+        $this->middleware(['auth','checkForm'])->only('index');
+    }
+
     public function index()
     {
         $colleges = College::all();

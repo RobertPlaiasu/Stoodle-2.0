@@ -33,7 +33,7 @@ class CreateUsersTable extends Migration
         });
 
 
-        Schema::create('subjects_users', function (Blueprint $table) {
+        Schema::create('subject_user', function (Blueprint $table) {
             $table->id();
             $table->foreignId('subject_id')->constrained();
             $table->foreignId('user_id')->constrained();
