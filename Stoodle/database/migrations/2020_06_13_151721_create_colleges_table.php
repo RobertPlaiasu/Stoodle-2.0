@@ -26,17 +26,11 @@ class CreateCollegesTable extends Migration
             $table->foreignId('profil_id')->constrained();
             $table->foreignId('passion_id')->constrained();
             $table->foreignId('book_id')->constrained();
-            $table->string('subject1');
-            $table->string('subject2');
-            $table->string('subject3');
-            $table->foreign('subject1')->references('name')->on('subjects')->onDelete('cascade');
-            $table->foreign('subject2')->references('name')->on('subjects')->onDelete('cascade');
-            $table->foreign('subject3')->references('name')->on('subjects')->onDelete('cascade');
             $table->timestamps();
         });
 
 
-        Schema::create('colleges_subjects', function (Blueprint $table) {
+        Schema::create('college_subject', function (Blueprint $table) {
             $table->id();
             $table->foreignId('subject_id')->constrained();
             $table->foreignId('college_id')->constrained();
