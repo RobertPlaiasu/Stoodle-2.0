@@ -1,18 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Http\Request;
 
-use App\County;
-use App\Passion;
-use App\Book;
-use App\Subject;
-use App\Profil;
-
-class FormController extends Controller
+class UserInfo extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
         $counties = County::all();
         $passion = Passion::all();
