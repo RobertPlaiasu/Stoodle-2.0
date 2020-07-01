@@ -13,8 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome');
-Route::get('/formular', 'FormController@index')->name('form')->middleware('auth');
+Route::view('/', 'welcome')->middleware('guest');
 Route::view('/contact', 'contact')->name('contact')->middleware('auth');
 Route::view('/facultati-favorite', 'favorites')->name('favorites')->middleware('auth');
 Route::get('/intrebari', 'QuestionController@index')->name('questions')->middleware('auth');
