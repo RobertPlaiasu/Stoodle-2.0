@@ -2,16 +2,8 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
-class InfoUser extends Model
+trait CompabilityTrait
 {
-    protected $fillable = [
-        'job' , 'social','profil_id' , 'passion_id',
-        'stress' , 'sport' , 'county_id' ,
-        'book_id'
-    ];
-
 
     public function book()
     {
@@ -48,8 +40,4 @@ class InfoUser extends Model
 
     }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 }

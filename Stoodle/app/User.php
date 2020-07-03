@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable;
+    use Notifiable,CompabilityTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -16,9 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password' , 'job' , 'social',
-        'stress' , 'sport' , 'county_id' , 'profil_id' , 'passion_id', 
-        'book_id'
+        'name', 'email', 'password'
     ];
 
     /**
@@ -38,5 +36,10 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function infoUser()
+    {
+        return $this->hasOne(InfoUser::class);
+    }
 
 }
