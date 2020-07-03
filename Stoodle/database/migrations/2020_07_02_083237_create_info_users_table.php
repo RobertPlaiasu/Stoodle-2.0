@@ -24,15 +24,13 @@ class CreateInfoUsersTable extends Migration
             $table->foreignId('profil_id')->constrained()->onDelete('cascade');
             $table->foreignId('passion_id')->constrained()->onDelete('cascade');
             $table->foreignId('book_id')->constrained()->onDelete('cascade');
-            $table->timestamps();
         });
 
         Schema::create('info_subject', function (Blueprint $table) {
             $table->id();
             $table->foreignId('subject_id')->constrained()->onDelete('cascade');
             $table->foreignId('info_user_id')->constrained()->onDelete('cascade');
-            $table->unique(['subject_id','user_id']);
-            $table->timestamps();
+            $table->unique(['subject_id','info_user_id']);
         });
     }
 

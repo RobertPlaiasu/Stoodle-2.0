@@ -16,7 +16,7 @@ class CheckFormCompleted
      */
     public function handle($request, Closure $next)
     {
-        if (\Auth::user() &&  \Auth::user()->job != NULL) 
+        if (\Auth::user() && \Auth::user()->infoUser) 
             return $next($request);
      
         return redirect('form');
