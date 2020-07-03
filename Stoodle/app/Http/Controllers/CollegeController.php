@@ -15,8 +15,8 @@ class CollegeController extends Controller
     
     public function __construct()
     {
-        $this->middleware(['auth','admin','checkForm'])->except('index');
-        $this->middleware(['auth','checkForm'])->only('index');
+        $this->middleware(['auth','verified','admin','checkForm'])->except('index');
+        $this->middleware(['auth','verified','checkForm'])->only('index');
     }
 
     public function index()

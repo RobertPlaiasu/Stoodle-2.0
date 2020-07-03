@@ -37,38 +37,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function book()
+    public function infoUser()
     {
-
-        return $this->belongsTo(Book::class);
-
+        return $this->hasOne(InfoUser::class);
     }
 
-    public function county()
-    {
-
-        return $this->belongsTo(County::class);
-
-    }
-
-    public function passion()
-    {
-
-        return $this->belongsTo(Passion::class);
-
-    }
-
-    public function profil()
-    {
-
-        return $this->belongsTo(Profil::class);
-
-    }
-
-    public function subjects()
-    {
-
-        return $this->belongsToMany(Subject::class);
-
-    }
 }

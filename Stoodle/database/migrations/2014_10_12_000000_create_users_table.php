@@ -21,25 +21,10 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->boolean('admin')->default(0);
-            $table->boolean('job')->nullable()->default(NULL);
-            $table->boolean('social')->nullable()->default(NULL);
-            $table->boolean('stress')->nullable()->default(NULL);
-            $table->boolean('sport')->nullable()->default(NULL);
-            $table->foreignId('county_id')->nullable()->default(NULL);
-            $table->foreignId('profil_id')->nullable()->default(NULL);
-            $table->foreignId('passion_id')->nullable()->default(NULL);
-            $table->foreignId('book_id')->nullable()->default(NULL);
             $table->timestamps();
         });
 
 
-        Schema::create('subject_user', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('subject_id')->constrained();
-            $table->foreignId('user_id')->constrained();
-            $table->unique(['subject_id','user_id']);
-            $table->timestamps();
-        });
     }
 
     /**
@@ -50,6 +35,5 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
-        Schema::dropIfExists('subjects_users');
     }
 }

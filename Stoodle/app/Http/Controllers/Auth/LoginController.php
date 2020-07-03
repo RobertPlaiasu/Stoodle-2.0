@@ -31,7 +31,7 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         // Get URLs
-        $urlPrevious = url()->to('/acasa');
+        $urlPrevious = url()->to('/facultati');
         $urlBase = url()->to('/');
 
         // Set the previous url that we came from to redirect to after successful login but only if is internal

@@ -7,8 +7,9 @@
     <div class="container">
         <h1>Bun venit in familia Stoodle!</h1>
         <p>Completeaza formularul de mai jos pentru a putea termina inregistrarea.</p>
-        <form action="./formular.php" method="post" id="formular">
+        <form action="/form" method="POST" id="formular">
             @csrf
+            @method('PUT')
             <div class="form-group">
                 <label for="passion">De ce esti pasionat?</label>
                 <select class="custom-select" id="passionSelect" name="passion">

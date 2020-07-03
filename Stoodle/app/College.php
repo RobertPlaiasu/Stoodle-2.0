@@ -6,33 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class College extends Model
 {
-    public function book()
-    {
-
-        return $this->belongsTo(Book::class);
-
-    }
-
-    public function county()
-    {
-
-        return $this->belongsTo(County::class);
-
-    }
-
-    public function passion()
-    {
-
-        return $this->belongsTo(Passion::class);
-
-    }
-
-    public function profil()
-    {
-
-        return $this->belongsTo(Profil::class);
-
-    }
+    use CompabilityTrait;
+    
 
     public function university()
     {
@@ -41,10 +16,4 @@ class College extends Model
 
     }
 
-    public function subjects()
-    {
-
-        return $this->belongsToMany(Subject::class);
-
-    }
 }
