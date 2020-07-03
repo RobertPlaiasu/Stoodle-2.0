@@ -16,7 +16,9 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password'
+        'name', 'email', 'password' , 'job' , 'social',
+        'stress' , 'sport' , 'county_id' , 'profil_id' , 'passion_id', 
+        'book_id'
     ];
 
     /**
@@ -37,38 +39,4 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function book()
-    {
-
-        return $this->belongsTo(Book::class);
-
-    }
-
-    public function county()
-    {
-
-        return $this->belongsTo(County::class);
-
-    }
-
-    public function passion()
-    {
-
-        return $this->belongsTo(Passion::class);
-
-    }
-
-    public function profil()
-    {
-
-        return $this->belongsTo(Profil::class);
-
-    }
-
-    public function subjects()
-    {
-
-        return $this->belongsToMany(Subject::class);
-
-    }
 }

@@ -1,15 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use App\User;
-use App\County;
-use App\Passion;
-use App\Book;
-use App\Subject;
-use App\Profil;
 
-class UserInfo extends Controller
+use Illuminate\Http\Request;
+
+class InfoUserController extends Controller
 {
     public function __construct()
     {
@@ -27,9 +22,9 @@ class UserInfo extends Controller
                               'books' => $book, 'subjects' => $subject, 'profils' => $profil ]);
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        $data =  request()->validate([
+        $data =  $request->validate([
             'passion' => 'required|exists:passions,id',
             'passionIntensity' => 'required|max:1|regex:/^[1-5]+/',
             'class-1' => 'required|exists:passions,id',
@@ -43,5 +38,19 @@ class UserInfo extends Controller
             'social' => 'required|boolean',
             'sport' => 'required|boolean'
         ]);
+        
+            $userData = array(
+
+            );
+
+            $userSubject = array(
+                ['subject_id'=>$request->input('class-1')],
+                [],
+                [],
+            );
+
+        DB::table('users')->insert($userData);
+
+        DB::table('subject_user')->insert($userSubject);
     }
 }
