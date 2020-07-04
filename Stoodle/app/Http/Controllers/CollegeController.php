@@ -22,7 +22,7 @@ class CollegeController extends Controller
     public function index()
     {
         $colleges = College::all();
-        return view('facultati.index')->with('colleges',$colleges);
+        return view('colleges.index')->with('colleges',$colleges);
     }
 
     /**
