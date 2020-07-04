@@ -1,6 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\User;
+use App\County;
+use App\Passion;
+use App\Book;
+use App\Subject;
+use App\Profil;
 
 use Illuminate\Http\Request;
 
@@ -23,34 +29,55 @@ class InfoUserController extends Controller
     }
 
     public function store(Request $request)
-    {
+    {   
+        $user = User::find(auth()->user()->id);
+
         $data =  $request->validate([
             'passion' => 'required|exists:passions,id',
             'passionIntensity' => 'required|max:1|regex:/^[1-5]+/',
-            'class-1' => 'required|exists:passions,id',
-            'class-2' => 'required|exists:passions,id',
-            'class-3' => 'required|exists:passions,id',
-            'branch' => 'required|exists:passions,id',
+            'subject1' => 'required|exists:subjects,id',
+            'subject2' => 'required|exists:subjects,id',
+            'subject3' => 'required|exists:subjects,id',
+            'profil' => 'required|exists:profils,id',
             'stress' => 'required|boolean',
             'job' => 'required|boolean',
-            'books' => 'required|exists:passions,id',
-            'county' => 'required|exists:passions,id',
+            'books' => 'required|exists:books,id',
+            'county' => 'required|exists:counties,id',
             'social' => 'required|boolean',
             'sport' => 'required|boolean'
         ]);
+
+        if($this->verifyMultipleInputs($request->subject1,
+                                    $request->subject2,
+                                    $request->subject3))
+            return back();
+
+        $user->passion_id = $request->passion;
+        $user->passion_intensity = $request->passionIntensity;
+        $user->profil_id = $request->profil;
+        $user->stress = $request->stress;
+        $user->job = $request->job;
+        $user->book_id = $request->books;
+        $user->county_id = $request->county;
+        $user->social = $request->social;
+        $user->sport = $request->sport;
+        $user->save();
         
-            $userData = array(
+        $user->subjects()->attach([
+            $request->subject1,
+            $request->subject2,
+            $request->subject3
+        ]);
+        
+        return redirect('facultati');
+    }
 
-            );
 
-            $userSubject = array(
-                ['subject_id'=>$request->input('class-1')],
-                [],
-                [],
-            );
-
-        DB::table('users')->insert($userData);
-
-        DB::table('subject_user')->insert($userSubject);
+    private function verifyMultipleInputs(int $input1 , int $input2, int $input3)
+    {
+        if($input1 == $input2 ||
+           $input1 == $input3 ||
+           $input2 == $input3 )
+           return true;
     }
 }
