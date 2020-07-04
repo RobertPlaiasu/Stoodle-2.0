@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'welcome')->middleware('guest');
+
+// TODO: Add the checkForm middleware to this routes
 Route::view('/contact', 'contact')->name('contact')->middleware('auth');
 Route::view('/facultati-favorite', 'favorites')->name('favorites')->middleware('auth');
 Route::get('/intrebari', 'QuestionController@index')->name('questions')->middleware('auth');
@@ -22,6 +24,7 @@ Route::get('/admin', 'CountyController@index')->name('admin')->middleware('auth'
 Route::get('/form', 'UserInfo@index')->name('form');
 Route::put('/form', 'UserInfo@store');
 
-Route::resource('facultati', 'CollegeController');
+// ? Why?
+Route::resource('/acasa', 'CollegeController');
 
 Auth::routes(['verify' => true]);
