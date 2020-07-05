@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Notifications\CustomResetPasswordNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -19,7 +20,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name', 'email', 'password','passion_intensity',
         'job' , 'social','profil_id' , 'passion_id',
         'stress' , 'sport' , 'county_id' ,
-        'book_id'
+        'book_id','subject_id_1','subject_id_2','subject_id_3',
     ];
 
     /**
@@ -45,4 +46,8 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(InfoUser::class);
     }
 
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new CustomResetPasswordNotification($token));
+    }
 }
