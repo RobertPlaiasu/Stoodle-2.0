@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\County;
+use App\Passion;
+use App\Book;
+use App\Subject;
+use App\Profil;
+use App\University;
 use App\College;
 use Illuminate\Http\Request;
 
@@ -15,8 +21,8 @@ class CollegeController extends Controller
     
     public function __construct()
     {
-        $this->middleware(['auth','verified','admin','checkForm'])->except('index');
-        $this->middleware(['auth','verified','checkForm'])->only('index');
+        $this->middleware(['auth','verified','admin','checkForm'])->except('index','show');
+        $this->middleware(['auth','verified','checkForm'])->only('index','show');
     }
 
     public function index()
@@ -32,7 +38,14 @@ class CollegeController extends Controller
      */
     public function create()
     {
-        //
+        $counties = County::all();
+        $passion = Passion::all();
+        $book = Book::all();
+        $subject = Subject::all();
+        $profil = Profil::all();
+        $universities = University::all();
+        return view('facultatii.create', [ 'counties' => $counties, 'passions' => $passion, 'universities' => $universities,
+                                            'books' => $book, 'subjects' => $subject, 'profils' => $profil ]);
     }
 
     /**
