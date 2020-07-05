@@ -30,15 +30,12 @@ class CreateUsersTable extends Migration
             $table->foreignId('profil_id')->nullable()->default(NULL)->constrained()->onDelete('cascade');
             $table->foreignId('passion_id')->nullable()->default(NULL)->constrained()->onDelete('cascade');
             $table->foreignId('book_id')->nullable()->default(NULL)->constrained()->onDelete('cascade');
+            $table->foreignId('subject_id_1')->nullable()->default(NULL)->constrained()->onDelete('cascade');
+            $table->foreignId('subject_id_2')->nullable()->default(NULL)->constrained()->onDelete('cascade');
+            $table->foreignId('subject_id_3')->nullable()->default(NULL)->constrained()->onDelete('cascade');
             $table->timestamps();
         });
 
-        Schema::create('subject_user', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('subject_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->unique(['subject_id','user_id']);
-        });
 
 
     }

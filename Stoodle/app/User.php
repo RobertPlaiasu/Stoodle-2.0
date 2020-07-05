@@ -19,7 +19,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name', 'email', 'password','passion_intensity',
         'job' , 'social','profil_id' , 'passion_id',
         'stress' , 'sport' , 'county_id' ,
-        'book_id'
+        'book_id','subject_id_1','subject_id_2','subject_id_3',
     ];
 
     /**
@@ -40,9 +40,5 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function infoUser()
-    {
-        return $this->hasOne(InfoUser::class);
-    }
 
 }

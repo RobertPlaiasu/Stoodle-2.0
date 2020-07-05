@@ -45,7 +45,7 @@ class InfoUserController extends Controller
             'county' => 'required|exists:counties,id',
             'social' => 'required|boolean',
             'sport' => 'required|boolean'
-        ]);
+            ]);
 
         if($this->verifyMultipleInputs($request->subject1,
                                     $request->subject2,
@@ -61,13 +61,11 @@ class InfoUserController extends Controller
         $user->county_id = $request->county;
         $user->social = $request->social;
         $user->sport = $request->sport;
+        $user->subject_id_1 = $request->subject1;
+        $user->subject_id_2 = $request->subject2;
+        $user->subject_id_3 = $request->subject3;
         $user->save();
         
-        $user->subjects()->attach([
-            $request->subject1,
-            $request->subject2,
-            $request->subject3
-        ]);
         
         return redirect('facultati');
     }

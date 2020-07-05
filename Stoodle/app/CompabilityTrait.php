@@ -33,10 +33,24 @@ trait CompabilityTrait
 
     }
 
-    public function subjects()
+    public function subject1()
     {
 
-        return $this->belongsToMany(Subject::class);
+        return $this->belongsTo(Subject::class,'subject_id_1');
+
+    }
+
+    public function subject2()
+    {
+
+        return $this->belongsTo(Subject::class,'subject_id_2');
+
+    }
+
+    public function subject3()
+    {
+
+        return $this->belongsTo(Subject::class,'subject_id_3');
 
     }
 
