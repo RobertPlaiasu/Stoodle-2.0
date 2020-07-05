@@ -21,7 +21,23 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->boolean('admin')->default(0);
+            $table->boolean('job')->nullable()->default(NULL);
+            $table->tinyInteger('passion_intensity')->nullable()->default(NULL);
+            $table->boolean('social')->nullable()->default(NULL);
+            $table->boolean('stress')->nullable()->default(NULL);
+            $table->boolean('sport')->nullable()->default(NULL);
+            $table->foreignId('county_id')->nullable()->default(NULL)->constrained()->onDelete('cascade');
+            $table->foreignId('profil_id')->nullable()->default(NULL)->constrained()->onDelete('cascade');
+            $table->foreignId('passion_id')->nullable()->default(NULL)->constrained()->onDelete('cascade');
+            $table->foreignId('book_id')->nullable()->default(NULL)->constrained()->onDelete('cascade');
             $table->timestamps();
+        });
+
+        Schema::create('subject_user', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('subject_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->unique(['subject_id','user_id']);
         });
 
 

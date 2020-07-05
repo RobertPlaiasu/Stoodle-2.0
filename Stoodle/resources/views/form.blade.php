@@ -9,16 +9,18 @@
         <p>Completeaza formularul de mai jos pentru a putea termina inregistrarea.</p>
         <form action="/form" method="POST" id="formular">
             @csrf
-            @method('PUT')
             <div class="form-group">
                 <label for="passion">De ce esti pasionat?</label>
                 <select class="custom-select" id="passionSelect" name="passion">
 
                     @foreach ( $passions as $passion )
-                        <option value="{{ $passion->name }}"> {{ $passion->name }} </option>
+                        <option value="{{ $passion->id }}"> {{ $passion->name }} </option>
                     @endforeach
 
                 </select>
+                @error('passion')
+                    {{ $message }}
+                @enderror
             </div>
             <div class="form-group">
             <label for="passion-metter">Cat de pasionat esti?</label> <br>
@@ -42,32 +44,47 @@
                     <label class="for-radio" for="budget-5">							
                         <span data-hover="5">5</span>
                     </label>
+                    @error('passionIntenstity')
+                        {{ $message }}
+                    @enderror
             </div>
             <div class="form-group">
                 <label for="classes">Ce materii iti plac?</label>
-                <select class="custom-select mb-2 classSelect" name="class-1" class="classSelect">
+                <select class="custom-select mb-2 classSelect" name="subject1" class="classSelect">
                     @foreach ( $subjects as $subject )
-                        <option value="{{ $subject->name }}">{{ $subject->name }}</option>
+                        <option value="{{ $subject->id }}">{{ $subject->name }}</option>
                     @endforeach
                 </select>
-                <select class="custom-select mb-2 classSelect" name="class-2" class="classSelect">
+                @error('subject1')
+                        {{ $message }}
+                @enderror
+                <select class="custom-select mb-2 classSelect" name="subject2" class="classSelect">
                     @foreach ( $subjects as $subject )
-                        <option value="{{ $subject->name }}">{{ $subject->name }}</option>
+                        <option value="{{ $subject->id }}">{{ $subject->name }}</option>
                     @endforeach
                 </select>
-                <select class="custom-select mb-2 classSelect" name="class-3" class="classSelect">
+                @error('subject2')
+                        {{ $message }}
+                @enderror
+                <select class="custom-select mb-2 classSelect" name="subject3" class="classSelect">
                     @foreach ( $subjects as $subject )
-                        <option value="{{ $subject->name }}">{{ $subject->name }}</option>
+                        <option value="{{ $subject->id }}">{{ $subject->name }}</option>
                     @endforeach
                 </select>
+                @error('subject3')
+                        {{ $message }}
+                @enderror
             </div>
             <div class="form-group">
-                <label for="branch">Pe ce profil esti?</label>
-                <select class="custom-select" name="branch" id="branchSelect">
+                <label for="profil">Pe ce profil esti?</label>
+                <select class="custom-select" name="profil" id="branchSelect">
                     @foreach ( $profils as $profil )
-                        <option value="{{ $profil->name }}">{{ $profil->name }}</option>
+                        <option value="{{ $profil->id }}">{{ $profil->name }}</option>
                     @endforeach
                 </select>
+                @error('profil')
+                        {{ $message }}
+                @enderror
             </div>
             <div class="form-group">
                 <label for="stress">Poti face fata unor situatii strsante?</label>
@@ -75,6 +92,9 @@
                     <option value="1">Da</option>
                     <option value="0">Nu</option>
                 </select>
+                @error('stress')
+                        {{ $message }}
+                @enderror
             </div>
             <div class="form-group">
                 <label for="job">Iti doresti un part-time job?</label>
@@ -82,22 +102,31 @@
                     <option value="1">Da</option>
                     <option value="0">Nu</option>
                 </select>
+                @error('job')
+                        {{ $message }}
+                @enderror
             </div>
             <div class="form-group">
                 <label for="books">Ce tip de carti citesti?</label>
                 <select class="custom-select" name="books" id="booksSelect">
                     @foreach ( $books as $book )
-                        <option value="{{ $book->name }}">{{ $book->name }}</option>
+                        <option value="{{ $book->id }}">{{ $book->name }}</option>
                     @endforeach
                 </select>
+                @error('books')
+                        {{ $message }}
+                @enderror
             </div>
             <div class="form-group">
                 <label for="county">Din ce judet esti?</label>
                 <select class="custom-select" name="county" id="countyPassion">
                     @foreach ( $counties as $county )
-                        <option value="{{ $county->name }}">{{ $county->name }}</option>
+                        <option value="{{ $county->id }}">{{ $county->name }}</option>
                     @endforeach
                 </select>
+                @error('county')
+                        {{ $message }}
+                @enderror
             </div>
             <div class="form-group">
                 <label for="social">Te consideri o persoana sociabila?</label>
@@ -105,6 +134,9 @@
                     <option value="1">Da</option>
                     <option value="0">Nu</option>   
                 </select>
+                @error('social')
+                        {{ $message }}
+                @enderror
             </div>
             <div class="form-group">
                 <label for="sport">Practici vreun sport?</label>
@@ -112,6 +144,9 @@
                     <option value="1">Da</option>
                     <option value="0">Nu</option>                       
                 </select>
+                @error('sport')
+                        {{ $message }}
+                @enderror
             </div>
             <input type="submit" value="Trimite Formular" name="formularsubmit" class="button">
         </form>

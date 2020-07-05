@@ -21,10 +21,9 @@ Route::view('/facultati-favorite', 'favorites')->name('favorites')->middleware('
 Route::get('/intrebari', 'QuestionController@index')->name('questions')->middleware('auth');
 Route::get('/admin', 'CountyController@index')->name('admin')->middleware('auth');
 
-Route::get('/form', 'UserInfo@index')->name('form');
-Route::put('/form', 'UserInfo@store');
+Route::get('/form', 'InfoUserController@index')->name('form');
+Route::post('/form', 'InfoUserController@store');
+Route::resource('facultati', 'CollegeController');
 
-// ? Why?
-Route::resource('/acasa', 'CollegeController');
 
 Auth::routes(['verify' => true]);

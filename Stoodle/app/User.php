@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable;
+    use Notifiable,CompabilityTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +16,10 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password'
+        'name', 'email', 'password','passion_intensity',
+        'job' , 'social','profil_id' , 'passion_id',
+        'stress' , 'sport' , 'county_id' ,
+        'book_id'
     ];
 
     /**
