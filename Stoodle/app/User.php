@@ -41,10 +41,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function infoUser()
-    {
-        return $this->hasOne(InfoUser::class);
-    }
 
     public function sendPasswordResetNotification($token)
     {
