@@ -15,7 +15,7 @@ trait InteractionTrait
     public function users()
     {
 
-        return $this->hasMany(InfoUser::class);
+        return $this->hasMany(User::class);
 
     }
 
