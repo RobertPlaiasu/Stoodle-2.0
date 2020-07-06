@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Controllers\FormController;
 use App\User;
-use App\County;
-use App\Passion;
-use App\Book;
-use App\Subject;
-use App\Profil;
+
 
 use Illuminate\Http\Request;
 
@@ -19,13 +17,10 @@ class InfoUserController extends Controller
 
     public function index()
     {
-        $counties = County::all();
-        $passion = Passion::all();
-        $book = Book::all();
-        $subject = Subject::all();
-        $profil = Profil::all();
-        return view('/form', [ 'counties' => $counties, 'passions' => $passion,
-                              'books' => $book, 'subjects' => $subject, 'profils' => $profil ]);
+        return view('/form')
+            ->with('data', FormController::index())
+            ->with('text', FormController::generateUserFormText())
+            ->with('for', 'user');
     }
 
     public function store(Request $request)

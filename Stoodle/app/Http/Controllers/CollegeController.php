@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\FormController;
 use App\College;
+use App\User;
 use Illuminate\Http\Request;
 
 class CollegeController extends Controller
@@ -16,8 +17,8 @@ class CollegeController extends Controller
     
     public function __construct()
     {
-        $this->middleware(['auth','verified','admin','checkForm'])->except('index');
-        $this->middleware(['auth','verified','checkForm'])->only('index');
+        $this->middleware(['auth','verified','admin','checkForm'])->except('index','show');
+        $this->middleware(['auth','verified','checkForm'])->only('index','show');
     }
 
     public function index()
@@ -33,6 +34,10 @@ class CollegeController extends Controller
      */
     public function create()
     {
+        return view('facultatii.create')
+            ->with('data', FormController::index())
+            ->with('text', FormController::generateCollegeFormText())
+            ->with('for', 'college');
     }
 
     /**
@@ -90,4 +95,5 @@ class CollegeController extends Controller
     {
         //
     }
+
 }

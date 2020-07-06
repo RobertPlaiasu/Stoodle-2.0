@@ -48,4 +48,11 @@ class Subject extends Model
 
     }
 
+    public function subjectType()
+    {
+
+        return $this->belongsToMany(SubjectType::class);
+
+    }
+
 }
