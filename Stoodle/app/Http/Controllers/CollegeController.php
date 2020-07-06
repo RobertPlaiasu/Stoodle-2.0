@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\FormController;
 use App\College;
 use Illuminate\Http\Request;
 
@@ -32,7 +33,6 @@ class CollegeController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
