@@ -42,7 +42,7 @@ class CustomVerifyEmailNotification extends Notification
         $verificationUrl = $this->verificationUrl($notifiable);
 
         return (new MailMessage)
-            ->gresttings(Lang::get('Salut,'))
+            // ->gresttings(Lang::get('Salut,'))
             ->subject(Lang::get('Verifica adresa de mail'))
             ->line(Lang::get('Vă rugăm să faceți clic pe butonul de mai jos pentru a vă confirma adresa de e-mail.'))
             ->action(Lang::get('Verificare'), $verificationUrl)

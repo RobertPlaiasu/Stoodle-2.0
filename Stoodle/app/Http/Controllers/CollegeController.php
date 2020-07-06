@@ -2,12 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\County;
-use App\Passion;
-use App\Book;
-use App\Subject;
-use App\Profil;
-use App\University;
+use App\Http\Controllers\FormController;
 use App\College;
 use App\User;
 use Illuminate\Http\Request;
@@ -39,14 +34,10 @@ class CollegeController extends Controller
      */
     public function create()
     {
-        $counties = County::all();
-        $passion = Passion::all();
-        $book = Book::all();
-        $subject = Subject::all();
-        $profil = Profil::all();
-        $universities = University::all();
-        return view('facultatii.create', [ 'counties' => $counties, 'passions' => $passion, 'universities' => $universities,
-                                            'books' => $book, 'subjects' => $subject, 'profils' => $profil ]);
+        return view('facultatii.create')
+            ->with('data', FormController::index())
+            ->with('text', FormController::generateCollegeFormText())
+            ->with('for', 'college');
     }
 
     /**
