@@ -9,6 +9,7 @@ use App\Subject;
 use App\Profil;
 use App\University;
 use App\College;
+use App\User;
 use Illuminate\Http\Request;
 
 class CollegeController extends Controller
@@ -103,4 +104,5 @@ class CollegeController extends Controller
     {
         //
     }
+
 }
