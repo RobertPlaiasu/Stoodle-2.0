@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePassionTypesTable extends Migration
+class CreateProfilTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreatePassionTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('passion_types', function (Blueprint $table) {
+        Schema::create('profil_types', function (Blueprint $table) {
             $table->id();
             $table->string('type');
         });
 
-        Schema::create('passion_passion_type', function (Blueprint $table) {
+        Schema::create('profil_profil_type', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('passion_id')->constrained()->onDelete('cascade');
-            $table->foreignId('passion_type_id')->constrained()->onDelete('cascade');
+            $table->foreignId('profil_id')->constrained()->onDelete('cascade');
+            $table->foreignId('profil_type_id')->constrained()->onDelete('cascade');
         });
     }
 
@@ -32,6 +32,6 @@ class CreatePassionTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('passion_types');
+        Schema::dropIfExists('profil_types');
     }
 }
