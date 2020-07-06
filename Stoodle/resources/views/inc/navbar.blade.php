@@ -26,20 +26,14 @@
 
                 @else
                     <li class="nav-item">
-                        <a href="{{ url('/acasa') }}" class="nav-link">Acasa</a>
+                        <a href="{{ url('/facultati') }}" class="nav-link">Acasa</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('/formular') }}" class="nav-link">Formular</a>
+                        <a href="{{ url('/form') }}" class="nav-link">Formular</a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ url('/contact') }}" class="nav-link">Contact</a>
                     </li>
-
-                    @if (Auth::user()->admin == 1)
-                    <li class="nav-item">
-                        <a href="{{ url('/admin') }}" class="nav-link">Admin</a>
-                    </li>
-                    @endif
 
                     <li class="nav-item">
                         <a href="{{ url('/facultati-favorite') }}" class="nav-link">Facultati favorite</a>

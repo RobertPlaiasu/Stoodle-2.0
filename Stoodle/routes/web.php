@@ -24,6 +24,7 @@ Route::get('/admin', 'CountyController@index')->name('admin')->middleware('auth'
 Route::get('/form', 'InfoUserController@index')->name('form');
 Route::post('/form', 'InfoUserController@store');
 Route::resource('facultati', 'CollegeController');
+// Route::get('facultati/create', 'CollegeController@create');
 
 
 Auth::routes(['verify' => true]);
