@@ -5,18 +5,18 @@
 @section('content')
 <div id="showcase">
     <div class="content d-flex align-items-center justify-content-center">
-        <div class="college-card text-center">
-            <img src="./Images/Grigo.jpg" alt="Poza cu Grigo">
-            <h3>Grigorescu Alexandru</h3>
-            <h6>Front-End Developer</h6>
-            <p>Ma consider o persoana joviala</p>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('img/grigo.jpg') }}" alt="Grigorescu Alexandru">
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
         </div>
 
-        <div class="college-card text-center">
-            <img src="./Images/Robert.jpg" alt="Poza cu Robert">
-            <h3>Plaiasu Robert</h3>
-            <h6>Back-End Developer</h6>
-            <p>Imi place sa ma uit la seriale</p>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{ asset('img/robert.jpg') }}" alt="Plaiașu Robert">
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
         </div>
     </div>
 </div>
