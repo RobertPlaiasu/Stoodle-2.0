@@ -8,4 +8,10 @@ class County extends Model
 {
     use InteractionTrait;
 
+    public function region()
+    {
+
+        return $this->belongsToMany(Region::class);
+
+    } 
 }
