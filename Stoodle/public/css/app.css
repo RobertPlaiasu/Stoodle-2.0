@@ -11023,7 +11023,7 @@ i {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 3em;
+  margin: 3em 0;
 }
 
 .login .headline {
@@ -11124,6 +11124,11 @@ i {
 
 .form form {
   margin: 1em 0;
+}
+
+.form form small {
+  color: #EE6C87;
+  font-weight: 800 !important;
 }
 
 .form .form-group label {
