@@ -17,9 +17,20 @@
                     <input type="text" id="university" name="university" class="form-control" placeholder="Universitatea de care apartine facultatea">
                 </div>
                 <div class="form-group">
-                    <label for="branch">Link catre facultate.</label>
-                    <textarea name="county" id="conuty" rows="3" class="form-control"></textarea>
+                    <label for="url">Link catre facultate.</label>
+                    <textarea name="url" id="url" rows="3" class="form-control"></textarea>
                 </div>
+                <div class="form-group">
+                    <label for="admittance">Necesita facultatea admintere?</label>
+                    <select class="custom-select" name="admittance" id="admittanceSelect">
+                        <option value="1">Da</option>
+                        <option value="0">Nu</option>
+                    </select>
+                    @error('admittance')
+                            {{ $message }}
+                    @enderror
+                </div>
+                @include('inc.passion')
                 @include('inc.form')
                 <input type="submit" value="Trimite Formular" name="formularsubmit" class="button">
             </form>

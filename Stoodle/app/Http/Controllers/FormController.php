@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\County;
 use App\Passion;
 use App\Book;
@@ -33,7 +32,6 @@ class FormController extends Controller
     {
         return [
             'De ce esti pasionat?',
-            'Cat de pasionat esti?',
             'Ce materii iti plac?',
             'Pe ce profil esti?',
             'Poti face fata unor situatii strsante?',
@@ -49,7 +47,6 @@ class FormController extends Controller
     {
         return [
             'Pasiune ideala',
-            'Necisita facultatea admintere?',
             'Materii ideale',
             'Profil ideal',
             'Trebuie ca elevul sa faca fata situatiilor stresante?',
