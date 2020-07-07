@@ -31,15 +31,18 @@
             <div class="text-center">
                 <div class="container">
                     <div class="row">
-                        <div class="col mb-5">
+                        <div class="col-md-4">
+                        <img src="{{ asset('img/logo.png') }}" alt="logo">
+                        </div>
+                        <div class="col">
                             <h1> 
                                 Dezvolta-te in viata si in cariera
                             </h1>
                             <p class="mb-3">
                                 Viața ta începe în momentul în care începi să iei decizii. Decizii 
-                                importante care îți marchează tot <br> 
+                                importante care îți marchează tot
                                 viitorul. Și sigur nu vrei să fie unele greșite. Pentru a fi sigur 
-                                că te îndrepți spre reușită, ia cele mai <br> 
+                                că te îndrepți spre reușită, ia cele mai 
                                 bune decizii pentru tine, în funcție de aptitudinile pe care le ai.
                             </p>
                             <div class="links">
