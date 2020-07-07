@@ -1,100 +1,94 @@
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+@section('title', 'Acasa')
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+@section('content')
+    <div class="w-100 text-center">
+        <div id="search" class="mx-4 my-3">
+            <input onkeyup="sort()" class="form-control"
+                type="text" placeholder="cauta" id="search_field" aria-label="Search">
+        </div>
+        
+        @if (count($colleges) > 0)
+          @foreach($colleges as $college)
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+              <div class="col card">
+                  <!--Image Background-->
+                  <div class="row-lg-4 backgrounded"></div>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-
-@include('inc.navbar')
-
-<div id="search">
-    <input onkeyup="sort()" class="form-control w-75"
-        type="text" placeholder="cauta" id="search_field" aria-label="Search">
-</div>
-
-@if (count($colleges) > 0)
-    @foreach($colleges as $college)
-
-        <div class="col card">
-            <!--Image Background-->
-            <div class="row-lg-4 backgrounded"></div>
-
-            <!--Print the proprities-->
-            <div class="row-lg-2 name">
-                {{ $college->name }}                 
-            </div>
-            <div class="row-lg-3 prop text-center">
-                <div class="col">
-                    <div class="row">
+                  <!--Print the proprities-->
+                  <div class="row-lg-2 name">
+                      {{ $college->name }}                 
+                  </div>
+                  <div class="row-lg-3 prop text-center">
+                      <div class="col">
+                          <div class="row">
+                              <div class="col">
+                                  {{ $college->university()->name }}
+                              </div> 
+                          </div>
+                         </div>
+                        </div>
+                    <div class="row-lg-3 prop text-center">
                         <div class="col">
-                            {{ $college->university()->name }}
+                            <div class="row">
+                                <div class="col">
+                                    {{ $college->university }}
+                                </div>
+                            </div>
+                            <div class="row justify-content-between">
+                                <div class="col">
+                                    {{ $college->compability }}}
+                                    <i class="fas fa-percentage"></i></div>
+                                <div class="col">
+                                    $this->countyCollege
+                                    <i class="fas fa-city"></i>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    
+                                    {{ $college->profilColllege }}
+                                    <i class="fas fa-code-branch"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row justify-content-between">
-                        <div class="col">
-                            {{ $college->compability }}}
-                            <i class="fas fa-percentage"></i></div>
-                        <div class="col">
-                            $this->countyCollege
-                            <i class="fas fa-city"></i>
-                        </div>
+                    <div class="row-lg-3 fav text-center">
+                        <form action="./favoriteAlg.php" method="post">
+                            {{ $college->favoriteCollegeFound() }}
+                        </form>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            
-                            {{ $college->profil() }}
-                            <i class="fas fa-code-branch"></i>
-                        </div>
+                    <div class="row-lg-3 extra text-center">
+                        <a href="{{ $college->linkCollege }}" target="_blank">Afla mai mult</a>
                     </div>
                 </div>
-            </div>
-            {{-- <div class="row-lg-3 fav text-center">
-                <form action="./favoriteAlg.php" method="post">
-                    
-                    {{ $college->favoriteCollegeFound() }}
-                </form>
-            </div> --}}
-            <div class="row-lg-3 extra text-center">
-                <a href="{{ $college->linkCollege }}" target="_blank">Afla mai mult</a>
-            </div>
-        </div>
-    @endforeach
-@else 
-
-    <h1>No Colleges</h1>
-    
-@endif
-
-
-<script>
-    function sort() {
-        // Declare variables
-        var input = document.getElementById('search_field');
-        var filter = input.value.toUpperCase();
-        var faculties = document.getElementsByClassName("name");
-        var cards = document.getElementsByClassName("card");
-
-        // Loop through all list items, and hide those who don't match the search query
-        for (i = 0; i < faculties.length; i++) {
-            txtValue = facultati[i].textContent || faculties[i].innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                cards[i].style.display = "";
-            } else {
-                cards[i].style.display = "none";
+            @endforeach
+        @else 
+        
+            <h1>Nu am resuti sa incercam facultatile din baza de date</h1>
+            
+        @endif
+        
+        
+        <script>
+            function sort() {
+                // Declare variables
+                var input = document.getElementById('search_field');
+                var filter = input.value.toUpperCase();
+                var faculties = document.getElementsByClassName("name");
+                var cards = document.getElementsByClassName("card");
+        
+                // Loop through all list items, and hide those who don't match the search query
+                for (i = 0; i < faculties.length; i++) {
+                    txtValue = facultati[i].textContent || faculties[i].innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        cards[i].style.display = "";
+                    } else {
+                        cards[i].style.display = "none";
+                    }
+                }
             }
-        }
-    }
-</script>
+        </script>
+    </div>
+@endsection
