@@ -11023,7 +11023,7 @@ i {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 3em;
+  margin: 3em 0;
 }
 
 .login .headline {
