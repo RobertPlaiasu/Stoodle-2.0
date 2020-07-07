@@ -1,3 +1,4 @@
+
 <div class="form-group">
     <label for="classes"> {{ $text[1] }} </label>
     <select class="custom-select mb-2 classSelect" name="subject1" class="classSelect">
@@ -6,7 +7,7 @@
         @endforeach
     </select>
     @error('subject1')
-            {{ $message }}
+            <small> {{ $message }} </small>
     @enderror
     <select class="custom-select mb-2 classSelect" name="subject2" class="classSelect">
         @foreach ( $data['subjects'] as $subject )
@@ -14,7 +15,7 @@
         @endforeach
     </select>
     @error('subject2')
-            {{ $message }}
+            <small> {{ $message }} </small>
     @enderror
     <select class="custom-select mb-2 classSelect" name="subject3" class="classSelect">
         @foreach ( $data['subjects'] as $subject )
@@ -22,8 +23,11 @@
         @endforeach
     </select>
     @error('subject3')
-            {{ $message }}
+            <small> {{ $message }} </small>
     @enderror
+    @if ( session('error') )
+        <small> {{ session('error') }} </small>
+    @endif
 </div>
 <div class="form-group">
     <label for="profil"> {{ $text[2] }} </label>
@@ -33,7 +37,7 @@
         @endforeach
     </select>
     @error('profil')
-            {{ $message }}
+            <small> {{ $message }} </small>
     @enderror
 </div>
 <div class="form-group">
@@ -43,7 +47,7 @@
         <option value="0">Nu</option>
     </select>
     @error('stress')
-            {{ $message }}
+            <small> {{ $message }} </small>
     @enderror
 </div>
 <div class="form-group">
@@ -53,7 +57,7 @@
         <option value="0">Nu</option>
     </select>
     @error('job')
-            {{ $message }}
+            <small> {{ $message }} </small>
     @enderror
 </div>
 <div class="form-group">
@@ -64,7 +68,7 @@
         @endforeach
     </select>
     @error('books')
-            {{ $message }}
+            <small> {{ $message }} </small>
     @enderror
 </div>
 <div class="form-group">
@@ -75,7 +79,7 @@
         @endforeach
     </select>
     @error('county')
-            {{ $message }}
+            <small> {{ $message }} </small>
     @enderror
 </div>
 <div class="form-group">
@@ -85,7 +89,7 @@
         <option value="0">Nu</option>   
     </select>
     @error('social')
-            {{ $message }}
+            <small> {{ $message }} </small>
     @enderror
 </div>
 <div class="form-group">
@@ -95,6 +99,6 @@
         <option value="0">Nu</option>                       
     </select>
     @error('sport')
-            {{ $message }}
+            <small> {{ $message }} </small>
     @enderror
 </div>
