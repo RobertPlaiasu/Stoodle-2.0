@@ -60,10 +60,12 @@ class InfoUserController extends Controller
             'sport' => 'required|boolean'
             ]);
 
-        if($this->verifyMultipleInputs($request->subject1,
-                                    $request->subject2,
-                                    $request->subject3))
-            return back();
+        
+        if ( $this->verifyMultipleInputs(
+            $request->subject1,
+            $request->subject2,
+            $request->subject3
+        )) return back()->with('error', "Materiile trebuie sa fie diferite");
 
         $user->passion_id = $request->passion;
         $user->passion_intensity = $request->passionIntensity;
@@ -86,9 +88,6 @@ class InfoUserController extends Controller
 
     private function verifyMultipleInputs(int $input1 , int $input2, int $input3)
     {
-        if($input1 == $input2 ||
-           $input1 == $input3 ||
-           $input2 == $input3 )
-           return true;
+        return ( $input1 == $input2 || $input1 == $input3 || $input2 == $input3 );
     }
 }
