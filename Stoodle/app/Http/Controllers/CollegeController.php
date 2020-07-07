@@ -69,7 +69,44 @@ class CollegeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:colleges,name|max:100|min:7',
+            'university' => 'required|exists:universities,id',
+            'url' => 'required|url',
+            'description' => 'required|min:200|max:30000',
+            'admittance' => 'required|boolean',
+            'passion' => 'required|exists:passions,id',
+            'subject1' => 'required|exists:subjects,id',
+            'subject2' => 'required|exists:subjects,id',
+            'subject3' => 'required|exists:subjects,id',
+            'profil' => 'required|exists:profils,id',
+            'stress' => 'required|boolean',
+            'job' => 'required|boolean',
+            'books' => 'required|exists:books,id',
+            'county' => 'required|exists:counties,id',
+            'social' => 'required|boolean',
+            'sport' => 'required|boolean'
+        ]);
+        
+        $college = new College;
+        $college->name = $request->name;
+        $college->university_id = $request->university;
+        $college->description =  $request->description;
+        $college->url = $request->url;
+        $college->admittance = $request->admittance;
+        $college->passion_id = $request->passion;
+        $college->subject_id_1 = $request->subject1;
+        $college->subject_id_2 = $request->subject2;
+        $college->subject_id_3 = $request->subject3;
+        $college->profil_id = $request->profil;
+        $college->stress = $request->stress;
+        $college->job = $request->job;
+        $college->book_id = $request->books;
+        $college->county_id = $request->county;
+        $college->social = $request->social;
+        $college->sport = $request->sport;
+        $college->save();
+
     }
 
     /**

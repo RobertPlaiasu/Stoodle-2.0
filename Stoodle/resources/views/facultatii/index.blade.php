@@ -25,7 +25,7 @@
         type="text" placeholder="cauta" id="search_field" aria-label="Search">
 </div>
 
-@if (count($colleges) > 1)
+@if (count($colleges) > 0)
     @foreach($colleges as $college)
 
         <div class="col card">
@@ -40,7 +40,7 @@
                 <div class="col">
                     <div class="row">
                         <div class="col">
-                            {{ $college->university }}
+                            {{ $college->university()->name }}
                         </div>
                     </div>
                     <div class="row justify-content-between">
@@ -55,18 +55,18 @@
                     <div class="row">
                         <div class="col">
                             
-                            {{ $college->profilColllege }}
+                            {{ $college->profil() }}
                             <i class="fas fa-code-branch"></i>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row-lg-3 fav text-center">
+            {{-- <div class="row-lg-3 fav text-center">
                 <form action="./favoriteAlg.php" method="post">
                     
                     {{ $college->favoriteCollegeFound() }}
                 </form>
-            </div>
+            </div> --}}
             <div class="row-lg-3 extra text-center">
                 <a href="{{ $college->linkCollege }}" target="_blank">Afla mai mult</a>
             </div>
