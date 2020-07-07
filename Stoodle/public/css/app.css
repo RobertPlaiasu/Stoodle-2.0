@@ -11126,6 +11126,11 @@ i {
   margin: 1em 0;
 }
 
+.form form small {
+  color: #EE6C87;
+  font-weight: 800 !important;
+}
+
 .form .form-group label {
   margin: 0;
   font-weight: 800;
