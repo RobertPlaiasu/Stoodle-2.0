@@ -14,11 +14,18 @@
                 </div>
                 <div class="form-group">
                     <label for="university">Universitatea de care apartine facultatea.</label>
-                    <input type="text" id="university" name="university" class="form-control" placeholder="Universitatea de care apartine facultatea">
+                    <select class="custom-select" name="university" id="countyPassion">
+                        @foreach ( $data['universities'] as $university )
+                            <option value="{{ $university->id }}">{{ $university->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('university')
+                            {{ $message }}
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="url">Link catre facultate.</label>
-                    <textarea name="url" id="url" rows="3" class="form-control"></textarea>
+                    <textarea name="url" id="url" rows="1" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="admittance">Necesita facultatea admintere?</label>
