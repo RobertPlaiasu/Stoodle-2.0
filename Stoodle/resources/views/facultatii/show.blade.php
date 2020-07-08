@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Formular')
+@section('title', $college->name)
 
 @section('content')
 <div id="close" style="position: absolute; right: 3em;">
@@ -19,6 +19,7 @@
 {{ $college->description }}
 
 <footer>
+    <a href="./facultati/{{ $colleg->id }}/edit"></a>
     <a href="{{ $college->link }}" target="_blank">Daca vrei sa afli mai mult despre aceasta facultate apasa aici</a>
 </footer>
 
