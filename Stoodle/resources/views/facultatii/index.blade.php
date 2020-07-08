@@ -63,7 +63,7 @@
             @endforeach
         @else 
         
-            <h1>Nu am resuti sa incercam facultatile din baza de date</h1>
+            <h1>Nu am reusit sa incercam facultatile din baza de date</h1>
             
         @endif
         
