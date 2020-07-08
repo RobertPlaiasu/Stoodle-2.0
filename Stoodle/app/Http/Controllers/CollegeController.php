@@ -23,7 +23,7 @@ class CollegeController extends Controller
     
     public function __construct()
     {
-        $this->middleware(['auth','verified','admin','checkForm'])->except('index','show');
+        // $this->middleware(['auth','verified','admin','checkForm'])->except('index','show');
         $this->middleware(['auth','verified','checkForm'])->only('index','show');
     }
 
@@ -117,7 +117,8 @@ class CollegeController extends Controller
      */
     public function show($id)
     {
-        //
+        $college = College::findOrFail( $id );
+        return view('facultatii.show', compact('college'));
     }
 
     /**
