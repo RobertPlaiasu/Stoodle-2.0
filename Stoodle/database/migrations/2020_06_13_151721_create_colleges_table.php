@@ -29,6 +29,8 @@ class CreateCollegesTable extends Migration
             $table->foreignId('subject_id_1')->constrained()->onDelete('cascade');
             $table->foreignId('subject_id_2')->constrained()->onDelete('cascade');
             $table->foreignId('subject_id_3')->constrained()->onDelete('cascade');
+            $table->string('url');
+            $table->longText('description');
             $table->timestamps();
         });
 
