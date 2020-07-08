@@ -4,7 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\FormController;
 use App\College;
-use App\User;
+use App\County;
+use App\Passion;
+use App\Book;
+use App\Subject;
+use App\Profil;
+use App\University;
+
 use Illuminate\Http\Request;
 
 class CollegeController extends Controller
@@ -34,10 +40,25 @@ class CollegeController extends Controller
      */
     public function create()
     {
+        $counties = County::all();
+        $passions = Passion::all();
+        $books = Book::all();
+        $subjects = Subject::all();
+        $profils = Profil::all();
+        $universities = University::all();
+
+        $data  = [
+            'counties' => $counties,
+            'passions' => $passions,
+            'books' => $books,
+            'subjects' => $subjects,
+            'profils' => $profils,
+            'universities' => $universities
+        ]; 
+
         return view('facultatii.create')
-            ->with('data', FormController::index())
-            ->with('text', FormController::generateCollegeFormText())
-            ->with('for', 'college');
+            ->with('data', $data)
+            ->with('text', FormController::generateCollegeFormText());
     }
 
     /**
@@ -48,7 +69,44 @@ class CollegeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:colleges,name|max:100|min:7',
+            'university' => 'required|exists:universities,id',
+            'url' => 'required|url',
+            'description' => 'required|min:200|max:30000',
+            'admittance' => 'required|boolean',
+            'passion' => 'required|exists:passions,id',
+            'subject1' => 'required|exists:subjects,id',
+            'subject2' => 'required|exists:subjects,id',
+            'subject3' => 'required|exists:subjects,id',
+            'profil' => 'required|exists:profils,id',
+            'stress' => 'required|boolean',
+            'job' => 'required|boolean',
+            'books' => 'required|exists:books,id',
+            'county' => 'required|exists:counties,id',
+            'social' => 'required|boolean',
+            'sport' => 'required|boolean'
+        ]);
+        
+        $college = new College;
+        $college->name = $request->name;
+        $college->university_id = $request->university;
+        $college->description =  $request->description;
+        $college->url = $request->url;
+        $college->admittance = $request->admittance;
+        $college->passion_id = $request->passion;
+        $college->subject_id_1 = $request->subject1;
+        $college->subject_id_2 = $request->subject2;
+        $college->subject_id_3 = $request->subject3;
+        $college->profil_id = $request->profil;
+        $college->stress = $request->stress;
+        $college->job = $request->job;
+        $college->book_id = $request->books;
+        $college->county_id = $request->county;
+        $college->social = $request->social;
+        $college->sport = $request->sport;
+        $college->save();
+
     }
 
     /**

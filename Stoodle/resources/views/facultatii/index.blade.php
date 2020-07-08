@@ -9,17 +9,26 @@
                 type="text" placeholder="cauta" id="search_field" aria-label="Search">
         </div>
         
-        @if (count($colleges) > 1)
-            @foreach($colleges as $college)
-        
-                <div class="col card">
-                    <!--Image Background-->
-                    <div class="row-lg-4 backgrounded"></div>
-        
-                    <!--Print the proprities-->
-                    <div class="row-lg-2 name">
-                        {{ $college->name }}                 
-                    </div>
+        @if (count($colleges) > 0)
+          @foreach($colleges as $college)
+
+              <div class="col card">
+                  <!--Image Background-->
+                  <div class="row-lg-4 backgrounded"></div>
+
+                  <!--Print the proprities-->
+                  <div class="row-lg-2 name">
+                      {{ $college->name }}                 
+                  </div>
+                  <div class="row-lg-3 prop text-center">
+                      <div class="col">
+                          <div class="row">
+                              <div class="col">
+                                  {{ $college->university()->name }}
+                              </div> 
+                          </div>
+                         </div>
+                        </div>
                     <div class="row-lg-3 prop text-center">
                         <div class="col">
                             <div class="row">
@@ -47,7 +56,6 @@
                     </div>
                     <div class="row-lg-3 fav text-center">
                         <form action="./favoriteAlg.php" method="post">
-                            
                             {{ $college->favoriteCollegeFound() }}
                         </form>
                     </div>
