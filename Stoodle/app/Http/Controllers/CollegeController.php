@@ -115,8 +115,9 @@ class CollegeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show ( College $college )
+    public function show($id)
     {
+        $college = College::findOrFail( $id );
         return view('facultatii.show', compact('college'));
     }
 
@@ -126,9 +127,10 @@ class CollegeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit ( College $college )
+    public function edit($id)
     {
-        return view('facultatii.edit', compact('college'));
+        $college = College::findOrFail( $id );
+        return view('facultatii.show', compact('college'));
     }
 
     /**
