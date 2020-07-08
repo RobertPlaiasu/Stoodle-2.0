@@ -18,11 +18,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
+
+    <script src="https://kit.fontawesome.com/0dfb644902.js" crossorigin="anonymous"></script></head>
 <body>
     <div id="app">
         @include('inc.navbar')
-        <main class="mx-auto" style="max-width: 1200px">
+        <main class="mx-auto container">
             @yield('content')
         </main>
     </div>

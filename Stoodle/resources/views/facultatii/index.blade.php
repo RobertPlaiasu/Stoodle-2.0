@@ -12,55 +12,52 @@
         @if (count($colleges) > 0)
           @foreach($colleges as $college)
 
-              <div class="col card">
-                  <!--Image Background-->
-                  <div class="row-lg-4 backgrounded"></div>
+              <div class="card">
+                    {{-- * Image --}}
+                    <div class="backgrounded"></div>
 
-                  <!--Print the proprities-->
-                  <div class="row-lg-2 name">
-                      {{ $college->name }}                 
-                  </div>
-                  <div class="row-lg-3 prop text-center">
-                      <div class="col">
-                          <div class="row">
-                              <div class="col">
-                                  {{ $college->university()->name }}
-                              </div> 
-                          </div>
-                         </div>
-                        </div>
-                    <div class="row-lg-3 prop text-center">
+                    {{-- * Name --}}
+                    <div class="name">
+                        {{ $college->name }}                 
+                    </div>
+
+                    {{--* University && Compability && County --}}
+                    <div class="prop text-center">
                         <div class="col">
+
+                            {{-- * University --}}
                             <div class="row">
                                 <div class="col">
-                                    {{ $college->university }}
+                                    {{ $college->university->name }}
                                 </div>
                             </div>
+
                             <div class="row justify-content-between">
                                 <div class="col">
-                                    {{ $college->compability }}}
+                                    {{-- {{ $college->compability }} --}}
+                                    50 %
                                     <i class="fas fa-percentage"></i></div>
                                 <div class="col">
-                                    $this->countyCollege
+                                    {{ $college->county->name }}
                                     <i class="fas fa-city"></i>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    
-                                    {{ $college->profilColllege }}
+                                    {{ $college->profil->name }}
                                     <i class="fas fa-code-branch"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row-lg-3 fav text-center">
-                        <form action="./favoriteAlg.php" method="post">
+                        Adaugare la favorite
+                        {{-- <form action="./favoriteAlg.php" method="post">
                             {{ $college->favoriteCollegeFound() }}
-                        </form>
+                        </form> --}}
                     </div>
                     <div class="row-lg-3 extra text-center">
-                        <a href="{{ $college->linkCollege }}" target="_blank">Afla mai mult</a>
+                        <a href="facultati/{{ $college->id }}">Afla mai mult</a>
                     </div>
                 </div>
             @endforeach

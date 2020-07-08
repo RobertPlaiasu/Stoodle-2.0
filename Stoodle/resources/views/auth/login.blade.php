@@ -29,6 +29,13 @@
                 @enderror
             </div>
 
+            <div class="form-group mb-0">
+                <input  type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                <label  for="remember">
+                            {{ __('Ține-mă minte') }}
+                </label>
+            </div>
+
             <div class="form-group m-0">
                 <a href="{{ route('register') }}">Creeaza-ti un cont!</a><br>
                 <a href="{{ route('password.request') }}">Reseteaza-ti parola!</a>
