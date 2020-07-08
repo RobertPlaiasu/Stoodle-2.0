@@ -2,38 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\County;
-use App\Passion;
-use App\Book;
-use App\Subject;
-use App\Profil;
 use Illuminate\Http\Request;
 
 class FormController extends Controller
 {
-    public static function index ()
-    {
-        $counties = County::all();
-        $passion = Passion::all();
-        $book = Book::all();
-        $subject = Subject::all();
-        $profil = Profil::all();
-
-        return [ 
-            'counties' => $counties, 
-            'passions' => $passion, 
-            'books' => $book, 
-            'subjects' => $subject, 
-            'profils' => $profil 
-        ];
-    }
 
     public static function generateUserFormText ()
     {
         return [
             'De ce esti pasionat?',
-            'Cat de pasionat esti?',
             'Ce materii iti plac?',
             'Pe ce profil esti?',
             'Poti face fata unor situatii strsante?',
@@ -49,7 +26,6 @@ class FormController extends Controller
     {
         return [
             'Pasiune ideala',
-            'Necisita facultatea admintere?',
             'Materii ideale',
             'Profil ideal',
             'Trebuie ca elevul sa faca fata situatiilor stresante?',
