@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 
 class CollegeController extends Controller
 {
+
+    use FormTrait;
     /**
      * Display a listing of the resource.
      *
@@ -87,6 +89,13 @@ class CollegeController extends Controller
             'social' => 'required|boolean',
             'sport' => 'required|boolean'
         ]);
+
+        if($this->verifyMultipleInputs(
+            $request->subject1,
+            $request->subject2,
+            $request->subject3
+        ))return back()->with('error', "Materiile trebuie sa fie diferite");
+        
         
         $college = new College;
         $college->name = $request->name;

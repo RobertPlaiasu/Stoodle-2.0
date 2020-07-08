@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 
 class InfoUserController extends Controller
 {
+    use FormTrait;
+
     public function __construct()
     {
         $this->middleware(['auth','verified']);
