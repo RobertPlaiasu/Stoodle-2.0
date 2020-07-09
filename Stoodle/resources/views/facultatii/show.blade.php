@@ -19,7 +19,7 @@
 {{ $college->description }}
 
 <footer>
-    <a href="./facultati/{{ $college->id }}/edit">EDIT</a>
+    <a href="edit">EDIT</a>
     <a href="{{ $college->link }}" target="_blank">Daca vrei sa afli mai mult despre aceasta facultate apasa aici</a>
 </footer>
 

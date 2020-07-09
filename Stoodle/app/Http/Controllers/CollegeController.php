@@ -130,7 +130,27 @@ class CollegeController extends Controller
     public function edit($id)
     {
         $college = College::findOrFail( $id );
-        return view('facultatii.show', compact('college'));
+
+        $counties = County::all();
+        $passions = Passion::all();
+        $books = Book::all();
+        $subjects = Subject::all();
+        $profils = Profil::all();
+        $universities = University::all();
+
+        $data  = [
+            'counties' => $counties,
+            'passions' => $passions,
+            'books' => $books,
+            'subjects' => $subjects,
+            'profils' => $profils,
+            'universities' => $universities
+        ]; 
+
+        
+        return view('facultatii.edit', compact('college'))
+            ->with('data', $data)
+            ->with('text', FormController::generateCollegeFormText());
     }
 
     /**

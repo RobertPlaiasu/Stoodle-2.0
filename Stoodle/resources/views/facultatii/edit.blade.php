@@ -5,13 +5,13 @@
 @section('content')
     <div class="form">
         <div class="container">
-            <h1>Inregistrare facultate in baza de date</h1>
-            <p>Completeaza formularul de mai jos pentru a inregistrara o faculatate.</p>
+            <h1>Editare facultate in baza de date</h1>
+            <p>Completeaza formularul de mai jos pentru a edita o faculatate.</p>
             <form action="{{ route('facultati.store') }}" method="POST" id="formular">
                 @csrf
                 <div class="form-group">
                     <label for="name">Numele facultatii.</label>
-                    <input type="text" id="name" name="name" class="form-control" placeholder="Numele facultatii">
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Numele facultatii" value="{{ $college->name }}">
                     @error('name')
                         {{ $message }}
                     @enderror
@@ -20,7 +20,11 @@
                     <label for="university">Universitatea de care apartine facultatea.</label>
                     <select class="custom-select" name="university" id="countyPassion">
                         @foreach ( $data['universities'] as $university )
-                            <option value="{{ $university->id }}">{{ $university->name }}</option>
+                            <option value="{{ $university->id }}"
+                                @if ( $university === $college->university)
+                                    selected="selected"
+                                @endif    
+                            >{{ $university->name }}</option>
                         @endforeach
                     </select>
                     @error('university')
@@ -29,13 +33,17 @@
                 </div>
                 <div class="form-group">
                     <label for="url">Link catre facultate.</label>
-                    <textarea name="url" id="url" rows="1" class="form-control"></textarea>
+                    <textarea name="url" id="url" rows="1" class="form-control">
+                        {{ $college->link }}
+                    </textarea>
                     @error('url')
                         {{ $message }}
                     @enderror
                 <div class="form-group">
                     <label for="description">Descriere facultate.</label>
-                    <textarea name="description" id="description" rows="7" class="form-control"></textarea>
+                    <textarea name="description" id="description" rows="7" class="form-control">
+                        {{ $college->description }}
+                    </textarea>
                     @error('description')
                         {{ $message }}
                     @enderror
