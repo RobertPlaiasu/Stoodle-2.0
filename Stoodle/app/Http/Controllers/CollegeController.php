@@ -25,13 +25,17 @@ class CollegeController extends Controller
     
     public function __construct()
     {
+        //* Allow user to join only index and show
         $this->middleware(['auth','verified','admin','checkForm'])->except('index','show');
         $this->middleware(['auth','verified','checkForm'])->only('index','show');
     }
 
     public function index()
     {
+        //* Get all the colleges from the database
         $colleges = College::all();
+
+        //* Display facultatii/index page with colleges as argument
         return view('facultatii.index')->with('colleges',$colleges);
     }
 
@@ -42,6 +46,7 @@ class CollegeController extends Controller
      */
     public function create()
     {
+        //* Get all the data needed from the databse
         $counties = County::all();
         $passions = Passion::all();
         $books = Book::all();
@@ -49,6 +54,7 @@ class CollegeController extends Controller
         $profils = Profil::all();
         $universities = University::all();
 
+        //* Create an array with all the data from databse
         $data  = [
             'counties' => $counties,
             'passions' => $passions,
@@ -58,6 +64,7 @@ class CollegeController extends Controller
             'universities' => $universities
         ]; 
 
+        //* Display facultatii/create page with data and text needed as arguments
         return view('facultatii.create')
             ->with('data', $data)
             ->with('text', FormController::generateCollegeFormText());
@@ -71,6 +78,7 @@ class CollegeController extends Controller
      */
     public function store(Request $request)
     {
+        //* Validate the data
         $request->validate([
             'name' => 'required|unique:colleges,name|max:100|min:7',
             'university' => 'required|exists:universities,id',
@@ -89,14 +97,16 @@ class CollegeController extends Controller
             'social' => 'required|boolean',
             'sport' => 'required|boolean'
         ]);
-
+        
+        //* Check if all the subjects selected ar diferrent
         if($this->verifyMultipleInputs(
             $request->subject1,
             $request->subject2,
             $request->subject3
-        ))return back()->with('error', "Materiile trebuie sa fie diferite");
+        ))
+        return back()->with('error', "Materiile trebuie sa fie diferite");
         
-        
+        //* If all the data is validated create a new college
         $college = new College;
         $college->name = $request->name;
         $college->university_id = $request->university;
@@ -126,7 +136,11 @@ class CollegeController extends Controller
      */
     public function show($id)
     {
+        //* Get the college form the databse based on id
+        //! If the college doesn't exist return 404
         $college = College::findOrFail( $id );
+        
+        //* Display facultatii/show page with the found college as argument
         return view('facultatii.show', compact('college'));
     }
 
@@ -138,8 +152,11 @@ class CollegeController extends Controller
      */
     public function edit($id)
     {
+        //* Get the college form the databse based on id
+        //! If the college doesn't exist return 404
         $college = College::findOrFail( $id );
 
+        //* Get all the data from the database
         $counties = County::all();
         $passions = Passion::all();
         $books = Book::all();
@@ -147,6 +164,7 @@ class CollegeController extends Controller
         $profils = Profil::all();
         $universities = University::all();
 
+        //* Create an array with all the data from datab
         $data  = [
             'counties' => $counties,
             'passions' => $passions,
@@ -156,7 +174,7 @@ class CollegeController extends Controller
             'universities' => $universities
         ]; 
 
-        
+        //* Display facultatii/edit page with the found college, data from the database and the needed text as arguments
         return view('facultatii.edit', compact('college'))
             ->with('data', $data)
             ->with('text', FormController::generateCollegeFormText());
