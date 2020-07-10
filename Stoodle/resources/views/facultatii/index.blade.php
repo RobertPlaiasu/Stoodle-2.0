@@ -36,9 +36,9 @@
                             {{-- Compability with the student --}}
                             <div class="row justify-content-between">
                                 <div class="col">
-                                    {{-- {{ $college->compability }} --}}
-                                    50 %
-                                    <i class="fas fa-percentage"></i></div>
+                                    {{-- {{ $college->compability }} --}} 50
+                                    <i class="fas fa-percentage"></i>
+                                </div>
                                 <div class="col">
                                     {{ $college->county->name }}
                                     <i class="fas fa-city"></i>
@@ -65,7 +65,7 @@
 
                     {{-- Know more about the college --}}
                     <div class="row-lg-3 extra text-center">
-                        <a href="facultati/{{ $college->id }}">Afla mai mult</a>
+                        <a href="/facultati/{{ $college->id }}">Afla mai mult</a>
                     </div>
                 </div>
             @endforeach
