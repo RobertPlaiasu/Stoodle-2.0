@@ -32,9 +32,9 @@
         {{ $college->description }}
     </p>
     
-    <footer class="links">
+    <footer class="links mb-5">
         {{-- Link to the college's website --}}
-        <a href="{{ $college->link }}" target="_blank">Daca vrei sa afli mai mult despre aceasta facultate apasa aici</a>
+        <a href="{{ $college->url }}" target="_blank">Daca vrei sa afli mai mult despre aceasta facultate apasa aici</a>
         
         {{-- Edit option for admins --}}
         <a href="/facultati/{{ $college->id }}/edit">EDIT</a>

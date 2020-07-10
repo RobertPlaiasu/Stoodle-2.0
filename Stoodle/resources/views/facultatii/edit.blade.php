@@ -45,7 +45,7 @@
                 <div class="form-group">
                     <label for="url">Link catre facultate.</label>
                     <textarea name="url" id="url" rows="1" class="form-control">
-                        {{ $college->link }}
+                        {{ $college->url }}
                     </textarea>
                     @error('url')
                         {{ $message }}
