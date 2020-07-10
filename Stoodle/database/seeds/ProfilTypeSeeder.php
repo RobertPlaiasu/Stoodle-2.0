@@ -11,6 +11,12 @@ class ProfilTypeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('profil_types')->insert([
+            ['type' => 'real'],
+            ['type' => 'uman'],
+            ['type' => 'teologic'],
+            ['type' => 'sportiv'],
+            ['type' => 'vocational']
+        ]);
     }
 }

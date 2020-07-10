@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 
 class InfoUserController extends Controller
 {
+    use FormTrait;
+
     public function __construct()
     {
         $this->middleware(['auth','verified']);
@@ -86,8 +88,4 @@ class InfoUserController extends Controller
     }
 
 
-    private function verifyMultipleInputs(int $input1 , int $input2, int $input3)
-    {
-        return ( $input1 == $input2 || $input1 == $input3 || $input2 == $input3 );
-    }
 }
