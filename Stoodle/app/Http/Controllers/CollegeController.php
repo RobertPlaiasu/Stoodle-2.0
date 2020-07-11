@@ -107,6 +107,7 @@ class CollegeController extends Controller
         return back()->with('error', "Materiile trebuie sa fie diferite");
         
         //* If all the data is validated create a new college
+        //?: Why don't why use \App\College::create($request)?
         $college = new College;
         $college->name = $request->name;
         $college->university_id = $request->university;
@@ -126,6 +127,7 @@ class CollegeController extends Controller
         $college->sport = $request->sport;
         $college->save();
 
+        return redirect('/facultati');
     }
 
     /**
@@ -189,7 +191,39 @@ class CollegeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //* Get the college form the databse based on id
+        //! If the college doesn't exist return 404
+        $college = College::findOrFail( $id );
+
+        $data = request()->validate([
+            'name' => 'required|unique:colleges,name|max:100|min:7',
+            'university' => 'required|exists:universities,id',
+            'url' => 'required|url',
+            'description' => 'required|min:200|max:30000',
+            'admittance' => 'required|boolean',
+            'passion' => 'required|exists:passions,id',
+            'subject1' => 'required|exists:subjects,id',
+            'subject2' => 'required|exists:subjects,id',
+            'subject3' => 'required|exists:subjects,id',
+            'profil' => 'required|exists:profils,id',
+            'stress' => 'required|boolean',
+            'job' => 'required|boolean',
+            'books' => 'required|exists:books,id',
+            'county' => 'required|exists:counties,id',
+            'social' => 'required|boolean',
+            'sport' => 'required|boolean'
+        ]);
+        
+        //* Check if all the subjects selected ar diferrent
+        if($this->verifyMultipleInputs(
+            $request->subject1,
+            $request->subject2,
+            $request->subject3
+        ))
+        return back()->with('error', "Materiile trebuie sa fie diferite");
+
+        $college->update($data);
+        redirect('/facultati');
     }
 
     /**
@@ -200,7 +234,6 @@ class CollegeController extends Controller
      */
     public function destroy($id)
     {
-        //
     }
 
 }
