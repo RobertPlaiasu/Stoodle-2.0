@@ -19,14 +19,14 @@ Route::view('/', 'welcome')->middleware('guest');
 Route::view('/contact', 'contact')->name('contact')->middleware('auth');
 Route::view('/facultati-favorite', 'favorites')->name('favorites')->middleware('auth');
 Route::get('/intrebari', 'QuestionController@index')->name('questions')->middleware('auth');
-Route::get('/admin', 'CountyController@index')->name('admin')->middleware('auth');
 
 Route::get('/form', 'InfoUserController@index')->name('form');
 Route::post('/form', 'InfoUserController@store');
 Route::resource('facultati', 'CollegeController');
  
 //* Admin routes
-
+Route::get('/admin', 'AdminController@index');
 Route::get('/admin/profil', 'ProfilController@index');
+Route::delete('/admin/profil/{profil}', 'ProfilController@destroy'); 
 
 Auth::routes(['verify' => true]);

@@ -8,9 +8,16 @@ use Illuminate\Http\Request;
 
 class ProfilController extends Controller
 {
-    public function index(){
-        $profils = Profil::all();
-        return view('admin.profil.index', [ 'profils' => $profils ] );
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified', 'admin', 'checkForm']);
+    }
+
+    public function index()
+{
+        $data = Profil::all();
+        $text = 'profil';
+        return view('admin.show', compact( 'data', 'text' ));
     }
 
     public function create()
@@ -22,5 +29,11 @@ class ProfilController extends Controller
     public function store(Request $request)
     {
 
+    }
+
+public function destroy( Profil $profil )
+    {
+        $profil->delete();
+        return redirect('/admin/profil');
     }
 }

@@ -4,14 +4,14 @@
 
 @section('content')
     <div id="headline" class="m-4">
-        <h1> Profil Manager </h1>
+        <h1 class="text-capitalize"> {{ $text }} Manager </h1>
     </div>
     <div id="body">
         <div class="card w-100" style="max-width: 100em">
             <div class="card-body ">
                 <div class="float-right">
                     <p class="m-0">
-                        Adauga un profil
+                        adauga un {{ $text }}
                         <i class="fa fa-plus" aria-hidden="true"></i>
                     </p>
                 </div>
@@ -19,12 +19,19 @@
         </div>
         <div class="card w-100" style="max-width: 100em">
             <ul class="list-group list-group-flush">
-                @foreach ($profils as $profil)
+                @foreach ($data as $item)
                 <li class="list-group-item w-100">
-                    {{ $profil->name }}
+                    {{ $item->name }}
                     <div class="float-right links">
                         <a href=""> <i class="fa fa-pencil" aria-hidden="true"></i> </a>
-                        <a href=""> <i class="fa fa-trash-o" aria-hidden="true"></i> </a>
+                        <form action="/admin/{{ $text }}/{{ $item->id }}" method="POST">
+                            @method('DELETE')
+                            @csrf
+
+                            <button class="btn">
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            </button>
+                        </form>
                     </div>
                 </li>
                 @endforeach
