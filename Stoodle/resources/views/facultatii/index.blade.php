@@ -34,8 +34,7 @@
 
                             <div class="row justify-content-between">
                                 <div class="col">
-                                    {{-- {{ $college->compability }} --}}
-                                    50 %
+                                   {{ $college->compability }}
                                     <i class="fas fa-percentage"></i></div>
                                 <div class="col">
                                     {{ $college->county->name }}

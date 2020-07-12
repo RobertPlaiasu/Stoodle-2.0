@@ -32,6 +32,7 @@ class CollegeController extends Controller
     public function index()
     {
         $colleges = $this->getAllColleges();
+        usort($colleges, array($this , "compareCollege") );
         return view('facultatii.index')->with('colleges',$colleges);
     }
 
@@ -167,14 +168,15 @@ class CollegeController extends Controller
         //
     }
 
-    private function getAllColleges()
+    private function getAllColleges() :array
     {
         $colleges = College::all();
         $user = auth()->user();
         foreach($colleges as $college){
             $college->compability = $this->collegeCompability($user , $college);
+            $collegesNew[] = $college;  
         }
-        return $colleges;
+        return $collegesNew;
     }
 
     //algorithm to calculate the compability for every college 
@@ -232,7 +234,7 @@ class CollegeController extends Controller
 
         if($booleanUser == $booleanCollege)
             return 5;
-
+        return 0;
     } 
 
     /*search 2 elements in an array*/ 
@@ -320,6 +322,11 @@ class CollegeController extends Controller
 
         return 0;
 
+    }
+
+    public function compareCollege($college1,$college2)
+    {
+        return $college1->compability < $college2->compability;
     }
 
 }
