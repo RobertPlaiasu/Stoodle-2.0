@@ -8,10 +8,10 @@ class Profil extends Model
 {
     use InteractionTrait;
 
-    public function passion()
+    public function profilType()
     {
 
-        return $this->belongsToMany(PassionType::class);
+        return $this->belongsToMany(ProfilType::class);
 
     } 
 
