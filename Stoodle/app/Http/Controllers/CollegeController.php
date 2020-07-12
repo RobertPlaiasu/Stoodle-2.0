@@ -220,7 +220,7 @@ class CollegeController extends Controller
         return back()->with('error', "Materiile trebuie sa fie diferite");
 
         $college->update($data);
-        redirect('/facultati');
+        redirect('facultati');
     }
 
     /**
@@ -229,8 +229,11 @@ class CollegeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( $id )
     {
+        $college = College::findOrFail( $id );
+        $college->delete();
+        redirect('/facultati');
     }
 
     private function getAllColleges()

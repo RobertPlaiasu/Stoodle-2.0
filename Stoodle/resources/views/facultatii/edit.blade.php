@@ -9,7 +9,8 @@
             <h1>Editare facultate in baza de date</h1>
             <p>Completeaza formularul de mai jos pentru a edita o faculatate.</p>
             
-            <form action="{{ route('facultati.store') }}" method="POST" id="formular">
+            <form action="{{ route('facultati.update', $college->id) }}" method="POST" id="formular">
+                @method('PATCH')
                 @csrf
 
                 {{-- Edit college name --}}
@@ -78,6 +79,16 @@
                 {{-- Enable editing the form --}}
                 @include('inc.passion')
                 @include('inc.form')
+
+                {{-- Delete the college --}}
+                <form action="{{ route('facultati.destroy', $college->id ) }}" method="post"> 
+                    @method('DELETE')
+                    @csrf
+
+                    <button class="btn">
+                        DELETE
+                    </button>
+                </form>
 
                 {{-- Submit the form --}}
                 <input type="submit" value="Trimite Formular" name="formularsubmit" class="button">
