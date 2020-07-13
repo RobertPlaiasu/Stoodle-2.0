@@ -32,6 +32,7 @@ class CollegeController extends Controller
     public function index()
     {
         $colleges = $this->getAllColleges();
+        usort($colleges, array($this , "compareCollege") );
         return view('facultatii.index')->with('colleges',$colleges);
     }
 
@@ -236,14 +237,15 @@ class CollegeController extends Controller
         redirect('/facultati');
     }
 
-    private function getAllColleges()
+    private function getAllColleges() :array
     {
         $colleges = College::all();
         $user = auth()->user();
         foreach($colleges as $college){
             $college->compability = $this->collegeCompability($user , $college);
+            $collegesNew[] = $college;  
         }
-        return $colleges;
+        return $collegesNew;
     }
 
     //algorithm to calculate the compability for every college 
@@ -252,12 +254,15 @@ class CollegeController extends Controller
         
 
         $compabilitySum = 0;
-        $compabilityMax = 105;
+        $compabilityMax = 110;
+
 
         $compabilitySum += $this->compareBoolean($user->job,$college->job);
         $compabilitySum += $this->compareBoolean($user->sport,$college->sport);
         $compabilitySum += $this->compareBoolean($user->social,$college->social);
         $compabilitySum += $this->compareBoolean($user->stress,$college->stress);
+
+        $compabilitySum += $this->compareBook($user->book_id,$college->book_id);
 
         $compabilitySum += $this->compareProfil($user->profil_id,$college->profil_id,
                                                 $college->profil->profilType->pluck('id')->toArray(),
@@ -301,7 +306,7 @@ class CollegeController extends Controller
 
         if($booleanUser == $booleanCollege)
             return 5;
-
+        return 0;
     } 
 
     /*search 2 elements in an array*/ 
@@ -343,6 +348,14 @@ class CollegeController extends Controller
 
 
     }
+
+    //compare books between user and college
+    private function compareBook(int $userBook,int $collegeBook) :int
+    {
+        if($userBook == $collegeBook)
+            return 5;
+        return 0;
+    } 
 
     //compare the passion between college and user
     private function comparePassion (int $collegePassion , int $userPassion , array $collegePassionTypes,
@@ -389,6 +402,11 @@ class CollegeController extends Controller
 
         return 0;
 
+    }
+
+    public function compareCollege($college1,$college2)
+    {
+        return $college1->compability < $college2->compability;
     }
 
 }

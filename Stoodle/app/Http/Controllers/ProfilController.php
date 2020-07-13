@@ -14,7 +14,7 @@ class ProfilController extends Controller
     }
 
     public function index()
-{
+    {
         $data = Profil::all();
         $text = 'profil';
         return view('admin.show', compact( 'data', 'text' ));
@@ -31,8 +31,9 @@ class ProfilController extends Controller
 
     }
 
-public function destroy( Profil $profil )
+    public function destroy( $id )
     {
+        $profil = Profil::find( $id );
         $profil->delete();
         return redirect('/admin/profil');
     }
