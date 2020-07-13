@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 
 class ProfilController extends Controller
 {
+    public $text = 'profil';
+
     public function __construct()
     {
         $this->middleware(['auth', 'verified', 'admin', 'checkForm']);
@@ -22,8 +24,9 @@ class ProfilController extends Controller
 
     public function create()
     {
-        $profilTypes = ProfilType::all();
-        return view('admin.profil.create',['profilTypes' => $profilTypes]);
+        $data = ProfilType::all();
+        $text = 'profil';
+        return view('admin.create', compact( 'data', 'text' ));
     }
 
     public function store(Request $request)

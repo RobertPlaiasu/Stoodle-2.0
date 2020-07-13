@@ -241,10 +241,12 @@ class CollegeController extends Controller
     {
         $colleges = College::all();
         $user = auth()->user();
-        foreach($colleges as $college){
-            $college->compability = $this->collegeCompability($user , $college);
-            $collegesNew[] = $college;  
-        }
+        $collegesNew = [];
+        if( count( $colleges ) )
+            foreach($colleges as $college){
+                $college->compability = $this->collegeCompability($user , $college);
+                $collegesNew[] = $college;  
+            }
         return $collegesNew;
     }
 

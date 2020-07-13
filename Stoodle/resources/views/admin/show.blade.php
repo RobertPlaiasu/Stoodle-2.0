@@ -9,11 +9,11 @@
     <div id="body">
         <div class="card w-100" style="max-width: 100em">
             <div class="card-body ">
-                <div class="float-right">
-                    <p class="m-0">
+                <div class="float-right links">
+                    <a href="/admin/profil/create" class="m-0">
                         adauga un {{ $text }}
                         <i class="fa fa-plus" aria-hidden="true"></i>
-                    </p>
+                    </a>
                 </div>
             </div>
         </div>
