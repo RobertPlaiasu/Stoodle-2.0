@@ -185,12 +185,15 @@ class CollegeController extends Controller
         
 
         $compabilitySum = 0;
-        $compabilityMax = 105;
+        $compabilityMax = 110;
+
 
         $compabilitySum += $this->compareBoolean($user->job,$college->job);
         $compabilitySum += $this->compareBoolean($user->sport,$college->sport);
         $compabilitySum += $this->compareBoolean($user->social,$college->social);
         $compabilitySum += $this->compareBoolean($user->stress,$college->stress);
+
+        $compabilitySum += $this->compareBook($user->book_id,$college->book_id);
 
         $compabilitySum += $this->compareProfil($user->profil_id,$college->profil_id,
                                                 $college->profil->profilType->pluck('id')->toArray(),
@@ -276,6 +279,14 @@ class CollegeController extends Controller
 
 
     }
+
+    //compare books between user and college
+    private function compareBook(int $userBook,int $collegeBook) :int
+    {
+        if($userBook == $collegeBook)
+            return 5;
+        return 0;
+    } 
 
     //compare the passion between college and user
     private function comparePassion (int $collegePassion , int $userPassion , array $collegePassionTypes,
