@@ -9,7 +9,7 @@ class PassionTypeController extends Controller
 {
     public function index()
     {
-        $passions = PassionType::all();
+        $passionTypes = PassionType::all();
         return view('passionType', [ 'passionTypes' => $passionTypes ] );
     }
 

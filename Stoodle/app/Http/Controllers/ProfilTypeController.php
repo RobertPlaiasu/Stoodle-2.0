@@ -9,7 +9,7 @@ class ProfilTypeController extends Controller
 {
     public function index()
     {
-        $profilType = ProfilType::all();
+        $profilTypes = ProfilType::all();
         return view('profilType', [ 'profilTypes' => $profilTypes ] );
     }
 
