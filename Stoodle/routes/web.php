@@ -20,13 +20,39 @@ Route::view('/contact', 'contact')->name('contact')->middleware('auth');
 Route::view('/facultati-favorite', 'favorites')->name('favorites')->middleware('auth');
 Route::get('/intrebari', 'QuestionController@index')->name('questions')->middleware('auth');
 
+//* Form Routes
 Route::get('/form', 'InfoUserController@index')->name('form');
 Route::post('/form', 'InfoUserController@store');
+
+//* College routes
 Route::resource('facultati', 'CollegeController');
  
 //* Admin routes
 Route::get('/admin', 'AdminController@index');
-Route::get('/admin/profil', 'ProfilController@index');
-Route::delete('/admin/profil/{profil}', 'ProfilController@destroy'); 
+
+//* Passion routes
+Route::resource('admin/passion', 'PassionController');
+
+//* Passion type routes
+Route::resource('admin/passionType', 'PassionTypeController');
+
+//* Profil routes
+Route::resource('admin/profil', 'ProfilController');
+
+//* Profil type routes
+Route::resource('admin/profilType', 'ProfilTypeController');
+
+//* Subjects routes
+Route::resource('admin/subject', 'SubjectController'); 
+
+//* Subjects type routes
+Route::resource('admin/subjectType', 'SubjectTypeController');
+
+//* Book routes
+Route::resource('admin/book', 'BookController');
+
+//* University routes
+Route::resource('admin/university', 'UniversityController');
+
 
 Auth::routes(['verify' => true]);

@@ -13,6 +13,7 @@ class AdminController extends Controller
     
     public function index()
     {
-        return view('admin.index');
+        $text = ['passion', 'passionType', 'profil', 'profilType', 'subject', 'subjectType', 'book', 'university'];
+        return view('admin.index', compact('text'));
     }
 }

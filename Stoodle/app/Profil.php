@@ -8,6 +8,8 @@ class Profil extends Model
 {
     use InteractionTrait;
 
+    protected $guarded = [];
+
     public function profilType()
     {
 

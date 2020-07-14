@@ -10,7 +10,7 @@
         <div class="card w-100" style="max-width: 100em">
             <div class="card-body ">
                 <div class="float-right links">
-                    <a href="/admin/profil/create" class="m-0">
+                    <a href="/admin/{{ $text }}/create" class="m-0">
                         adauga un {{ $text }}
                         <i class="fa fa-plus" aria-hidden="true"></i>
                     </a>
@@ -21,9 +21,9 @@
             <ul class="list-group list-group-flush">
                 @foreach ($data as $item)
                 <li class="list-group-item w-100">
-                    {{ $item->name }}
-                    <div class="float-right links">
-                        <a href=""> <i class="fa fa-pencil" aria-hidden="true"></i> </a>
+                    {{ $item->type ?? $item->name }}
+                    <div class="float-right links d-flex justi-content-cetenr align-items-center">
+                        <a href="/admin/{{ $text }}/{{ $item->id }}/edit" class="p-0"> <i class="fa fa-pencil" aria-hidden="true"></i> </a>
                         <form action="/admin/{{ $text }}/{{ $item->id }}" method="POST">
                             @method('DELETE')
                             @csrf

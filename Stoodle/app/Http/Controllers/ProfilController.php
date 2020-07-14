@@ -8,8 +8,6 @@ use Illuminate\Http\Request;
 
 class ProfilController extends Controller
 {
-    public $text = 'profil';
-
     public function __construct()
     {
         $this->middleware(['auth', 'verified', 'admin', 'checkForm']);
@@ -26,18 +24,49 @@ class ProfilController extends Controller
     {
         $data = ProfilType::all();
         $text = 'profil';
-        return view('admin.create', compact( 'data', 'text' ));
+        $hasType = true;
+        return view('admin.create', compact( 'data', 'text', 'hasType' ));
     }
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required'
+        ]);
 
+        $profil = new Profil;
+        $profil->name = $request->name;
+        $profil->timestamps = false;
+        $profil->save();
+        
+        return redirect('admin/profil');
+    }
+
+    public function edit( $id )
+    {
+        $item = Profil::findOrFail( $id );
+        $text = 'profil';
+        return view('admin.edit', compact( 'item', 'text' ));
+    }
+
+    public function update(Request $request,$id )
+    {
+        $request->validate([
+            'name' => 'required'
+        ]);
+        
+        $item = Profil::findOrFail( $id ); 
+        $item->name = $request->name;
+        $item->timestamps = false;
+        $item->save();
+        
+        return redirect('admin/profil/');
     }
 
     public function destroy( $id )
     {
-        $profil = Profil::find( $id );
-        $profil->delete();
+        $item = Profil::findOrFail( $id ); 
+        $item->delete();
         return redirect('/admin/profil');
     }
 }
