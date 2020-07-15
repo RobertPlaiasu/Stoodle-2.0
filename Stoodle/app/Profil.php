@@ -10,7 +10,7 @@ class Profil extends Model
 
     protected $guarded = [];
 
-    public function profilType()
+    public function profilTypes()
     {
 
         return $this->belongsToMany(ProfilType::class);

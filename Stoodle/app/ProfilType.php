@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProfilType extends Model
 {
-    public function profil()
+    public function profils()
     {
 
         return $this->belongsToMany(Profil::class);
