@@ -17,6 +17,7 @@ class ProfilTypeController extends Controller
         $data = ProfilType::all();
         $text = 'profilType';
         return view('admin.show', compact( 'data', 'text' ));
+
     }
 
     public function create()
@@ -25,10 +26,12 @@ class ProfilTypeController extends Controller
         $text = 'profilType';
         $hasType = false;
         return view('admin.create', compact( 'data', 'text', 'hasType' ));
-    }
 
+    }
+  
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => 'required'
         ]);
@@ -67,5 +70,6 @@ class ProfilTypeController extends Controller
         $item = ProfilType::findOrFail( $id ); 
         $item->delete();
         return redirect()->back();
+
     }
 }

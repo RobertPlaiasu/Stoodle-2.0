@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
 use App\passionType;
+
 use Illuminate\Http\Request;
 
 class passionTypeController extends Controller
@@ -17,6 +19,7 @@ class passionTypeController extends Controller
         $data = passionType::all();
         $text = 'passionType';
         return view('admin.show', compact( 'data', 'text' ));
+
     }
 
     public function create()
@@ -25,10 +28,12 @@ class passionTypeController extends Controller
         $text = 'passionType';
         $hasType = false;
         return view('admin.create', compact( 'data', 'text', 'hasType' ));
+
     }
 
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => 'required'
         ]);
@@ -67,5 +72,6 @@ class passionTypeController extends Controller
         $item = passionType::findOrFail( $id ); 
         $item->delete();
         return redirect()->back();
+
     }
 }

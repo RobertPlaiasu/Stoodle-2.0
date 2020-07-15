@@ -17,6 +17,7 @@ class SubjectTypeController extends Controller
         $data = subjectType::all();
         $text = 'subjectType';
         return view('admin.show', compact( 'data', 'text' ));
+
     }
 
     public function create()
@@ -25,6 +26,7 @@ class SubjectTypeController extends Controller
         $text = 'subjectType';
         $hasType = false;
         return view('admin.create', compact( 'data', 'text', 'hasType' ));
+
     }
 
     public function store(Request $request)
@@ -67,5 +69,6 @@ class SubjectTypeController extends Controller
         $item = subjectType::findOrFail( $id ); 
         $item->delete();
         return redirect()->back();
+
     }
 }
