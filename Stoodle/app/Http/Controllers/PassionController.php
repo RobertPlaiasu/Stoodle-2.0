@@ -8,19 +8,65 @@ use Illuminate\Http\Request;
 
 class PassionController extends Controller
 {
-    public function index(){
-        $passions = Passion::all();
-        return view('passion', [ 'passions' => $passions ] );
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified', 'admin', 'checkForm']);
+    }
+
+    public function index()
+    {
+        $data = passion::all();
+        $text = 'passion';
+        return view('admin.show', compact( 'data', 'text' ));
     }
 
     public function create()
     {
-        $passionTypes = PassionType::all();
-        return view('passion.create',['passionTypes' => $passionTypes]);
+        $data = passionType::all();
+        $text = 'passion';
+        $hasType = true;
+        return view('admin.create', compact( 'data', 'text', 'hasType' ));
     }
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required'
+        ]);
 
+        $passion = new passion;
+        $passion->name = $request->name;
+        $passion->timestamps = false;
+        $passion->save();
+        
+        return redirect('admin/passion');
+    }
+
+    public function edit( $id )
+    {
+        $item = passion::findOrFail( $id );
+        $text = 'passion';
+        return view('admin.edit', compact( 'item', 'text' ));
+    }
+
+    public function update(Request $request,$id )
+    {
+        $request->validate([
+            'name' => 'required'
+        ]);
+        
+        $item = passion::findOrFail( $id ); 
+        $item->name = $request->name;
+        $item->timestamps = false;
+        $item->save();
+        
+        return redirect('admin/passion/');
+    }
+
+    public function destroy( $id )
+    {
+        $item = passion::findOrFail( $id ); 
+        $item->delete();
+        return redirect('/admin/passion');
     }
 }
