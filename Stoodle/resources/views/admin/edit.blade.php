@@ -16,21 +16,6 @@
                 </small>
             @enderror
         </div>  
-        {{-- <div class="form-group">
-            <label for="name">Tipul {{ $text }}</label>    
-            <select name="profile-type" class="form-control">
-                @forelse ($data as $item)
-                    <option value="{{ $item->id }}"> {{ $item->type }} </option>
-                @empty
-                    Reincarca pagina!
-                @endforelse
-            </select>
-            @error('profile-type')
-                <small>
-                    {{ $message }}
-                </small>
-            @enderror
-        </div>        --}}
 
         <input type="submit" value="Trimite" name="formularsubmit" class="button">
 
