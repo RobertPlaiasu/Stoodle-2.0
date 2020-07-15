@@ -12,4 +12,5 @@ class ProfilType extends Model
         return $this->belongsToMany(Profil::class);
 
     } 
+
 }

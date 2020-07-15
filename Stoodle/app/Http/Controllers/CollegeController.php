@@ -43,6 +43,7 @@ class CollegeController extends Controller
      */
     public function create()
     {
+        //* Get all the data needed from the databse
         $counties = County::all();
         $passions = Passion::all();
         $books = Book::all();
@@ -50,6 +51,7 @@ class CollegeController extends Controller
         $profils = Profil::all();
         $universities = University::all();
 
+        //* Create an array with all the data from databse
         $data  = [
             'counties' => $counties,
             'passions' => $passions,
@@ -59,6 +61,7 @@ class CollegeController extends Controller
             'universities' => $universities
         ]; 
 
+        //* Display facultatii/create page with data and text needed as arguments
         return view('facultatii.create')
             ->with('data', $data)
             ->with('text', FormController::generateCollegeFormText());
@@ -72,6 +75,7 @@ class CollegeController extends Controller
      */
     public function store(Request $request)
     {
+        //* Validate the data
         $request->validate([
             'name' => 'required|unique:colleges,name|max:100|min:7',
             'university' => 'required|exists:universities,id',
@@ -90,14 +94,17 @@ class CollegeController extends Controller
             'social' => 'required|boolean',
             'sport' => 'required|boolean'
         ]);
-
+        
+        //* Check if all the subjects selected ar diferrent
         if($this->verifyMultipleInputs(
             $request->subject1,
             $request->subject2,
             $request->subject3
-        ))return back()->with('error', "Materiile trebuie sa fie diferite");
+        ))
+        return back()->with('error', "Materiile trebuie sa fie diferite");
         
-        
+        //* If all the data is validated create a new college
+        //?: Why don't why use \App\College::create($request)?
         $college = new College;
         $college->name = $request->name;
         $college->university_id = $request->university;
@@ -129,7 +136,11 @@ class CollegeController extends Controller
      */
     public function show($id)
     {
+        //* Get the college form the databse based on id
+        //! If the college doesn't exist return 404
         $college = College::findOrFail( $id );
+        
+        //* Display facultatii/show page with the found college as argument
         return view('facultatii.show', compact('college'));
     }
 
@@ -141,8 +152,32 @@ class CollegeController extends Controller
      */
     public function edit($id)
     {
+        //* Get the college form the databse based on id
+        //! If the college doesn't exist return 404
         $college = College::findOrFail( $id );
-        return view('facultatii.show', compact('college'));
+
+        //* Get all the data from the database
+        $counties = County::all();
+        $passions = Passion::all();
+        $books = Book::all();
+        $subjects = Subject::all();
+        $profils = Profil::all();
+        $universities = University::all();
+
+        //* Create an array with all the data from datab
+        $data  = [
+            'counties' => $counties,
+            'passions' => $passions,
+            'books' => $books,
+            'subjects' => $subjects,
+            'profils' => $profils,
+            'universities' => $universities
+        ]; 
+
+        //* Display facultatii/edit page with the found college, data from the database and the needed text as arguments
+        return view('facultatii.edit', compact('college'))
+            ->with('data', $data)
+            ->with('text', FormController::generateCollegeFormText());
     }
 
     /**
@@ -154,7 +189,39 @@ class CollegeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //* Get the college form the databse based on id
+        //! If the college doesn't exist return 404
+        $college = College::findOrFail( $id );
+
+        $data = request()->validate([
+            'name' => 'required|unique:colleges,name|max:100|min:7',
+            'university' => 'required|exists:universities,id',
+            'url' => 'required|url',
+            'description' => 'required|min:200|max:30000',
+            'admittance' => 'required|boolean',
+            'passion' => 'required|exists:passions,id',
+            'subject1' => 'required|exists:subjects,id',
+            'subject2' => 'required|exists:subjects,id',
+            'subject3' => 'required|exists:subjects,id',
+            'profil' => 'required|exists:profils,id',
+            'stress' => 'required|boolean',
+            'job' => 'required|boolean',
+            'books' => 'required|exists:books,id',
+            'county' => 'required|exists:counties,id',
+            'social' => 'required|boolean',
+            'sport' => 'required|boolean'
+        ]);
+        
+        //* Check if all the subjects selected ar diferrent
+        if($this->verifyMultipleInputs(
+            $request->subject1,
+            $request->subject2,
+            $request->subject3
+        ))
+        return back()->with('error', "Materiile trebuie sa fie diferite");
+
+        $college->update($data);
+        redirect('facultati');
     }
 
     /**
@@ -163,19 +230,23 @@ class CollegeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( $id )
     {
-        //
+        $college = College::findOrFail( $id );
+        $college->delete();
+        redirect('/facultati');
     }
 
     private function getAllColleges() :array
     {
         $colleges = College::all();
         $user = auth()->user();
-        foreach($colleges as $college){
-            $college->compability = $this->collegeCompability($user , $college);
-            $collegesNew[] = $college;  
-        }
+        $collegesNew = [];
+        if( count( $colleges ) )
+            foreach($colleges as $college){
+                $college->compability = $this->collegeCompability($user , $college);
+                $collegesNew[] = $college;  
+            }
         return $collegesNew;
     }
 

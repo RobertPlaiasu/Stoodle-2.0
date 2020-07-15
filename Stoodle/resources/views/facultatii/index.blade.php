@@ -3,88 +3,77 @@
 @section('title', 'Acasa')
 
 @section('content')
-    <div class="w-100 text-center">
+    <div class="text-center">
+        {{-- Search Bar --}}
         <div id="search" class="mx-4 my-3">
             <input onkeyup="sort()" class="form-control"
                 type="text" placeholder="cauta" id="search_field" aria-label="Search">
         </div>
         
+        {{-- Display all the colleges that exist --}}
         @if (count($colleges) > 0)
-          @foreach($colleges as $college)
+            <div class="d-flex">
+                @foreach($colleges as $college)
+                    <div class="card col-lg-4">
+                        {{-- Image --}}
+                        <div class="backgrounded"></div>
 
-              <div class="card">
-                    {{-- * Image --}}
-                    <div class="backgrounded"></div>
+                        {{-- Name --}}
+                        <div class="name">
+                            {{ $college->name }}                 
+                        </div>
 
-                    {{-- * Name --}}
-                    <div class="name">
-                        {{ $college->name }}                 
-                    </div>
+                        {{-- Features --}}
+                        <div class="prop text-center">
+                            <div class="col">
 
-                    {{--* University && Compability && County --}}
-                    <div class="prop text-center">
-                        <div class="col">
-
-                            {{-- * University --}}
-                            <div class="row">
-                                <div class="col">
-                                    {{ $college->university->name }}
+                                {{-- University --}}
+                                <div class="row">
+                                    <div class="col">
+                                        {{ $college->university->name }}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="row justify-content-between">
-                                <div class="col">
-                                   {{ $college->compability }}
-                                    <i class="fas fa-percentage"></i></div>
-                                <div class="col">
-                                    {{ $college->county->name }}
-                                    <i class="fas fa-city"></i>
+                                {{-- Compability with the student --}}
+                                <div class="row justify-content-between">
+                                    <div class="col">
+                                        {{ $college->compability }}
+                                        <i class="fas fa-percentage"></i>
+                                    </div>
+                                    <div class="col">
+                                        {{ $college->county->name }}
+                                        <i class="fas fa-city"></i>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    {{ $college->profil->name }}
-                                    <i class="fas fa-code-branch"></i>
+
+                                {{-- College's profile --}}
+                                <div class="row">
+                                    <div class="col">
+                                        {{ $college->profil->name }}
+                                        <i class="fas fa-code-branch"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+                        {{-- Add the colleges to favorites --}}
+                        <div class="row-lg-3 fav text-center">
+                            Adaugare la favorite
+                            {{-- <form action="./favoriteAlg.php" method="post">
+                                {{ $college->favoriteCollegeFound() }}
+                            </form> --}}
+                        </div>
+
+                        {{-- Know more about the college --}}
+                        <div class="row-lg-3 extra text-center">
+                            <a href="/facultati/{{ $college->id }}">Afla mai mult</a>
+                        </div>
                     </div>
-                    <div class="row-lg-3 fav text-center">
-                        Adaugare la favorite
-                        {{-- <form action="./favoriteAlg.php" method="post">
-                            {{ $college->favoriteCollegeFound() }}
-                        </form> --}}
-                    </div>
-                    <div class="row-lg-3 extra text-center">
-                        <a href="facultati/{{ $college->id }}">Afla mai mult</a>
-                    </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         @else 
-        
+            {{-- If there are no colleges display next content --}}
             <h1>Nu am reusit sa incercam facultatile din baza de date</h1>
-            
         @endif
-        
-        
-        <script>
-            function sort() {
-                // Declare variables
-                var input = document.getElementById('search_field');
-                var filter = input.value.toUpperCase();
-                var faculties = document.getElementsByClassName("name");
-                var cards = document.getElementsByClassName("card");
-        
-                // Loop through all list items, and hide those who don't match the search query
-                for (i = 0; i < faculties.length; i++) {
-                    txtValue = facultati[i].textContent || faculties[i].innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        cards[i].style.display = "";
-                    } else {
-                        cards[i].style.display = "none";
-                    }
-                }
-            }
-        </script>
     </div>
 @endsection

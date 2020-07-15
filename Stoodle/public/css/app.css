@@ -11237,6 +11237,26 @@ i {
   box-shadow: 0 1x 4px 0 rgba(0, 0, 0, 0.05);
 }
 
+#close {
+  position: absolute;
+  right: 3em;
+}
+
+#close a {
+  font-size: 1.5rem;
+  color: #00A089;
+}
+
+#show_header {
+  margin: 0;
+}
+
+#show_header span {
+  font-size: 1rem;
+  color: #00A089;
+  font-weight: bold;
+}
+
 /* BUTTON */
 
 .button {
@@ -11268,7 +11288,7 @@ i {
 html,
 body {
   background-color: #fff;
-  color: #636b6f;
+  color: #0a0a0a;
   font-family: "Nunito", sans-serif;
   font-weight: 200;
   height: 100vh;
