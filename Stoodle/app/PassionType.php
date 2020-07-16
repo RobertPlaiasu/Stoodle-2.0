@@ -7,7 +7,7 @@ use Mockery\Generator\StringManipulation\Pass\Pass;
 
 class PassionType extends Model
 {
-    public function passion()
+    public function passions()
     {
 
         return $this->belongsToMany(Passion::class);

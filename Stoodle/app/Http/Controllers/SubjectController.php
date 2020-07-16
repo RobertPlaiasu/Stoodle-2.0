@@ -38,6 +38,8 @@ class SubjectController extends Controller
         $subject->name = $request->name;
         $subject->timestamps = false;
         $subject->save();
+        $subject->subjectTypes()->attach( $request->type );
+        $subject->save();
         
         return redirect('admin/subject');
     }

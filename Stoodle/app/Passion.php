@@ -8,7 +8,7 @@ class Passion extends Model
 {
     use InteractionTrait;
 
-    public function passionType()
+    public function passionTypes()
     {
 
         return $this->belongsToMany(PassionType::class);
