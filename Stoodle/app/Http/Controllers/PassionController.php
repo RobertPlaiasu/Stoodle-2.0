@@ -38,6 +38,8 @@ class PassionController extends Controller
         $passion->name = $request->name;
         $passion->timestamps = false;
         $passion->save();
+        $passion->passionType()->attach( $request->type );
+        $passion->save();
         
         return redirect('admin/passion');
     }
@@ -52,14 +54,15 @@ class PassionController extends Controller
     public function update(Request $request,$id )
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'type' => 'required'
         ]);
         
         $item = passion::findOrFail( $id ); 
         $item->name = $request->name;
         $item->timestamps = false;
         $item->save();
-        
+
         return redirect('admin/passion/');
     }
 
