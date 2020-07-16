@@ -16,7 +16,9 @@
                 @foreach($colleges as $college)
                     <div class="card col-lg-4">
                         {{-- Image --}}
-                        <div class="backgrounded"></div>
+                        <div class="backgrounded">
+                        <img src="{{ asset('storage/'.$college->image) }}" alt="">
+                        </div>
 
                         {{-- Name --}}
                         <div class="name">

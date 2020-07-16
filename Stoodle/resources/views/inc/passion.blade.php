@@ -1,10 +1,19 @@
 <div class="form-group">
     <label for="passion"> {{ $text[0] }} </label>
     <select class="custom-select" id="passionSelect" name="passion">
-
-        @foreach ( $data['passions'] as $passion )
-            <option value="{{ $passion->id }}"> {{ $passion->name }} </option>
-        @endforeach
+        @if (isset($college))
+            @foreach ( $data['passions'] as $passion )
+                <option value="{{ $passion->id }}"
+                    @if ($passion->id == $college->passion_id)
+                        selected
+                    @endif
+                    > {{ $passion->name }} </option>
+            @endforeach
+        @else
+            @foreach ( $data['passions'] as $passion )
+                <option value="{{ $passion->id }}"> {{ $passion->name }} </option>
+            @endforeach
+        @endif
     </select>
     @error('passion')
         {{ $message }}

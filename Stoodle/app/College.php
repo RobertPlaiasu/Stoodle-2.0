@@ -13,7 +13,7 @@ class College extends Model
     
 
     protected $fillable = [
-        'name','admittance','job','social',
+        'name','admittance','job','social','image',
         'stress','sport','university_id','county_id',
         'profil_id','passion_id','book_id','subject_id_1',
         'subject_id_2','subject_id_3','url','description'

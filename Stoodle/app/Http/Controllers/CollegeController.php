@@ -11,6 +11,7 @@ use App\Subject;
 use App\Profil;
 use App\University;
 
+use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 
 class CollegeController extends Controller
@@ -76,8 +77,9 @@ class CollegeController extends Controller
     public function store(Request $request)
     {
         //* Validate the data
-        $request->validate([
+        $data = $request->validate([
             'name' => 'required|unique:colleges,name|max:100|min:7',
+            'image' => 'required|file|image|mimes:jpeg,png,jpg|max:1999',
             'university' => 'required|exists:universities,id',
             'url' => 'required|url',
             'description' => 'required|min:200|max:30000',
@@ -94,7 +96,7 @@ class CollegeController extends Controller
             'social' => 'required|boolean',
             'sport' => 'required|boolean'
         ]);
-        
+
         //* Check if all the subjects selected ar diferrent
         if($this->verifyMultipleInputs(
             $request->subject1,
@@ -104,9 +106,9 @@ class CollegeController extends Controller
         return back()->with('error', "Materiile trebuie sa fie diferite");
         
         //* If all the data is validated create a new college
-        //?: Why don't why use \App\College::create($request)?
         $college = new College;
         $college->name = $request->name;
+        $college->image = $request->image->store('images','public');
         $college->university_id = $request->university;
         $college->description =  $request->description;
         $college->url = $request->url;
@@ -123,6 +125,9 @@ class CollegeController extends Controller
         $college->social = $request->social;
         $college->sport = $request->sport;
         $college->save();
+
+        $image = Image::make(public_path('storage/'.$college->image))->fit(300,300);
+        $image->save();
 
         return redirect('facultati'); 
 
@@ -194,7 +199,8 @@ class CollegeController extends Controller
         $college = College::findOrFail( $id );
 
         $data = request()->validate([
-            'name' => 'required|unique:colleges,name|max:100|min:7',
+            'name' => 'required|max:100|min:7',
+            'image' => 'sometimes|file|image|mimes:jpeg,png,jpg|max:1999',
             'university' => 'required|exists:universities,id',
             'url' => 'required|url',
             'description' => 'required|min:200|max:30000',
@@ -220,8 +226,33 @@ class CollegeController extends Controller
         ))
         return back()->with('error', "Materiile trebuie sa fie diferite");
 
-        $college->update($data);
-        redirect('facultati');
+        if($request->hasFile('image'))
+        {
+            $college->image = $request->image->store('images','public');
+        }
+
+        $college->name = $request->name;
+        $college->university_id = $request->university;
+        $college->description =  $request->description;
+        $college->url = $request->url;
+        $college->admittance = $request->admittance;
+        $college->passion_id = $request->passion;
+        $college->subject_id_1 = $request->subject1;
+        $college->subject_id_2 = $request->subject2;
+        $college->subject_id_3 = $request->subject3;
+        $college->profil_id = $request->profil;
+        $college->stress = $request->stress;
+        $college->job = $request->job;
+        $college->book_id = $request->books;
+        $college->county_id = $request->county;
+        $college->social = $request->social;
+        $college->sport = $request->sport;
+        $college->save();
+
+        $image = Image::make(public_path('storage/'.$college->image))->fit(300,300);
+        $image->save();
+
+        return redirect('facultati');
     }
 
     /**

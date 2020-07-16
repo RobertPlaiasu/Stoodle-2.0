@@ -16,7 +16,7 @@ class CheckFormCompleted
      */
     public function handle($request, Closure $next)
     {
-        if (\Auth::user() && \Auth::user()->social != NULL) 
+        if (\Auth::user() && \Auth::user()->book_id != NULL) 
             return $next($request);
      
         return redirect('form');
