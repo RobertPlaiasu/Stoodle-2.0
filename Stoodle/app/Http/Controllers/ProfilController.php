@@ -31,12 +31,15 @@ class ProfilController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'type' => 'required'
         ]);
 
         $profil = new Profil;
         $profil->name = $request->name;
         $profil->timestamps = false;
+        $profil->save();
+        $profil->profilType()->sync( $request->type );
         $profil->save();
         
         return redirect('admin/profil');
