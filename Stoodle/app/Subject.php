@@ -48,7 +48,7 @@ class Subject extends Model
 
     }
 
-    public function subjectTypes()
+    public function subjectType()
     {
 
         return $this->belongsToMany(SubjectType::class);

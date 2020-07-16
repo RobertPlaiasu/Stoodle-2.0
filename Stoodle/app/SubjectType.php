@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SubjectType extends Model
 {
-    public function subjects()
+    public function subject()
     {
 
         return $this->belongsToMany(Subject::class);

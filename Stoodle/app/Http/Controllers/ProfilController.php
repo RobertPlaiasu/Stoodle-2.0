@@ -39,7 +39,7 @@ class ProfilController extends Controller
         $profil->name = $request->name;
         $profil->timestamps = false;
         $profil->save();
-        $profil->profilTypes()->sync( $request->type );
+        $profil->profilType()->sync( $request->type );
         $profil->save();
         
         return redirect('admin/profil');

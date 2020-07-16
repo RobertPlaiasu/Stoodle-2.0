@@ -38,7 +38,7 @@ class PassionController extends Controller
         $passion->name = $request->name;
         $passion->timestamps = false;
         $passion->save();
-        $passion->passionTypes()->attach( $request->type );
+        $passion->passionType()->attach( $request->type );
         $passion->save();
         
         return redirect('admin/passion');
