@@ -9,7 +9,7 @@
             <h1>Inregistrare facultate in baza de date</h1>
             <p>Completeaza formularul de mai jos pentru a inregistrara o faculatate.</p>
 
-            <form action="{{ route('facultati.store') }}" method="POST" id="formular">
+            <form action="{{ route('facultati.store') }}" method="POST" id="formular" enctype="multipart/form-data">
                 @csrf
 
                 {{-- Type college's name --}}
@@ -17,6 +17,15 @@
                     <label for="name">Numele facultatii.</label>
                     <input type="text" id="name" name="name" class="form-control" placeholder="Numele facultatii">
                     @error('name')
+                        {{ $message }}
+                    @enderror
+                </div>
+
+                {{-- Type college picture --}}
+                <div class="form-group d-flex flex-column">
+                    <label for="image">Poza cu facultatea.</label>
+                    <input type="file" id="image" name="image" class="py-3" >
+                    @error('image')
                         {{ $message }}
                     @enderror
                 </div>
