@@ -25,6 +25,11 @@
                     @endif
 
                 @else
+                    @can('view', Auth::user())
+                        <li class="nav-item">
+                            <a href="{{ url('/admin') }}" class="nav-link">Admin</a>
+                        </li>
+                    @endcan
                     <li class="nav-item">
                         <a href="{{ url('/facultati') }}" class="nav-link">Acasa</a>
                     </li>

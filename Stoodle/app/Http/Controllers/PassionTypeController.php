@@ -11,7 +11,7 @@ class passionTypeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'verified', 'admin', 'checkForm']);
+        $this->authorizeResource( User::class );
     }
 
     public function index()
