@@ -48,13 +48,6 @@
                                     </div>
                                 </div>
 
-                                {{-- College's profile --}}
-                                <div class="row">
-                                    <div class="col">
-                                        {{ $college->profil->name }}
-                                        <i class="fas fa-code-branch"></i>
-                                    </div>
-                                </div>
                             </div>
                         </div>
 
