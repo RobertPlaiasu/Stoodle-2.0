@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\University;
+use App\User;
 use Illuminate\Http\Request;
 
 class UniversityController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'verified', 'admin', 'checkForm']);
+        $this->authorizeResource( User::class );
     }
 
     public function index()
