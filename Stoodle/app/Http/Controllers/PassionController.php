@@ -11,7 +11,7 @@ class PassionController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource( User::class, 'passion' );
+        $this->authorizeResource( User::class );
     }
 
     public function index()
