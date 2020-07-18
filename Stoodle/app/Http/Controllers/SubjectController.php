@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Subject;
 use App\SubjectType;
+use App\User;
 use Illuminate\Http\Request;
 
 class SubjectController extends Controller

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ProfilType;
+use App\User;
 use Illuminate\Http\Request;
 
 class ProfilTypeController extends Controller

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\SubjectType;
+use App\User;
 use Illuminate\Http\Request;
 
 class SubjectTypeController extends Controller

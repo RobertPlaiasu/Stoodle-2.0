@@ -6,14 +6,12 @@ use App\Passion;
 use App\PassionType;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class PassionController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware(['auth', 'verified', 'admin', 'checkForm']);
-        $this->authorizeResource( User::class );
+        $this->authorizeResource( User::class, 'passion' );
     }
 
     public function index()
