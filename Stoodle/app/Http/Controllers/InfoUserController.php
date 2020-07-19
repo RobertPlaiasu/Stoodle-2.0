@@ -3,15 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\CollegeController;
 use App\User;
 use App\County;
 use App\Passion;
 use App\Book;
+use App\College;
 use App\Subject;
 use App\Profil;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class InfoUserController extends Controller
 {
@@ -85,6 +88,26 @@ class InfoUserController extends Controller
         
         
         return redirect('facultati');
+    }
+
+    public function myFavorites()
+    {
+        $myFavorites = $this->getAllColleges();
+    
+        return view('favorites', compact('myFavorites'));
+    }
+
+    public function getAllColleges() :array
+    {
+        $colleges = Auth::user()->favorites;
+        $user = auth()->user();
+        $collegesNew = [];
+        if( count( $colleges ) )
+            foreach($colleges as $college){
+                $college->compability = app('App\Http\Controllers\CollegeController')->collegeCompability($user , $college);
+                $collegesNew[] = $college;  
+            }
+        return $collegesNew;
     }
 
 

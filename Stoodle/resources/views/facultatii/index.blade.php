@@ -52,11 +52,11 @@
                         </div>
 
                         {{-- Add the colleges to favorites --}}
-                        <div class="row-lg-3 fav text-center">
-                            Adaugare la favorite
-                            {{-- <form action="./favoriteAlg.php" method="post">
-                                {{ $college->favoriteCollegeFound() }}
-                            </form> --}}
+                        <div class="row-lg-3 fav text-center"> 
+                                <favorite
+                                    :college={{ $college->id }}
+                                    :favorited={{ $college->favorited() ? 'true' : 'false' }}
+                                ></favorite>
                         </div>
 
                         {{-- Know more about the college --}}

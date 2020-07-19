@@ -4,6 +4,7 @@ namespace App;
 
 use App\University;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class College extends Model
 {
@@ -24,6 +25,13 @@ class College extends Model
 
         return $this->belongsTo(University::class);
 
+    }
+
+    public function favorited()
+    {
+        return (bool) Favorite::where('user_id', Auth::id())
+                            ->where('college_id', $this->id)
+                            ->first();
     }
 
 }
