@@ -15,7 +15,7 @@ class UniversityController extends Controller
 
     public function index()
     {
-        $data = university::all();
+        $data = University::all();
         $text = 'university';
         return view('admin.show', compact( 'data', 'text' ));
     }
@@ -34,7 +34,7 @@ class UniversityController extends Controller
             'name' => 'required'
         ]);
 
-        $university = new university;
+        $university = new University;
         $university->name = $request->name;
         $university->timestamps = false;
         $university->save();
@@ -42,31 +42,29 @@ class UniversityController extends Controller
         return redirect('admin/university');
     }
 
-    public function edit( $id )
+    public function edit( University $university )
     {
-        $item = university::findOrFail( $id );
+        $item = $university;
         $text = 'university';
         return view('admin.edit', compact( 'item', 'text' ));
     }
 
-    public function update(Request $request,$id )
+    public function update(Request $request, University $university )
     {
         $request->validate([
             'name' => 'required'
         ]);
         
-        $item = university::findOrFail( $id ); 
-        $item->name = $request->name;
-        $item->timestamps = false;
-        $item->save();
+        $university->name = $request->name;
+        $university->timestamps = false;
+        $university->save();
         
         return redirect('admin/university/');
     }
 
-    public function destroy( $id )
+    public function destroy( University $university )
     {
-        $item = university::findOrFail( $id ); 
-        $item->delete();
+        $university->delete();
         return redirect('/admin/university');
     }
 }
