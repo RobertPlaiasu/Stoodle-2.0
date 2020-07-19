@@ -92,7 +92,7 @@ class InfoUserController extends Controller
 
     public function myFavorites()
     {
-        $myFavorites = $this->getAllColleges();
+        $myFavorites = Auth::user()->favorites;
     
         return view('favorites', compact('myFavorites'));
     }

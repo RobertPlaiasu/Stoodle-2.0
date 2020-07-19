@@ -72,3 +72,7 @@
         @endif
     </div>
 @endsection
+
+@section('extra-scripts')
+    <script src="{{ asset('js/search.js') }}"></script>
+@endsection
