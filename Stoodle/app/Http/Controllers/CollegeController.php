@@ -292,6 +292,32 @@ class CollegeController extends Controller
         return $collegesNew;
     }
 
+    /**
+     * Favorite a particular post
+     *
+     * @param  Post $post
+     * @return Response
+     */
+    public function favoritePost(College $college)
+    {
+        Auth::user()->favorites()->attach($college->id);
+
+        return back();
+    }
+
+    /**
+     * Unfavorite a particular post
+     *
+     * @param  Post $post
+     * @return Response
+     */
+    public function unFavoritePost(College $college)
+    {
+        Auth::user()->favorites()->detach($college->id);
+
+        return back();
+    }
+
     //algorithm to calculate the compability for every college 
     private function collegeCompability ($user ,College $college) :int
     {

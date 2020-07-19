@@ -17,8 +17,13 @@ Route::view('/', 'welcome')->middleware('guest');
 
 // TODO: Add the checkForm middleware to this routes
 Route::view('/contact', 'contact')->name('contact')->middleware('auth');
-Route::view('/facultati-favorite', 'favorites')->name('favorites')->middleware('auth');
 Route::get('/intrebari', 'QuestionController@index')->name('questions')->middleware('auth');
+
+//* Favorites Routes
+Route::post('favorite/{college}', 'CollegeController@favoritePost');
+Route::post('unfavorite/{college}', 'CollegeController@unFavoritePost');
+
+Route::get('facultati-favorite', 'InfoUserController@myFavorites')->middleware('auth');
 
 //* Form Routes
 Route::get('/form', 'InfoUserController@index')->name('form');

@@ -12,6 +12,7 @@ use App\Profil;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class InfoUserController extends Controller
 {
@@ -85,6 +86,13 @@ class InfoUserController extends Controller
         
         
         return redirect('facultati');
+    }
+
+    public function myFavorites()
+    {
+        $myFavorites = Auth::user()->favorites;
+
+        return view('favorites', compact('myFavorites'));
     }
 
 
