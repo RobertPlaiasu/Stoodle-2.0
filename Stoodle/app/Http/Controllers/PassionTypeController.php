@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 
-use App\passionType;
+use App\PassionType;
 
 use Illuminate\Http\Request;
 use App\User;
 
-class passionTypeController extends Controller
+class PassionTypeController extends Controller
 {
     public function __construct()
     {
@@ -17,14 +17,14 @@ class passionTypeController extends Controller
 
     public function index()
     {
-        $data = passionType::all();
+        $data = PassionType::all();
         $text = 'passionType';
         return view('admin.show', compact( 'data', 'text' ));
     }
 
     public function create()
     {
-        $data = passionType::all();
+        $data = PassionType::all();
         $text = 'passionType';
         $hasType = false;
         return view('admin.create', compact( 'data', 'text', 'hasType' ));
@@ -32,12 +32,11 @@ class passionTypeController extends Controller
 
     public function store(Request $request)
     {
-
         $request->validate([
             'name' => 'required'
         ]);
 
-        $profil = new passionType;
+        $profil = new PassionType;
         $profil->type = $request->name;
         $profil->timestamps = false;
         $profil->save();
@@ -45,31 +44,29 @@ class passionTypeController extends Controller
         return redirect()->back();
     }
 
-    public function edit( $id )
+    public function edit( PassionType $passionType )
     {
-        $item = passionType::findOrFail( $id );
+        $item = $passionType;
         $text = 'passionType';
         return view('admin.edit', compact( 'item', 'text' ));
     }
 
-    public function update(Request $request,$id )
+    public function update(Request $request, PassionType $passionType )
     {
         $request->validate([
             'name' => 'required'
         ]);
         
-        $item = passionType::findOrFail( $id ); 
-        $item->type = $request->name;
-        $item->timestamps = false;
-        $item->save();
+        $passionType->type = $request->name;
+        $passionType->timestamps = false;
+        $passionType->save();
         
         return redirect('admin/passionType');
     }
 
-    public function destroy( $id )
+    public function destroy( PassionType $passionType )
     {
-        $item = passionType::findOrFail( $id ); 
-        $item->delete();
+        $passionType->delete();
         return redirect()->back();
 
     }
