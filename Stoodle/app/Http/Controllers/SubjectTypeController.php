@@ -10,7 +10,7 @@ class SubjectTypeController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource( User::class );
+        $this->middleware(['auth', 'verified', 'admin', 'checkForm']);
     }
 
     public function index()

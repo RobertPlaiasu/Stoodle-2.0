@@ -14,7 +14,6 @@ class AdminController extends Controller
     
     public function index()
     {
-        $this->authorize('view', Auth::user());
         $text = ['passion', 'passionType', 'profil', 'profilType', 'subject', 'subjectType', 'book', 'university'];
         return view('admin.index', compact('text'));
     }
