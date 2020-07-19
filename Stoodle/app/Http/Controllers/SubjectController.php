@@ -11,12 +11,12 @@ class SubjectController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource( User::class );
+        $this->middleware(['auth', 'verified', 'admin']);
     }
 
     public function index()
     {
-        $data = subject::all();
+        $data = Subject::all();
         $text = 'subject';
         return view('admin.show', compact( 'data', 'text' ));
     }
@@ -35,7 +35,7 @@ class SubjectController extends Controller
             'name' => 'required'
         ]);
 
-        $subject = new subject;
+        $subject = new Subject;
         $subject->name = $request->name;
         $subject->timestamps = false;
         $subject->save();
@@ -45,31 +45,29 @@ class SubjectController extends Controller
         return redirect('admin/subject');
     }
 
-    public function edit( $id )
+    public function edit( Subject $subject )
     {
-        $item = subject::findOrFail( $id );
+        $item = $subject;
         $text = 'subject';
         return view('admin.edit', compact( 'item', 'text' ));
     }
 
-    public function update(Request $request,$id )
+    public function update(Request $request, Subject $subject )
     {
         $request->validate([
             'name' => 'required'
         ]);
         
-        $item = subject::findOrFail( $id ); 
-        $item->name = $request->name;
-        $item->timestamps = false;
-        $item->save();
+        $subject->name = $request->name;
+        $subject->timestamps = false;
+        $subject->save();
         
         return redirect('admin/subject/');
     }
 
-    public function destroy( $id )
+    public function destroy( Subject $subject )
     {
-        $item = subject::findOrFail( $id ); 
-        $item->delete();
+        $subject->delete();
         return redirect('/admin/subject');
     }
 }

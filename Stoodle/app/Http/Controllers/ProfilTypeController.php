@@ -10,7 +10,7 @@ class ProfilTypeController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource( User::class );
+        $this->middleware(['auth', 'verified', 'admin']);   
     }
 
     public function index()
@@ -45,31 +45,29 @@ class ProfilTypeController extends Controller
         return redirect()->back();
     }
 
-    public function edit( $id )
+    public function edit( ProfilType $profilType )
     {
-        $item = ProfilType::findOrFail( $id );
+        $item = $profilType;
         $text = 'profilType';
         return view('admin.edit', compact( 'item', 'text' ));
     }
 
-    public function update(Request $request,$id )
+    public function update(Request $request, ProfilType $profilType )
     {
         $request->validate([
             'name' => 'required'
         ]);
         
-        $item = ProfilType::findOrFail( $id ); 
-        $item->type = $request->name;
-        $item->timestamps = false;
-        $item->save();
+        $profilType->type = $request->name;
+        $profilType->timestamps = false;
+        $profilType->save();
         
         return redirect('admin/profilType/');
     }
 
-    public function destroy( $id )
+    public function destroy( ProfilType $profilType )
     {
-        $item = ProfilType::findOrFail( $id ); 
-        $item->delete();
+        $profilType->delete();
         return redirect()->back();
 
     }

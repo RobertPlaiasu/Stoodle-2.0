@@ -11,7 +11,7 @@ class ProfilController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource( User::class );
+        $this->middleware(['auth', 'verified', 'admin']);   
     }
 
     public function index()
@@ -46,31 +46,29 @@ class ProfilController extends Controller
         return redirect('admin/profil');
     }
 
-    public function edit( $id )
+    public function edit( Profil $profil )
     {
-        $item = Profil::findOrFail( $id );
+        $item = $profil;
         $text = 'profil';
         return view('admin.edit', compact( 'item', 'text' ));
     }
 
-    public function update(Request $request,$id )
+    public function update(Request $request, Profil $profil )
     {
         $request->validate([
             'name' => 'required'
         ]);
         
-        $item = Profil::findOrFail( $id ); 
-        $item->name = $request->name;
-        $item->timestamps = false;
-        $item->save();
+        $profil->name = $request->name;
+        $profil->timestamps = false;
+        $profil->save();
         
         return redirect('admin/profil/');
     }
 
-    public function destroy( $id )
+    public function destroy( Profil $profil )
     {
-        $item = Profil::findOrFail( $id ); 
-        $item->delete();
+        $profil->delete();
         return redirect('/admin/profil');
     }
 }
