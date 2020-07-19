@@ -10,9 +10,10 @@ use App\Book;
 use App\Subject;
 use App\Profil;
 use App\University;
-
+use App\User;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CollegeController extends Controller
 {
@@ -26,8 +27,7 @@ class CollegeController extends Controller
     
     public function __construct()
     {
-        $this->middleware(['auth','verified','admin','checkForm'])->except('index','show');
-        $this->middleware(['auth','verified','checkForm'])->only('index','show');
+        $this->middleware( [ 'auth', 'verified', 'checkForm' ] );
     }
 
     public function index()
@@ -44,6 +44,8 @@ class CollegeController extends Controller
      */
     public function create()
     {
+        $this->authorize('view', Auth::user(), College::class);
+        
         //* Get all the data needed from the databse
         $counties = County::all();
         $passions = Passion::all();
@@ -76,6 +78,9 @@ class CollegeController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->authorize('create', Auth::user());
+
         //* Validate the data
         $data = $request->validate([
             'name' => 'required|unique:colleges,name|max:100|min:7',
@@ -157,6 +162,8 @@ class CollegeController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('view', Auth::user(), College::class);
+
         //* Get the college form the databse based on id
         //! If the college doesn't exist return 404
         $college = College::findOrFail( $id );
@@ -194,6 +201,8 @@ class CollegeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->authorize('update', Auth::user(), College::class);
+
         //* Get the college form the databse based on id
         //! If the college doesn't exist return 404
         $college = College::findOrFail( $id );
@@ -263,6 +272,8 @@ class CollegeController extends Controller
      */
     public function destroy( $id )
     {
+        $this->authorize('delete', College::class);
+
         $college = College::findOrFail( $id );
         $college->delete();
         redirect('/facultati');

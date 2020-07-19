@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Profil;
 use App\ProfilType;
+use App\User;
 use Illuminate\Http\Request;
 
 class ProfilController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'verified', 'admin', 'checkForm']);
+        $this->authorizeResource( User::class );
     }
 
     public function index()
