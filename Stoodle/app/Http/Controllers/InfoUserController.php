@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\CollegeController;
 use App\User;
 use App\County;
 use App\Passion;
 use App\Book;
+use App\College;
 use App\Subject;
 use App\Profil;
 
@@ -90,9 +92,22 @@ class InfoUserController extends Controller
 
     public function myFavorites()
     {
-        $myFavorites = Auth::user()->favorites;
-
+        $myFavorites = $this->getAllColleges();
+    
         return view('favorites', compact('myFavorites'));
+    }
+
+    public function getAllColleges() :array
+    {
+        $colleges = Auth::user()->favorites;
+        $user = auth()->user();
+        $collegesNew = [];
+        if( count( $colleges ) )
+            foreach($colleges as $college){
+                $college->compability = app('App\Http\Controllers\CollegeController')->collegeCompability($user , $college);
+                $collegesNew[] = $college;  
+            }
+        return $collegesNew;
     }
 
 

@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class FavoritesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware( [ 'auth', 'verified', 'checkForm' ] );
+    }
     /**
      * Favorite a particular post
      *

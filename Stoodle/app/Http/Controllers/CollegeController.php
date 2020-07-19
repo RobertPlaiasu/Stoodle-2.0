@@ -10,10 +10,8 @@ use App\Book;
 use App\Subject;
 use App\Profil;
 use App\University;
-use App\User;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class CollegeController extends Controller
 {
@@ -27,7 +25,8 @@ class CollegeController extends Controller
     
     public function __construct()
     {
-        $this->middleware( [ 'auth', 'verified', 'checkForm' ] );
+        $this->middleware( [ 'auth', 'verified', 'checkForm' ])->only('index','show');
+        $this->middleware( [ 'auth', 'verified', 'checkForm','admin'] )->except('index','show');    
     }
 
     public function index()
@@ -43,9 +42,7 @@ class CollegeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        $this->middleware( [ 'auth', 'verified', 'admin' ] );
-        
+    {      
         //* Get all the data needed from the databse
         $counties = County::all();
         $passions = Passion::all();
@@ -78,8 +75,6 @@ class CollegeController extends Controller
      */
     public function store(Request $request)
     {
-        $this->middleware( [ 'auth', 'verified', 'admin' ] );   
-
         //* Validate the data
         $data = $request->validate([
             'name' => 'required|unique:colleges,name|max:100|min:7',
@@ -161,8 +156,6 @@ class CollegeController extends Controller
      */
     public function edit($id)
     {
-        $this->middleware( [ 'auth', 'verified', 'admin' ] );
-
         //* Get the college form the databse based on id
         //! If the college doesn't exist return 404
         $college = College::findOrFail( $id );
@@ -200,8 +193,6 @@ class CollegeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->middleware( [ 'auth', 'verified', 'admin' ] );
-
         //* Get the college form the databse based on id
         //! If the college doesn't exist return 404
         $college = College::findOrFail( $id );
@@ -271,14 +262,12 @@ class CollegeController extends Controller
      */
     public function destroy( $id )
     {
-        $this->middleware( [ 'auth', 'verified', 'admin' ] );
-
         $college = College::findOrFail( $id );
         $college->delete();
         redirect('/facultati');
     }
 
-    private function getAllColleges() :array
+    public function getAllColleges() :array
     {
         $colleges = College::all();
         $user = auth()->user();
@@ -447,7 +436,7 @@ class CollegeController extends Controller
 
     }
 
-    public function compareCollege($college1,$college2)
+    private function compareCollege($college1,$college2)
     {
         return $college1->compability < $college2->compability;
     }
