@@ -59,5 +59,11 @@ Route::resource('admin/book', 'BookController');
 //* University routes
 Route::resource('admin/university', 'UniversityController');
 
+//* County routes
+Route::resource('admin/county', 'CountyController');
+
+//* Region routes
+Route::resource('admin/region', 'RegionController');
+
 
 Auth::routes(['verify' => true]);

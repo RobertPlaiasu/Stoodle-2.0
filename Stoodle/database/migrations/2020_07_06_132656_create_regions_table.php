@@ -15,7 +15,7 @@ class CreateRegionsTable extends Migration
     {
         Schema::create('regions', function (Blueprint $table) {
             $table->id();
-            $table->string('region');
+            $table->string('type');
         });
 
         Schema::create('county_region', function (Blueprint $table) {

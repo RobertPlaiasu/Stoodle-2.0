@@ -26,13 +26,13 @@ class CreateUsersTable extends Migration
             $table->boolean('social')->nullable()->default(NULL);
             $table->boolean('stress')->nullable()->default(NULL);
             $table->boolean('sport')->nullable()->default(NULL);
-            $table->foreignId('county_id')->nullable()->default(NULL)->constrained();
-            $table->foreignId('profil_id')->nullable()->default(NULL)->constrained();
-            $table->foreignId('passion_id')->nullable()->default(NULL)->constrained();
-            $table->foreignId('book_id')->nullable()->default(NULL)->constrained();
-            $table->foreignId('subject_id_1')->nullable()->default(NULL)->constrained();
-            $table->foreignId('subject_id_2')->nullable()->default(NULL)->constrained();
-            $table->foreignId('subject_id_3')->nullable()->default(NULL)->constrained();
+            $table->foreignId('county_id')->nullable()->default(NULL)->constrained()->onDelete('set null');
+            $table->foreignId('profil_id')->nullable()->default(NULL)->constrained()->onDelete('set null');
+            $table->foreignId('passion_id')->nullable()->default(NULL)->constrained()->onDelete('set null');
+            $table->foreignId('book_id')->nullable()->default(NULL)->constrained()->onDelete('set null');
+            $table->foreignId('subject_id_1')->nullable()->default(NULL)->constrained()->onDelete('set null');
+            $table->foreignId('subject_id_2')->nullable()->default(NULL)->constrained()->onDelete('set null');
+            $table->foreignId('subject_id_3')->nullable()->default(NULL)->constrained()->onDelete('set null');
             $table->timestamps();
         });
 
