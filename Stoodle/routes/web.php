@@ -20,8 +20,8 @@ Route::view('/contact', 'contact')->name('contact')->middleware('auth');
 Route::get('/intrebari', 'QuestionController@index')->name('questions')->middleware('auth');
 
 //* Favorites Routes
-Route::post('favorite/{college}', 'CollegeController@favoritePost');
-Route::post('unfavorite/{college}', 'CollegeController@unFavoritePost');
+Route::post('favorite/{college}', 'FavoritesController@favorite');
+Route::post('unfavorite/{college}', 'FavoritesController@unFavorite');
 
 Route::get('facultati-favorite', 'InfoUserController@myFavorites')->middleware('auth');
 

@@ -44,7 +44,7 @@ class CollegeController extends Controller
      */
     public function create()
     {
-        $this->authorize('view', Auth::user(), College::class);
+        $this->middleware( [ 'auth', 'verified', 'admin' ] );
         
         //* Get all the data needed from the databse
         $counties = County::all();
@@ -78,8 +78,7 @@ class CollegeController extends Controller
      */
     public function store(Request $request)
     {
-
-        $this->authorize('create', Auth::user());
+        $this->middleware( [ 'auth', 'verified', 'admin' ] );   
 
         //* Validate the data
         $data = $request->validate([
@@ -162,7 +161,7 @@ class CollegeController extends Controller
      */
     public function edit($id)
     {
-        $this->authorize('view', Auth::user(), College::class);
+        $this->middleware( [ 'auth', 'verified', 'admin' ] );
 
         //* Get the college form the databse based on id
         //! If the college doesn't exist return 404
@@ -201,7 +200,7 @@ class CollegeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->authorize('update', Auth::user(), College::class);
+        $this->middleware( [ 'auth', 'verified', 'admin' ] );
 
         //* Get the college form the databse based on id
         //! If the college doesn't exist return 404
@@ -272,7 +271,7 @@ class CollegeController extends Controller
      */
     public function destroy( $id )
     {
-        $this->authorize('delete', College::class);
+        $this->middleware( [ 'auth', 'verified', 'admin' ] );
 
         $college = College::findOrFail( $id );
         $college->delete();
@@ -290,32 +289,6 @@ class CollegeController extends Controller
                 $collegesNew[] = $college;  
             }
         return $collegesNew;
-    }
-
-    /**
-     * Favorite a particular post
-     *
-     * @param  Post $post
-     * @return Response
-     */
-    public function favoritePost(College $college)
-    {
-        Auth::user()->favorites()->attach($college->id);
-
-        return back();
-    }
-
-    /**
-     * Unfavorite a particular post
-     *
-     * @param  Post $post
-     * @return Response
-     */
-    public function unFavoritePost(College $college)
-    {
-        Auth::user()->favorites()->detach($college->id);
-
-        return back();
     }
 
     //algorithm to calculate the compability for every college 
