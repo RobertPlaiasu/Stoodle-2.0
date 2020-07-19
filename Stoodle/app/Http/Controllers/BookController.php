@@ -10,7 +10,7 @@ class BookController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'verified', 'admin', 'checkForm']);
+        $this->middleware(['auth', 'verified', 'admin']);
     }
 
     public function index()
