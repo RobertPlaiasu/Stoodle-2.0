@@ -12,9 +12,9 @@ class RegionSeeder extends Seeder
     public function run()
     {
         DB::table('regions')->insert([
-            ['region' => 'Transilvania'],
-            ['region' => 'Moldova'],
-            ['region' => 'Sud']
+            ['type' => 'Transilvania'],
+            ['type' => 'Moldova'],
+            ['type' => 'Sud']
         ]);
     }
 }

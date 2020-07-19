@@ -8,19 +8,67 @@ use Illuminate\Http\Request;
 
 class CountyController extends Controller
 {
-    public function index(){
-        $counties = County::all();
-        return view('county', [ 'counties' => $counties ] );
+    public function __construct()
+    {
+
+        $this->middleware(['auth', 'verified', 'admin']);
+    }
+
+    public function index()
+    {
+        $data = County::all();
+        $text = 'county';
+        return view('admin.show', compact( 'data', 'text' ));
     }
 
     public function create()
     {
-        $regions = Region::all();
-        return view('county.create',['regions' => $regions]);
+        $data = Region::all();
+        $text = 'county';
+        $hasType = true;
+        return view('admin.create', compact( 'data', 'text', 'hasType' ));
     }
 
-    public function store(Request $request)
+    public function store(Request $request,County $county)
     {
+        $request->validate([
+            'name' => 'required',
+            'type' => 'required'
+        ]);
 
+        $county->name = $request->name;
+        $county->timestamps = false;
+        $county->save();
+        $county->region()->attach( $request->type );
+        $county->save();
+        
+        return redirect('admin/county');
+    }
+
+    public function edit( County $county )
+    {
+        $item = $county;
+        $text = 'county';
+        return view('admin.edit', compact( 'item', 'text' ));
+    }
+
+    public function update(Request $request )
+    {
+        $request->validate([
+            'name' => 'required'
+//            'type' => 'required'
+        ]);
+        $county = new County;
+        $county->name = $request->name;
+        $county->timestamps = false;
+        $county->save();
+
+        return redirect('admin/county/');
+    }
+
+    public function destroy( County $county )
+    {
+        $county->delete();
+        return redirect('/admin/county');
     }
 }

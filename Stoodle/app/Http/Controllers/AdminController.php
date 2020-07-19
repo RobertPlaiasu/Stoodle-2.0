@@ -14,7 +14,8 @@ class AdminController extends Controller
     
     public function index()
     {
-        $text = ['passion', 'passionType', 'profil', 'profilType', 'subject', 'subjectType', 'book', 'university'];
+        $text = ['passion', 'passionType', 'profil', 'profilType',
+                 'subject', 'subjectType', 'book', 'university','county','region'];
         return view('admin.index', compact('text'));
     }
 }
