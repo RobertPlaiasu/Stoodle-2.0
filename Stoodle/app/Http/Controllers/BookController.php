@@ -6,7 +6,7 @@ use App\book;
 use App\User;
 use Illuminate\Http\Request;
 
-class bookController extends Controller
+class BookController extends Controller
 {
     public function __construct()
     {
@@ -15,7 +15,7 @@ class bookController extends Controller
 
     public function index()
     {
-        $data = book::all();
+        $data = Book::all();
         $text = 'book';
         return view('admin.show', compact( 'data', 'text' ));
     }
@@ -42,31 +42,29 @@ class bookController extends Controller
         return redirect('admin/book');
     }
 
-    public function edit( $id )
+    public function edit( Book $book )
     {
-        $item = book::findOrFail( $id );
+        $item = $book;
         $text = 'book';
         return view('admin.edit', compact( 'item', 'text' ));
     }
 
-    public function update(Request $request,$id )
+    public function update(Request $request, Book $book )
     {
         $request->validate([
             'name' => 'required'
         ]);
         
-        $item = book::findOrFail( $id ); 
-        $item->name = $request->name;
-        $item->timestamps = false;
-        $item->save();
+        $book->name = $request->name;
+        $book->timestamps = false;
+        $book->save();
         
         return redirect('admin/book/');
     }
 
-    public function destroy( $id )
+    public function destroy( Book $book )
     {
-        $item = book::findOrFail( $id ); 
-        $item->delete();
+        $book->delete();
         return redirect('/admin/book');
     }
 }
