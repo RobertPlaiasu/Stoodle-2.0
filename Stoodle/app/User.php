@@ -42,6 +42,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    //* Relation to favorites colleges
+    public function favorites()
+    {
+        return $this->belongsToMany(College::class, 'favorites', 'user_id', 'college_id')->withTimeStamps();
+    }
 
     public function sendPasswordResetNotification($token)
     {

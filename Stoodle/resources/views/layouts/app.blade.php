@@ -22,6 +22,8 @@
     <script src="https://kit.fontawesome.com/0dfb644902.js" crossorigin="anonymous"></script></head>
 <body>
     <div id="app">
+        {{-- <example-component></example-component>
+        <favorite></favorite> --}}
         @include('inc.navbar')
         <main class="mx-auto container">
             @yield('content')
