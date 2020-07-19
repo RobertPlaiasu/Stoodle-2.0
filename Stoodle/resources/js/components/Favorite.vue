@@ -6,7 +6,7 @@
         </a>
         <a href="#" v-else @click.prevent="favorite(college)">
             <i  class="fa fa-heart-o"></i>
-            Adaga la favorite
+            Adauga la favorite
         </a>
     </span>
 </template>
