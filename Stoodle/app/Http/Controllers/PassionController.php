@@ -17,14 +17,14 @@ class PassionController extends Controller
 
     public function index()
     {
-        $data = passion::all();
+        $data = Passion::all();
         $text = 'passion';
         return view('admin.show', compact( 'data', 'text' ));
     }
 
     public function create()
     {
-        $data = passionType::all();
+        $data = PassionType::all();
         $text = 'passion';
         $hasType = true;
         return view('admin.create', compact( 'data', 'text', 'hasType' ));
@@ -36,7 +36,7 @@ class PassionController extends Controller
             'name' => 'required'
         ]);
 
-        $passion = new passion;
+        $passion = new Passion;
         $passion->name = $request->name;
         $passion->timestamps = false;
         $passion->save();
@@ -46,32 +46,30 @@ class PassionController extends Controller
         return redirect('admin/passion');
     }
 
-    public function edit( $id )
+    public function edit( Passion $passion )
     {
-        $item = passion::findOrFail( $id );
+        $item = $passion;
         $text = 'passion';
         return view('admin.edit', compact( 'item', 'text' ));
     }
 
-    public function update(Request $request,$id )
+    public function update(Request $request, Passion $passion )
     {
         $request->validate([
             'name' => 'required',
             'type' => 'required'
         ]);
         
-        $item = passion::findOrFail( $id ); 
-        $item->name = $request->name;
-        $item->timestamps = false;
-        $item->save();
+        $passion->name = $request->name;
+        $passion->timestamps = false;
+        $passion->save();
 
         return redirect('admin/passion/');
     }
 
-    public function destroy( $id )
+    public function destroy( Passion $passion )
     {
-        $item = passion::findOrFail( $id ); 
-        $item->delete();
+        $passion->delete();
         return redirect('/admin/passion');
     }
 }
