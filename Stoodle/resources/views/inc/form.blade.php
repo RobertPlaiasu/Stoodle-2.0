@@ -11,7 +11,10 @@
             @endforeach 
         @else
             @foreach ( $data['subjects'] as $subject )
-                <option value="{{ $subject->id }}">{{ $subject->name }}</option>
+                <option value="{{ $subject->id }}"
+                    @if ($subject->id == old('subject1'))
+                        selected
+                    @endif>{{ $subject->name }}</option>
             @endforeach
         @endif
     </select>
@@ -28,7 +31,10 @@
             @endforeach 
         @else
             @foreach ( $data['subjects'] as $subject )
-                <option value="{{ $subject->id }}">{{ $subject->name }}</option>
+                <option value="{{ $subject->id }}"
+                    @if ($subject->id == old('subject2'))
+                    selected
+                    @endif>{{ $subject->name }}</option>
             @endforeach
         @endif
     </select>
@@ -45,7 +51,10 @@
             @endforeach 
         @else
             @foreach ( $data['subjects'] as $subject )
-                <option value="{{ $subject->id }}">{{ $subject->name }}</option>
+                <option value="{{ $subject->id }}"
+                    @if ($subject->id == old('subject3'))
+                    selected
+                    @endif>{{ $subject->name }}</option>
             @endforeach
         @endif
     </select>
@@ -68,7 +77,10 @@
             @endforeach 
         @else
             @foreach (  $data['profils'] as $profil )
-                <option value="{{ $profil->id }}">{{ $profil->name }}</option>
+                <option value="{{ $profil->id }}"
+                    @if ($profil->id == old('profil'))
+                    selected
+                    @endif>{{ $profil->name }}</option>
             @endforeach
         @endif
     </select>
@@ -89,8 +101,14 @@
                     selected
                 @endif>Nu</option>
         @else
-            <option value="1">Da</option>
-            <option value="0">Nu</option>
+            <option value="1"
+                @if (old('stress') == 1)
+                    selected
+                @endif>Da</option>
+            <option value="0"
+                @if (old('stress') == 0)
+                    selected
+                @endif>Nu</option>
         @endif
     </select>
     @error('stress')
@@ -110,8 +128,14 @@
                     selected
                 @endif>Nu</option>
         @else
-            <option value="1">Da</option>
-            <option value="0">Nu</option>
+            <option value="1"
+                @if (old('job') == 1)
+                    selected
+                @endif>Da</option>
+            <option value="0"
+                @if (old('job') == 0)
+                    selected
+                @endif>Nu</option>
         @endif
     </select>
     @error('job')
@@ -130,7 +154,10 @@
             @endforeach 
         @else
             @foreach ( $data['books'] as $book )
-                <option value="{{ $book->id }}">{{ $book->name }}</option>
+                <option value="{{ $book->id }}"
+                    @if ($book->id == old('books'))
+                     selected
+                    @endif>{{ $book->name }}</option>
             @endforeach
         @endif
     </select>
@@ -150,7 +177,10 @@
             @endforeach 
         @else
             @foreach ( $data['counties'] as $county )
-                <option value="{{ $county->id }}">{{ $county->name }}</option>
+                <option value="{{ $county->id }}"
+                    @if ($county->id == old('county'))
+                     selected
+                    @endif>{{ $county->name }}</option>
             @endforeach
         @endif
     </select>
@@ -171,8 +201,14 @@
                     selected
                 @endif>Nu</option>
         @else
-            <option value="1">Da</option>
-            <option value="0">Nu</option>
+        <option value="1"
+            @if (old('social') == 1)
+                selected
+            @endif>Da</option>
+        <option value="0"
+            @if (old('social') == 0)
+                selected
+            @endif>Nu</option>
         @endif
     </select>
     @error('social')
@@ -192,8 +228,14 @@
                     selected
                 @endif>Nu</option>
         @else
-            <option value="1">Da</option>
-            <option value="0">Nu</option>
+        <option value="1"
+            @if (old('sport') == 1)
+                selected
+            @endif>Da</option>
+        <option value="0"
+            @if (old('sport') == 0)
+                selected
+            @endif>Nu</option>
         @endif                   
     </select>
     @error('sport')
