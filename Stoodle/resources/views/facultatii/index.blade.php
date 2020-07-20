@@ -10,24 +10,23 @@
                 type="text" placeholder="cauta" id="search_field" aria-label="Search">
         </div>
         
-        {{-- Display all the colleges that exist --}}
-            <div class="d-flex">
-                @forelse ($colleges as $college)
-                {{ $college->name }}
-                    <college-card
-                        id = {{ $college->id }}
-                        name = {{ $college->name }}
-                        university = {{ $college->university->name }}
-                        compability = {{ $college->compability }}
-                        county = {{ $college->county->name }}
-                        link = {{ $college->url }}
-                        isFavorite = {{ $college->favorited() ? 'true' : 'false' }}
-                    ></college-card>
-                @empty
-                    {{-- If there are no colleges display next content --}}
-                    <h1>Nu am reusit sa incercam facultatile din baza de date</h1>
-                @endforelse
-            </div>
+        {{-- Display colleges --}}
+        <div class="d-flex">
+            @forelse ($colleges as $college)
+                <college-card
+                    id = {{ $college->id }}
+                    name = "{{ $college->name }}"
+                    university = "{{ $college->university->name }}"
+                    compability = "{{ $college->compability }}"
+                    county = "{{ $college->county->name }}"
+                    link = "{{ $college->url }}"
+                    isfavorite = {{ $college->favorited() ? true : false }}
+                ></college-card>
+            @empty
+                {{-- If there are no colleges display next content --}}
+                <h1>Nu am reusit sa incercam facultatile din baza de date</h1>
+            @endforelse
+        </div>
     </div>
 @endsection
 

@@ -1962,9 +1962,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['id', 'name', 'university', 'compability', 'county', 'link', 'isFavorite']
+  props: ['id', 'name', 'university', 'compability', 'county', 'link', 'isfavorite']
 });
 
 /***/ }),
@@ -37610,9 +37609,7 @@ var render = function() {
     _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "name" }, [
-      _c("p", [_vm._v(" " + _vm._s(_vm.id) + " ")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("  " + _vm._s(_vm.name) + " ")])
+      _vm._v("\n          " + _vm._s(_vm.name) + "            \n    ")
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "prop text-center" }, [
@@ -37654,7 +37651,7 @@ var render = function() {
       { staticClass: "row-lg-3 fav text-center" },
       [
         _c("favorite", {
-          attrs: { college: _vm.id, favorited: _vm.isFavorite }
+          attrs: { college: _vm.id, favorited: _vm.isfavorite }
         })
       ],
       1

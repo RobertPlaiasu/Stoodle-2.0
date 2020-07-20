@@ -7,8 +7,7 @@
 
         <!-- Name -->
         <div class="name">
-            <p> {{ id }} </p>
-            <p>  {{ name }} </p>            
+              {{ name }}            
         </div>
 
         <!-- Features -->
@@ -43,7 +42,7 @@
         <div class="row-lg-3 fav text-center"> 
             <favorite
                 :college= id
-                :favorited= isFavorite
+                :favorited= isfavorite
             ></favorite>
         </div>
 
@@ -55,6 +54,6 @@
 </template>
 <script>
     export default {
-        props: [ 'id', 'name', 'university', 'compability', 'county', 'link', 'isFavorite' ],
+        props: [ 'id', 'name', 'university', 'compability', 'county', 'link', 'isfavorite' ],
     }
 </script>
