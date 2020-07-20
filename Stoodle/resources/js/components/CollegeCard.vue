@@ -55,15 +55,6 @@
 </template>
 <script>
     export default {
-        // props: [ 'id', 'name', 'university', 'compability', 'county', 'link', 'isFavorite' ],
-        props: {
-            id: Number, 
-            name: String,
-            university: String,
-            compability: Number,
-            county: String,
-            link: String,
-            isFavorite: Boolean,
-        }
+        props: [ 'id', 'name', 'university', 'compability', 'county', 'link', 'isFavorite' ],
     }
 </script>

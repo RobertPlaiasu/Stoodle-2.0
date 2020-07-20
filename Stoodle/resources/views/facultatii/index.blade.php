@@ -15,13 +15,13 @@
                 @forelse ($colleges as $college)
                 {{ $college->name }}
                     <college-card
-                        :id = {{ $college->id }}
-                        :name = "facultateaDeSah"
-                        {{-- :university = {{ $college->university->name }}
-                        :compobility = {{ $college->compability }}
-                        :county = {{ $college->county->name }}
-                        :link = {{ $college->url }} --}}
-                        :isFavorite = {{ $college->favorited() ? 'true' : 'false' }}
+                        id = {{ $college->id }}
+                        name = {{ $college->name }}
+                        university = {{ $college->university->name }}
+                        compability = {{ $college->compability }}
+                        county = {{ $college->county->name }}
+                        link = {{ $college->url }}
+                        isFavorite = {{ $college->favorited() ? 'true' : 'false' }}
                     ></college-card>
                 @empty
                     {{-- If there are no colleges display next content --}}
