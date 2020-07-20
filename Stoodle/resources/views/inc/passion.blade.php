@@ -11,7 +11,10 @@
             @endforeach
         @else
             @foreach ( $data['passions'] as $passion )
-                <option value="{{ $passion->id }}"> {{ $passion->name }} </option>
+                <option value="{{ $passion->id }}"
+                    @if ($passion->id == old('passion'))
+                        selected
+                    @endif> {{ $passion->name }} </option>
             @endforeach
         @endif
     </select>

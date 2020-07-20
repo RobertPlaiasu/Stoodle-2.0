@@ -14,7 +14,7 @@
     <h1 id="show_header">
         {{ $college->name }} 
         <span> 
-            50
+            {{ $college->compability }} 
             <i class="fas fa-percentage"></i> 
         </span> 
     </h1>
