@@ -15,7 +15,7 @@
                 {{-- Type college's name --}}
                 <div class="form-group">
                     <label for="name">Numele facultatii.</label>
-                    <input type="text" id="name" name="name" class="form-control" placeholder="Numele facultatii">
+                <input type="text" id="name" name="name" class="form-control" value="{{ old('name') }}" placeholder="Numele facultatii">
                     @error('name')
                         {{ $message }}
                     @enderror
@@ -35,7 +35,10 @@
                     <label for="university">Universitatea de care apartine facultatea.</label>
                     <select class="custom-select" name="university" id="countyPassion">
                         @foreach ( $data['universities'] as $university )
-                            <option value="{{ $university->id }}">{{ $university->name }}</option>
+                            <option value="{{ $university->id }}"
+                                @if (old('university') == $university->id)
+                                    selected
+                                @endif>{{ $university->name }}</option>
                         @endforeach
                     </select>
                     @error('university')
@@ -46,7 +49,7 @@
                 {{-- Type the link to the college's website --}}
                 <div class="form-group">
                     <label for="url">Link catre facultate.</label>
-                    <textarea name="url" id="url" rows="1" class="form-control"></textarea>
+                    <input name="url" id="url" value="{{old('url')}}"class="form-control">
                     @error('url')
                         {{ $message }}
                     @enderror
@@ -55,7 +58,7 @@
                 {{-- Type a description for the college --}}
                 <div class="form-group">
                     <label for="description">Descriere facultate.</label>
-                    <textarea name="description" id="description" rows="7" class="form-control"></textarea>
+                    <textarea name="description" id="description" rows="7" class="form-control">{{old('description')}}</textarea>
                     @error('description')
                         {{ $message }}
                     @enderror
@@ -65,8 +68,14 @@
                 <div class="form-group">
                     <label for="admittance">Necesita facultatea admintere?</label>
                     <select class="custom-select" name="admittance" id="admittanceSelect">
-                        <option value="1">Da</option>
-                        <option value="0">Nu</option>
+                        <option value="1"
+                            @if (old('addmittance') == 1)
+                                selected
+                            @endif>Da</option>
+                        <option value="0"
+                            @if (old('addmittance') == 0)
+                                    selected
+                                @endif>Nu</option>
                     </select>
                     @error('admittance')
                             {{ $message }}
