@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 
 class InfoUserController extends Controller
 {
-    use FormTrait;
+    use FormTrait,Sort;
 
     public function __construct()
     {
@@ -92,22 +92,9 @@ class InfoUserController extends Controller
 
     public function myFavorites()
     {
-        $myFavorites = $this->getAllColleges();
+        $myFavorites = $this->getAllColleges(auth()->user()->favorites);
     
         return view('favorites', compact('myFavorites'));
-    }
-
-    public function getAllColleges() :array
-    {
-        $colleges = Auth::user()->favorites;
-        $user = auth()->user();
-        $collegesNew = [];
-        if( count( $colleges ) )
-            foreach($colleges as $college){
-                $college->compability = app('App\Http\Controllers\CollegeController')->collegeCompability($user , $college);
-                $collegesNew[] = $college;  
-            }
-        return $collegesNew;
     }
 
 
