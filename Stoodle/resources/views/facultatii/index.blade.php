@@ -10,66 +10,23 @@
                 type="text" placeholder="cauta" id="search_field" aria-label="Search">
         </div>
         
-        {{-- Display all the colleges that exist --}}
-        @if (count($colleges) > 0)
-            <div class="d-flex">
-                @foreach($colleges as $college)
-                    <div class="card col-lg-4">
-                        {{-- Image --}}
-                        <div class="backgrounded">
-                        <img src="{{ asset('storage/'.$college->image) }}" alt="">
-                        </div>
-
-                        {{-- Name --}}
-                        <div class="name">
-                            {{ $college->name }}                 
-                        </div>
-
-                        {{-- Features --}}
-                        <div class="prop text-center">
-                            <div class="col">
-
-                                {{-- University --}}
-                                <div class="row">
-                                    <div class="col">
-                                        {{ $college->university->name }}
-                                    </div>
-                                </div>
-
-                                {{-- Compability with the student --}}
-                                <div class="row justify-content-between">
-                                    <div class="col">
-                                        {{ $college->compability }}
-                                        <i class="fas fa-percentage"></i>
-                                    </div>
-                                    <div class="col">
-                                        {{ $college->county->name }}
-                                        <i class="fas fa-city"></i>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        {{-- Add the colleges to favorites --}}
-                        <div class="row-lg-3 fav text-center"> 
-                                <favorite
-                                    :college={{ $college->id }}
-                                    :favorited={{ $college->favorited() ? 'true' : 'false' }}
-                                ></favorite>
-                        </div>
-
-                        {{-- Know more about the college --}}
-                        <div class="row-lg-3 extra text-center">
-                            <a href="/facultati/{{ $college->id }}">Afla mai mult</a>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        @else 
-            {{-- If there are no colleges display next content --}}
-            <h1>Nu am reusit sa incercam facultatile din baza de date</h1>
-        @endif
+        {{-- Display colleges --}}
+        <div class="d-flex">
+            @forelse ($colleges as $college)
+                <college-card
+                    id = {{ $college->id }}
+                    name = "{{ $college->name }}"
+                    university = "{{ $college->university->name }}"
+                    compability = "{{ $college->compability }}"
+                    county = "{{ $college->county->name }}"
+                    link = "{{ $college->url }}"
+                    isfavorite = {{ $college->favorited() ? true : false }}
+                ></college-card>
+            @empty
+                {{-- If there are no colleges display next content --}}
+                <h1>Nu am reusit sa incercam facultatile din baza de date</h1>
+            @endforelse
+        </div>
     </div>
 @endsection
 

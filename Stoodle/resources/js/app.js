@@ -22,6 +22,7 @@ var axios = require('axios');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('favorite', require('./components/Favorite.vue').default);
+Vue.component('college-card', require('./components/CollegeCard.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
