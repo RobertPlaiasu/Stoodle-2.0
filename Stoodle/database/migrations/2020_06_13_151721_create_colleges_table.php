@@ -16,7 +16,7 @@ class CreateCollegesTable extends Migration
         Schema::create('colleges', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('image');
+            $table->string('image')->default('default.jpg');
             $table->boolean('admittance');
             $table->boolean('job');
             $table->boolean('social');

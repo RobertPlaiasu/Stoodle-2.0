@@ -11,7 +11,7 @@ class County extends Model
     public function region()
     {
 
-        return $this->belongsToMany(Region::class);
+        return $this->belongsToMany(Region::class,'county_region','county_id','region_id');
 
     } 
 }

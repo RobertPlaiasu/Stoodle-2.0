@@ -74,26 +74,7 @@ class CollegeController extends Controller
      */
     public function store(Request $request)
     {
-        //* Validate the data
-        $data = $request->validate([
-            'name' => 'required|unique:colleges,name|max:100|min:7',
-            'image' => 'required|file|image|mimes:jpeg,png,jpg|max:1999',
-            'university' => 'required|exists:universities,id',
-            'url' => 'required|url',
-            'description' => 'required|min:200|max:30000',
-            'admittance' => 'required|boolean',
-            'passion' => 'required|exists:passions,id',
-            'subject1' => 'required|exists:subjects,id',
-            'subject2' => 'required|exists:subjects,id',
-            'subject3' => 'required|exists:subjects,id',
-            'profil' => 'required|exists:profils,id',
-            'stress' => 'required|boolean',
-            'job' => 'required|boolean',
-            'books' => 'required|exists:books,id',
-            'county' => 'required|exists:counties,id',
-            'social' => 'required|boolean',
-            'sport' => 'required|boolean'
-        ]);
+        $this->validateUpdateOrCreate($request);
 
         //* Check if all the subjects selected ar diferrent
         if($this->verifyMultipleInputs(
@@ -105,27 +86,7 @@ class CollegeController extends Controller
         
         //* If all the data is validated create a new college
         $college = new College;
-        $college->name = $request->name;
-        $college->image = $request->image->store('images','public');
-        $college->university_id = $request->university;
-        $college->description =  $request->description;
-        $college->url = $request->url;
-        $college->admittance = $request->admittance;
-        $college->passion_id = $request->passion;
-        $college->subject_id_1 = $request->subject1;
-        $college->subject_id_2 = $request->subject2;
-        $college->subject_id_3 = $request->subject3;
-        $college->profil_id = $request->profil;
-        $college->stress = $request->stress;
-        $college->job = $request->job;
-        $college->book_id = $request->books;
-        $college->county_id = $request->county;
-        $college->social = $request->social;
-        $college->sport = $request->sport;
-        $college->save();
-
-        $image = Image::make(public_path('storage/'.$college->image))->fit(300,300);
-        $image->save();
+        $this->updateOrCreateCollege($request,$college);
 
         return redirect('facultati'); 
 
@@ -142,7 +103,8 @@ class CollegeController extends Controller
         //* Get the college form the databse based on id
         //! If the college doesn't exist return 404
         $college = College::findOrFail( $id );
-        
+        $user = auth()->user();
+        $college->compability = $this->collegeCompability($user,$college);
         //* Display facultatii/show page with the found college as argument
         return view('facultatii.show', compact('college'));
     }
@@ -196,7 +158,59 @@ class CollegeController extends Controller
         //! If the college doesn't exist return 404
         $college = College::findOrFail( $id );
 
-        $data = request()->validate([
+        $this->validateUpdateOrCreate($request);        
+        //* Check if all the subjects selected ar diferrent
+        if($this->verifyMultipleInputs(
+            $request->subject1,
+            $request->subject2,
+            $request->subject3
+        ))
+        return back()->with('error', "Materiile trebuie sa fie diferite");
+
+        $this->updateOrCreateCollege($request,$college);
+
+        return redirect('facultati');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy( $id )
+    {
+        $college = College::findOrFail( $id );
+        $college->delete();
+        redirect('/facultati');
+    }
+
+    private function updateOrCreateCollege($request,$college) : void 
+    {
+
+        $college->name = $request->name;
+        $college->university_id = $request->university;
+        $college->description =  $request->description;
+        $this->ifFileExists($request,$college);
+        $college->url = $request->url;
+        $college->admittance = $request->admittance;
+        $college->passion_id = $request->passion;
+        $college->subject_id_1 = $request->subject1;
+        $college->subject_id_2 = $request->subject2;
+        $college->subject_id_3 = $request->subject3;
+        $college->profil_id = $request->profil;
+        $college->stress = $request->stress;
+        $college->job = $request->job;
+        $college->book_id = $request->books;
+        $college->county_id = $request->county;
+        $college->social = $request->social;
+        $college->sport = $request->sport;
+        $college->save();
+    }
+
+    private function validateUpdateOrCreate($request) : void
+    {
+        $request->validate([
             'name' => 'required|max:100|min:7',
             'image' => 'sometimes|file|image|mimes:jpeg,png,jpg|max:1999',
             'university' => 'required|exists:universities,id',
@@ -215,55 +229,17 @@ class CollegeController extends Controller
             'social' => 'required|boolean',
             'sport' => 'required|boolean'
         ]);
-        
-        //* Check if all the subjects selected ar diferrent
-        if($this->verifyMultipleInputs(
-            $request->subject1,
-            $request->subject2,
-            $request->subject3
-        ))
-        return back()->with('error', "Materiile trebuie sa fie diferite");
+    }
 
+    private function ifFileExists($request,$college) :void
+    {
         if($request->hasFile('image'))
         {
             $college->image = $request->image->store('images','public');
+
+            $image = Image::make(public_path('storage/'.$college->image))->fit(300,300);
+            $image->save();
         }
-
-        $college->name = $request->name;
-        $college->university_id = $request->university;
-        $college->description =  $request->description;
-        $college->url = $request->url;
-        $college->admittance = $request->admittance;
-        $college->passion_id = $request->passion;
-        $college->subject_id_1 = $request->subject1;
-        $college->subject_id_2 = $request->subject2;
-        $college->subject_id_3 = $request->subject3;
-        $college->profil_id = $request->profil;
-        $college->stress = $request->stress;
-        $college->job = $request->job;
-        $college->book_id = $request->books;
-        $college->county_id = $request->county;
-        $college->social = $request->social;
-        $college->sport = $request->sport;
-        $college->save();
-
-        $image = Image::make(public_path('storage/'.$college->image))->fit(300,300);
-        $image->save();
-
-        return redirect('facultati');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy( $id )
-    {
-        $college = College::findOrFail( $id );
-        $college->delete();
-        redirect('/facultati');
     }
 
 }
