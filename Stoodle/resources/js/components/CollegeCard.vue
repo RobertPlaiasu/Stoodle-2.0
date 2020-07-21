@@ -12,10 +12,10 @@
                  <favorite :college=id :favorited=isfavorite
                 ></favorite>
             </li>
+            <li class="list-group-item">
+                <a :href="'facultati/' + id" target="_top">Afla mai mult</a>
+            </li>
         </ul>
-        <div class="card-body">
-            <a :href="'facultati/' + id" target="_top">Afla mai mult</a>
-        </div>
     </div>
 </template>
 <script>

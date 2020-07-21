@@ -37615,15 +37615,15 @@ var render = function() {
             })
           ],
           1
-        )
+        ),
+        _vm._v(" "),
+        _c("li", { staticClass: "list-group-item" }, [
+          _c("a", { attrs: { href: "facultati/" + _vm.id, target: "_top" } }, [
+            _vm._v("Afla mai mult")
+          ])
+        ])
       ]
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
-      _c("a", { attrs: { href: "facultati/" + _vm.id, target: "_top" } }, [
-        _vm._v("Afla mai mult")
-      ])
-    ])
+    )
   ])
 }
 var staticRenderFns = []
