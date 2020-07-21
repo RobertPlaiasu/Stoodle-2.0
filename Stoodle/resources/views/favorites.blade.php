@@ -3,7 +3,7 @@
 @section('title', 'Favorite')
 
 @section('content')
-    <div class="text-center">
+    <div class="text-center mx-auto container">
         {{-- Search Bar --}}
         <div id="search" class="mx-4 my-3">
             <input onkeyup="sort()" class="form-control"

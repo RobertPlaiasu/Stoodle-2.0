@@ -3,6 +3,8 @@
 @section('title', 'Creare profil')
 
 @section('content')
+<div class="mx-auto container mt-4">
+
     <h1> Schimba {{ $text }} in baza de date</h1>
     <form action="/admin/{{ $text }}/{{ $item->id }}" method="post">
         @csrf
@@ -14,17 +16,17 @@
                 <small>
                     {{ $message }}
                 </small>
-            @enderror
+                @enderror
         </div>
         @if ( $hasType )
-            <div class="form-group">
+        <div class="form-group">
                 <label for="name">Tipul {{ $text }}</label>    
                 <select name="type" class="form-control" multiple>
                     @forelse ($data as $item)
                         <option value="{{ $item->id }}"> {{ $item->type }} </option>
                     @empty
                         Reincarca pagina!
-                    @endforelse
+                        @endforelse
                 </select>
                 @error('type')
                     <small>
@@ -32,9 +34,10 @@
                     </small>
                 @enderror
             </div>       
-        @endif  
+            @endif  
 
-        <input type="submit" value="Trimite" name="formularsubmit" class="button">
+            <input type="submit" value="Trimite" name="formularsubmit" class="button">
 
-    </form>
-@endsection
+        </form>
+    </div>
+        @endsection

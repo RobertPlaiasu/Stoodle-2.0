@@ -22,6 +22,10 @@
 // Colleges scss
 @import 'college';
 
+html{
+    overflow-x: hidden;
+}
+
 /* BUTTON */
 .button {
     background: $green;
