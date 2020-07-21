@@ -1963,7 +1963,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['id', 'name', 'university', 'compability', 'county', 'link', 'isfavorite']
+  props: ['id', 'name', 'university', 'compability', 'county', 'isfavorite']
 });
 
 /***/ }),
@@ -37657,7 +37657,11 @@ var render = function() {
       1
     ),
     _vm._v(" "),
-    _vm._m(1)
+    _c("div", { staticClass: "row-lg-3 extra text-center" }, [
+      _c("a", { attrs: { href: "facultati/" + _vm.id, target: "_top" } }, [
+        _vm._v("Afla mai mult")
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -37667,14 +37671,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "backgrounded" }, [
       _c("img", { attrs: { src: "image", alt: "" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row-lg-3 extra text-center" }, [
-      _c("a", { attrs: { href: "www.google.com" } }, [_vm._v("Afla mai mult")])
     ])
   }
 ]
@@ -50264,8 +50260,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Xampp\htdocs\Stoodle-2.0\Stoodle\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Xampp\htdocs\Stoodle-2.0\Stoodle\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\xampp\htdocs\Stoodle-2.0\Stoodle\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\xampp\htdocs\Stoodle-2.0\Stoodle\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
