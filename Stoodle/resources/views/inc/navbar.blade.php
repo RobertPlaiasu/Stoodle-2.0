@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav w-100 ml-4">
                 <li class="nav-item">
-                    <a href="{{ url('/facultati') }}" class="nav-link">Exploreaza</a>
+                    <a href="{{ url('/facultati') }}" class="nav-link">Acasa</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('/contact') }}" class="nav-link">Contact</a>
