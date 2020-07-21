@@ -17,7 +17,7 @@
                     id = {{ $college->id }}
                     name = "{{ $college->name }}"
                     university = "{{ $college->university->name }}"
-                    compability = "{{ $college->compability }}"
+                    compatility = "{{ $college->compability }}"
                     county = "{{ $college->county->name }}"
                     isfavorite = {{ $college->favorited() ? true : false }}
                 ></college-card>
