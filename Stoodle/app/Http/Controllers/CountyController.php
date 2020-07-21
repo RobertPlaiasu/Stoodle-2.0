@@ -47,20 +47,23 @@ class CountyController extends Controller
 
     public function edit( County $county )
     {
+        $data = Region::all();
         $item = $county;
         $text = 'county';
-        return view('admin.edit', compact( 'item', 'text' ));
+        $hasType = true;
+        return view('admin.edit', compact( 'item', 'text','hasType','data'));
     }
 
-    public function update(Request $request )
+    public function update(Request $request,County $county)
     {
         $request->validate([
-            'name' => 'required'
-//            'type' => 'required'
+            'name' => 'required',
+            'type' => 'required'
         ]);
-        $county = new County;
         $county->name = $request->name;
         $county->timestamps = false;
+        $county->save();
+        $county->region()->sync($request->type);
         $county->save();
 
         return redirect('admin/county/');

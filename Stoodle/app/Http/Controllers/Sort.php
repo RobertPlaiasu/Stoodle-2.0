@@ -25,6 +25,21 @@ trait Sort
         $compabilitySum = 0;
         $compabilityMax = 110;
 
+        $college->load('profil.profilType');
+        $user->load('profil.profilType');
+        
+        $college->load('passion.passionType');
+        $user->load('passion.passionType');
+
+        $user->load('subject1.subjectType');
+        $user->load('subject2.subjectType');
+        $user->load('subject3.subjectType');
+        $college->load('subject1.subjectType');
+        $college->load('subject2.subjectType');
+        $college->load('subject3.subjectType');
+
+        $user->load('county.region');
+        $college->load('county.region');
 
         $compabilitySum += $this->compareBoolean($user->job,$college->job);
         $compabilitySum += $this->compareBoolean($user->sport,$college->sport);
