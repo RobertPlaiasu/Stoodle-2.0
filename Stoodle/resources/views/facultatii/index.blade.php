@@ -19,7 +19,6 @@
                     university = "{{ $college->university->name }}"
                     compability = "{{ $college->compability }}"
                     county = "{{ $college->county->name }}"
-                    link = "{{ $college->url }}"
                     isfavorite = {{ $college->favorited() ? true : false }}
                 ></college-card>
             @empty

@@ -48,12 +48,12 @@
 
         <!-- External link -->
         <div class="row-lg-3 extra text-center">
-            <a href="www.google.com">Afla mai mult</a>
+            <a :href="'facultati/' + id" target="_top">Afla mai mult</a>
         </div>
     </div>
 </template>
 <script>
     export default {
-        props: [ 'id', 'name', 'university', 'compability', 'county', 'link', 'isfavorite' ],
+        props: [ 'id', 'name', 'university', 'compability', 'county', 'isfavorite' ],
     }
 </script>
