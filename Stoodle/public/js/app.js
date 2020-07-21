@@ -1963,7 +1963,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['id', 'name', 'university', 'compability', 'county', 'link', 'isfavorite']
+  props: ['id', 'name', 'university', 'compability', 'county', 'isfavorite']
 });
 
 /***/ }),
@@ -37658,7 +37658,7 @@ var render = function() {
     ),
     _vm._v(" "),
     _c("div", { staticClass: "row-lg-3 extra text-center" }, [
-      _c("a", { attrs: { href: _vm.link, target: "_blank" } }, [
+      _c("a", { attrs: { href: "facultati/" + _vm.id, target: "_top" } }, [
         _vm._v("Afla mai mult")
       ])
     ])
