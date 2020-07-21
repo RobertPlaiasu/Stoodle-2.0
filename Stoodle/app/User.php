@@ -57,4 +57,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $this->notify(new CustomVerifyEmailNotification());
     }
+    public function county()
+    {
+
+        return $this->belongsTo(County::class);
+
+    }
 }

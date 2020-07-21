@@ -34,7 +34,7 @@ class BookController extends Controller
             'name' => 'required'
         ]);
 
-        $book = new book;
+        $book = new Book;
         $book->name = $request->name;
         $book->timestamps = false;
         $book->save();
@@ -46,7 +46,8 @@ class BookController extends Controller
     {
         $item = $book;
         $text = 'book';
-        return view('admin.edit', compact( 'item', 'text' ));
+        $hasType = false;
+        return view('admin.edit', compact( 'item', 'text' ,'hasType' ));
     }
 
     public function update(Request $request, Book $book )
