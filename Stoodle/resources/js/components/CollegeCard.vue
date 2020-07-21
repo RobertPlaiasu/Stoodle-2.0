@@ -48,7 +48,7 @@
 
         <!-- External link -->
         <div class="row-lg-3 extra text-center">
-            <a href="www.google.com">Afla mai mult</a>
+            <a :href="link" target="_blank">Afla mai mult</a>
         </div>
     </div>
 </template>
