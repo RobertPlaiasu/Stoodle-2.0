@@ -37604,7 +37604,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "li",
-          { staticClass: "list-group-item" },
+          { staticClass: "list-group-item", attrs: { id: "favorite" } },
           [
             _c("favorite", {
               attrs: { college: _vm.id, favorited: _vm.isfavorite }
@@ -37613,11 +37613,17 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _c("li", { staticClass: "list-group-item" }, [
-          _c("a", { attrs: { href: "facultati/" + _vm.id, target: "_top" } }, [
-            _vm._v("Afla mai mult")
-          ])
-        ])
+        _c(
+          "li",
+          { staticClass: "list-group-item", attrs: { id: "learn-more" } },
+          [
+            _c(
+              "a",
+              { attrs: { href: "facultati/" + _vm.id, target: "_top" } },
+              [_vm._v("Afla mai mult")]
+            )
+          ]
+        )
       ]
     )
   ])

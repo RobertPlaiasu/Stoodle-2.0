@@ -3,7 +3,7 @@
 @section('title', 'Resetare parola')
 
 @section('content')
-    <div class="container login">
+    <div class="container mx-auto login">
         <div class="headline">
             <img src="{{ asset('img/logo.png') }}" alt="Logo">
             <h1>Resetare parola</h1>
