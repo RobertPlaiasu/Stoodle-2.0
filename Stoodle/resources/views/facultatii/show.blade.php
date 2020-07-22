@@ -37,8 +37,8 @@
         <a href="{{ $college->url }}" target="_blank">Daca vrei sa afli mai mult despre aceasta facultate apasa aici</a>
         
         {{-- Edit option for admins --}}
-        @can('view', Auth::user())
+        @if( Auth::user()->admin )
             <a href="/facultati/{{ $college->id }}/edit">EDIT</a>
-        @endcan
+        @endif
     </footer>
 @endsection
