@@ -9,9 +9,22 @@
         </a>
 
         <div class="collapse navbar-collapse" id="navbarNav">
+            
             <ul class="navbar-nav w-100 ml-4">
+                @guest
+                    <li class="nav-item ml-auto">
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('autentificare') }}</a>
+                    </li>
+                    
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('inregistrare') }}</a>
+                        </li>
+                    @endif
+
+                @else
                 <li class="nav-item">
-                    <a href="{{ url('/facultati') }}" class="nav-link">Exploreaza</a>
+                    <a href="{{ url('/facultati') }}" class="nav-link">Acasa</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('/contact') }}" class="nav-link">Contact</a>
@@ -42,6 +55,7 @@
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
+                @endguest
             </ul>
         </div>
     </div>

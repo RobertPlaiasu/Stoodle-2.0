@@ -15,6 +15,7 @@
             @forelse ($colleges as $college)
                 <college-card
                     id = {{ $college->id }}
+                    image = "{{ asset('storage/'.$college->image) }}"
                     name = "{{ $college->name }}"
                     university = "{{ $college->university->name }}"
                     compatility = "{{ $college->compability }}"
