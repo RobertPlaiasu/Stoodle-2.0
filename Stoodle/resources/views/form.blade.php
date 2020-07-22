@@ -11,7 +11,7 @@
             @csrf
             @include('inc.passion')
             <div class="form-group">
-                <label for="passion-metter"> Cat de pasionat esti? </label> <br>
+                <label for="passion-metter"> Pe o scara de la 1 la 5 cat conteaza pentru tine aceasta pasiune ? </label> <br>
                 <input class="radio" type="radio" name="passionIntensity" id="budget-1" value="1" checked>
                     <label class="for-radio" for="budget-1">
                         <span data-hover="1">1</span>

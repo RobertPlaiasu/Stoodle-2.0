@@ -43,7 +43,7 @@ class InfoUserController extends Controller
 
         return view('/form')
             ->with('data', $data)
-            ->with('text', FormController::generateUserFormText());
+            ->with('text', $this->generateFormText());
     }
 
     public function store(Request $request)
@@ -95,6 +95,21 @@ class InfoUserController extends Controller
         $myFavorites = $this->getAllColleges(auth()->user()->favorites);
     
         return view('favorites', compact('myFavorites'));
+    }
+
+    private function generateFormText() :array
+    {
+        return [
+            'De ce esti pasionat ?',
+            'Ce materii iti plac ?',
+            'Pe ce profil esti ?',
+            'Poti face fata unor situatii stresante ?',
+            'Iti doresti un part-time job pe durata facultatii ?',
+            'Ce tip de carti citesti ?',
+            'Din ce judet esti ?',
+            'Te consider o persoana sociabila ?',
+            'Practici vreun sport ?'
+        ];
     }
 
 
