@@ -26,7 +26,7 @@ class SubjectController extends Controller
         $data = subjectType::all();
         $text = 'subject';
         $hasType = true;
-        return view('admin.create', compact( 'data', 'text', 'hasType' ,''));
+        return view('admin.create', compact( 'data', 'text', 'hasType' ));
     }
 
     public function store(Request $request)
