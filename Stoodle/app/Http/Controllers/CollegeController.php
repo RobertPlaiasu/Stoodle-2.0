@@ -210,10 +210,10 @@ class CollegeController extends Controller
     private function validateUpdateOrCreate($request) : void
     {
         $request->validate([
-            'name' => 'required|max:100|min:7',
+            'name' => 'required|max:255|min:7',
             'image' => 'sometimes|file|image|mimes:jpeg,png,jpg|max:1999',
             'university' => 'required|exists:universities,id',
-            'url' => 'required|url',
+            'url' => 'required|url|max:255',
             'description' => 'required|min:200|max:30000',
             'admittance' => 'required|boolean',
             'passion' => 'required|exists:passions,id',

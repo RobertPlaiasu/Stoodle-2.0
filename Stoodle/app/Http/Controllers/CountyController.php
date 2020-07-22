@@ -18,6 +18,7 @@ class CountyController extends Controller
     {
         $data = County::all();
         $text = 'county';
+        $hasType = true;
         return view('admin.show', compact( 'data', 'text' ));
     }
 
@@ -32,8 +33,8 @@ class CountyController extends Controller
     public function store(Request $request,County $county)
     {
         $request->validate([
-            'name' => 'required',
-            'type' => 'required'
+            'name' => 'required|unique:counties,name|max:255',
+            'type' => 'required|exists:regions,id'
         ]);
 
         $county->name = $request->name;
@@ -51,14 +52,15 @@ class CountyController extends Controller
         $item = $county;
         $text = 'county';
         $hasType = true;
-        return view('admin.edit', compact( 'item', 'text','hasType','data'));
+        $typeSelected = $county->region()->pluck('region_id')->toArray();
+        return view('admin.edit', compact( 'item', 'text','hasType','data','typeSelected'));
     }
 
     public function update(Request $request,County $county)
     {
         $request->validate([
-            'name' => 'required',
-            'type' => 'required'
+            'name' => 'required|max:255',
+            'type' => 'required|exists:regions,id'
         ]);
         $county->name = $request->name;
         $county->timestamps = false;
@@ -66,7 +68,7 @@ class CountyController extends Controller
         $county->region()->sync($request->type);
         $county->save();
 
-        return redirect('admin/county/');
+        return redirect('admin/county');
     }
 
     public function destroy( County $county )

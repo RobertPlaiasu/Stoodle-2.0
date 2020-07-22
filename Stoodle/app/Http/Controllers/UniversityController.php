@@ -22,16 +22,15 @@ class UniversityController extends Controller
 
     public function create()
     {
-        $data = NULL;
         $text = 'university';
         $hasType = false;
-        return view('admin.create', compact( 'data', 'text', 'hasType' ));
+        return view('admin.create', compact( 'text', 'hasType' ));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required|max:255|unique:universities,name'
         ]);
 
         $university = new University;
@@ -46,13 +45,14 @@ class UniversityController extends Controller
     {
         $item = $university;
         $text = 'university';
-        return view('admin.edit', compact( 'item', 'text' ));
+        $hasType = false;
+        return view('admin.edit', compact( 'item', 'text','hasType' ));
     }
 
     public function update(Request $request, University $university )
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required|max:255'
         ]);
         
         $university->name = $request->name;

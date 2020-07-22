@@ -30,7 +30,7 @@ class RegionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required|unique:regions,type|max:255'
         ]);
 
         $region = new Region;
@@ -45,13 +45,14 @@ class RegionController extends Controller
     {
         $item = $region;
         $text = 'region';
-        return view('admin.edit', compact( 'item', 'text' ));
+        $hasType = false;
+        return view('admin.edit', compact( 'item', 'text','hasType'));
     }
 
     public function update(Request $request, Region $region )
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required|max:255'
         ]);
         
         $region->type = $request->name;

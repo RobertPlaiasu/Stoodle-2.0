@@ -33,7 +33,8 @@ class PassionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required|unique:passions,name|max:255',
+            'type' => 'required|exists:passion_types,id'
         ]);
 
         $passion = new Passion;
@@ -50,21 +51,26 @@ class PassionController extends Controller
     {
         $item = $passion;
         $text = 'passion';
-        return view('admin.edit', compact( 'item', 'text' ));
+        $hasType = true;
+        $data = PassionType::all();
+        $typeSelected = $passion->passionType()->pluck('passion_type_id')->toArray();
+        return view('admin.edit', compact( 'item', 'text','hasType','data','typeSelected'));
     }
 
     public function update(Request $request, Passion $passion )
     {
         $request->validate([
-            'name' => 'required',
-            'type' => 'required'
+            'name' => 'required|max:255',
+            'type' => 'required|exists:passion_types,id'
         ]);
         
         $passion->name = $request->name;
         $passion->timestamps = false;
         $passion->save();
+        $passion->passionType()->sync($request->type);
+        $passion->save();
 
-        return redirect('admin/passion/');
+        return redirect('admin/passion');
     }
 
     public function destroy( Passion $passion )
