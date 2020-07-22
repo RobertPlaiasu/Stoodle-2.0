@@ -4,7 +4,7 @@
 
 @section('content')
     {{-- Close option --}}
-    <div id="background"></div>
+<div id="background" style="background: url('{{ asset('storage/'.$college->image) }}')"></div>
     <div class="mx-auto container">
     
         <div class="d-flex align-items-center justify-content-between">
