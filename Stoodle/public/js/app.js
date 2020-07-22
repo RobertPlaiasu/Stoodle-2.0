@@ -1928,42 +1928,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['id', 'name', 'university', 'compability', 'county', 'isfavorite']
+  props: ['id', 'image', 'name', 'university', 'compatility', 'county', 'isfavorite']
 });
 
 /***/ }),
@@ -37605,75 +37571,58 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card col-lg-4" }, [
-    _vm._m(0),
+  return _c("div", { staticClass: "card", staticStyle: { width: "18rem" } }, [
+    _c("img", {
+      staticClass: "card-img-top",
+      attrs: { src: _vm.image, alt: "Card image cap" }
+    }),
     _vm._v(" "),
-    _c("div", { staticClass: "name" }, [
-      _vm._v("\n          " + _vm._s(_vm.name) + "            \n    ")
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "prop text-center" }, [
-      _c("div", { staticClass: "col" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col" }, [
-            _vm._v(
-              "\n                    " +
-                _vm._s(_vm.university) +
-                "\n                "
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row justify-content-between" }, [
-          _c("div", { staticClass: "col" }, [
-            _vm._v(
-              "\n                    " +
-                _vm._s(_vm.compability) +
-                "\n                    "
-            ),
-            _c("i", { staticClass: "fas fa-percentage" })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col" }, [
-            _vm._v(
-              "\n                    " +
-                _vm._s(_vm.county) +
-                "\n                    "
-            ),
-            _c("i", { staticClass: "fas fa-city" })
-          ])
-        ])
+    _c("div", { staticClass: "card-body" }, [
+      _c("h5", { staticClass: "card-title m-0" }, [
+        _vm._v(" " + _vm._s(_vm.name) + " ")
       ])
     ]),
     _vm._v(" "),
     _c(
-      "div",
-      { staticClass: "row-lg-3 fav text-center" },
+      "ul",
+      {
+        staticClass: "list-group list-group-flush",
+        staticStyle: { "font-weight": "bold" }
+      },
       [
-        _c("favorite", {
-          attrs: { college: _vm.id, favorited: _vm.isfavorite }
-        })
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "row-lg-3 extra text-center" }, [
-      _c("a", { attrs: { href: "facultati/" + _vm.id, target: "_top" } }, [
-        _vm._v("Afla mai mult")
-      ])
-    ])
+        _c("li", { staticClass: "list-group-item" }, [
+          _vm._v(" " + _vm._s(_vm.university) + " ")
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "list-group-item" }, [
+          _vm._v(" Judetul " + _vm._s(_vm.county))
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "list-group-item" }, [
+          _vm._v("Compatibilitatelitatea: " + _vm._s(_vm.compatility))
+        ]),
+        _vm._v(" "),
+        _c(
+          "li",
+          { staticClass: "list-group-item" },
+          [
+            _c("favorite", {
+              attrs: { college: _vm.id, favorited: _vm.isfavorite }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("li", { staticClass: "list-group-item" }, [
+          _c("a", { attrs: { href: "facultati/" + _vm.id, target: "_top" } }, [
+            _vm._v("Afla mai mult")
+          ])
+        ])
+      ]
+    )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "backgrounded" }, [
-      _c("img", { attrs: { src: "image", alt: "" } })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
