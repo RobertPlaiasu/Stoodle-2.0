@@ -3,6 +3,8 @@
 @section('title', 'Admin Panel')
 
 @section('content')
+<div class="mx-auto container">
+
     <div id="headline" class="m-4">
         <h1 class="text-capitalize"> {{ $text }} Manager </h1>
     </div>
@@ -27,7 +29,7 @@
                         <form action="/admin/{{ $text }}/{{ $item->id }}" method="POST">
                             @method('DELETE')
                             @csrf
-
+                            
                             <button class="btn">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
                             </button>
@@ -38,4 +40,5 @@
             </ul>
         </div>
     </div>
-@endsection
+</div>
+    @endsection

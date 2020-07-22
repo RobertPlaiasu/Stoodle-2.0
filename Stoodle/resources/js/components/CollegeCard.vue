@@ -8,11 +8,11 @@
             <li class="list-group-item"> {{ university }} </li>
             <li class="list-group-item"> Judetul {{ county }}</li>
             <li class="list-group-item">Compatibilitatelitatea: {{ compatility }}</li>
-            <li class="list-group-item">
+            <li class="list-group-item" id="favorite">
                  <favorite :college=id :favorited=isfavorite
                 ></favorite>
             </li>
-            <li class="list-group-item">
+            <li class="list-group-item" id="learn-more">
                 <a :href="'facultati/' + id" target="_top">Afla mai mult</a>
             </li>
         </ul>

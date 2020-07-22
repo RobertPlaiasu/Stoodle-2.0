@@ -11166,9 +11166,20 @@ a.text-dark:focus {
   box-shadow: 0 1x 4px 0 rgba(0, 0, 0, 0.05);
 }
 
-#close {
-  position: absolute;
-  right: 3em;
+#background {
+  width: 100vw;
+  height: 50vh;
+  background-attachment: fixed;
+  background-repeat: none;
+  background-size: cover;
+  background-position: bottom;
+  -webkit-filter: brightness(30%);
+          filter: brightness(30%);
+}
+
+#description {
+  word-wrap: break-word;
+  margin: 0 2em;
 }
 
 #close a {
@@ -11176,14 +11187,30 @@ a.text-dark:focus {
   color: #00A089;
 }
 
-#show_header {
-  margin: 0;
+#college_compatibility {
+  color: #00A089;
 }
 
-#show_header span {
-  font-size: 1rem;
+#college_show_footer a {
+  text-transform: uppercase;
+  color: #343a40;
+  font-weight: 800;
+}
+
+#favorite a {
   color: #00A089;
-  font-weight: bold;
+}
+
+#learn-more {
+  background-color: #00A089;
+}
+
+#learn-more a {
+  color: white;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 /* BUTTON */

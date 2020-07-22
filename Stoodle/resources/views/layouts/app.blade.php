@@ -25,7 +25,7 @@
         {{-- <example-component></example-component>
         <favorite></favorite> --}}
         @include('inc.navbar')
-        <main class="mx-auto container">
+        <main>
             @yield('content')
         </main>
     </div>

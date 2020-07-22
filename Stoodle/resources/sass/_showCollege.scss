@@ -1,0 +1,28 @@
+#background{
+    width: 100vw;
+    height: 50vh;
+    background-attachment: fixed;
+    background-repeat: none;
+    background-size: cover;
+    background-position: bottom;
+    filter: brightness(30%);
+}
+#description{
+    word-wrap: break-word;
+    margin: 0 2em;
+}
+
+#close a{
+    font-size: 1.5rem;
+    color: $green;
+}
+
+#college_compatibility{
+    color: $green;
+}
+
+#college_show_footer a{
+    text-transform: uppercase;
+    color: #343a40;
+    font-weight: 800;
+}

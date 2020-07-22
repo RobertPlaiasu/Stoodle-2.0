@@ -36,7 +36,7 @@
                         {{ $message }}
                     @enderror
             </div>
-            @include('inc.form');
+            @include('inc.form')
             <input type="submit" value="Trimite Formular" name="formularsubmit" class="button">
         </form>
     </div>
