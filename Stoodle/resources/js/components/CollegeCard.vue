@@ -1,59 +1,25 @@
 <template>
-    <div class="card col-lg-4">
-        <!-- Image -->
-        <div class="backgrounded">
-        <img src="image" alt="">
+   <div class="card" style="width: 18rem;">
+        <img class="card-img-top" :src="image" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title m-0"> {{ name }} </h5>
         </div>
-
-        <!-- Name -->
-        <div class="name">
-              {{ name }}            
-        </div>
-
-        <!-- Features -->
-        <div class="prop text-center">
-            <div class="col">
-
-                <!-- University -->
-                <div class="row">
-                    <div class="col">
-                        {{ university }}
-                    </div>
-                </div>
-
-                <div class="row justify-content-between">
-                    <!-- Compability with the student -->
-                    <div class="col">
-                        {{ compability }}
-                        <i class="fas fa-percentage"></i>
-                    </div>
-
-                    <!-- County -->
-                    <div class="col">
-                        {{ county }}
-                        <i class="fas fa-city"></i>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Add card to favorites -->
-        <div class="row-lg-3 fav text-center"> 
-            <favorite
-                :college= id
-                :favorited= isfavorite
-            ></favorite>
-        </div>
-
-        <!-- External link -->
-        <div class="row-lg-3 extra text-center">
-            <a :href="'facultati/' + id" target="_top">Afla mai mult</a>
-        </div>
+        <ul class="list-group list-group-flush" style="font-weight: bold">
+            <li class="list-group-item"> {{ university }} </li>
+            <li class="list-group-item"> Judetul {{ county }}</li>
+            <li class="list-group-item">Compatibilitatelitatea: {{ compatility }}</li>
+            <li class="list-group-item">
+                 <favorite :college=id :favorited=isfavorite
+                ></favorite>
+            </li>
+            <li class="list-group-item">
+                <a :href="'facultati/' + id" target="_top">Afla mai mult</a>
+            </li>
+        </ul>
     </div>
 </template>
 <script>
     export default {
-        props: [ 'id', 'name', 'university', 'compability', 'county', 'isfavorite' ],
+        props: [ 'id', 'image', 'name', 'university', 'compatility', 'county', 'isfavorite' ],
     }
 </script>

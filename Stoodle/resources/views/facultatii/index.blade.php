@@ -15,9 +15,10 @@
             @forelse ($colleges as $college)
                 <college-card
                     id = {{ $college->id }}
+                    image = "{{ asset('storage/'.$college->image) }}"
                     name = "{{ $college->name }}"
                     university = "{{ $college->university->name }}"
-                    compability = "{{ $college->compability }}"
+                    compatility = "{{ $college->compability }}"
                     county = "{{ $college->county->name }}"
                     isfavorite = {{ $college->favorited() ? true : false }}
                 ></college-card>
