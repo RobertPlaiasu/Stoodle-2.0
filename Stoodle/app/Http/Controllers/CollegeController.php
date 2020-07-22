@@ -63,7 +63,7 @@ class CollegeController extends Controller
         //* Display facultatii/create page with data and text needed as arguments
         return view('facultatii.create')
             ->with('data', $data)
-            ->with('text', FormController::generateCollegeFormText());
+            ->with('text', $this->generateFormText());
     }
 
     /**
@@ -142,7 +142,7 @@ class CollegeController extends Controller
         //* Display facultatii/edit page with the found college, data from the database and the needed text as arguments
         return view('facultatii.edit', compact('college'))
             ->with('data', $data)
-            ->with('text', FormController::generateCollegeFormText());
+            ->with('text', $this->generateFormText());
     }
 
     /**
@@ -239,6 +239,21 @@ class CollegeController extends Controller
             $image = Image::make(public_path('storage/'.$college->image))->fit(300,300);
             $image->save();
         }
+    }
+
+    private function generateFormText() :array
+    {
+        return [
+            'Pasiunea ce se potriveste facultatii',
+            'Materii ce se potrivesc facultatii',
+            'Profilul ideal',
+            'Trebuie ca elevul sa faca fata situatiilor stresante?',
+            'Isi permite un elev mediocru sa aiba un job part-time?',
+            'Ce tip de carti trebuie sa citeasca elevul ideal?',
+            'Judetul in care se afla facultatea',
+            'Trebuie ca elevul sa comunice frecvent?',
+            'Trebuie ca elevul ideal sa practice un sport in timpul liber?',
+        ];
     }
 
 }
