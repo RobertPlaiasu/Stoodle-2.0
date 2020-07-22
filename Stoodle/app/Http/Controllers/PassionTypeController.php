@@ -33,13 +33,13 @@ class PassionTypeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required|unique:passion_types,type|max:255'
         ]);
 
-        $profil = new PassionType;
-        $profil->type = $request->name;
-        $profil->timestamps = false;
-        $profil->save();
+        $passionType = new PassionType;
+        $passionType->type = $request->name;
+        $passionType->timestamps = false;
+        $passionType->save();
         
         return redirect()->back();
     }
@@ -48,13 +48,14 @@ class PassionTypeController extends Controller
     {
         $item = $passionType;
         $text = 'passionType';
-        return view('admin.edit', compact( 'item', 'text' ));
+        $hasType = false;
+        return view('admin.edit', compact( 'item', 'text','hasType'));
     }
 
     public function update(Request $request, PassionType $passionType )
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required|max:255'
         ]);
         
         $passionType->type = $request->name;

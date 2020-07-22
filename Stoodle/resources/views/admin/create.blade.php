@@ -11,7 +11,7 @@
 
         <div class="form-group">
             <label for="name">Nume {{ $text }}</label>    
-            <input type="text" name="name" class="form-control">
+            <input type="text" name="name" value="{{old('name')}}"class="form-control">
             @error('name')
                 <small>
                     {{ $message }}
@@ -21,10 +21,15 @@
             @if ( $hasType )
             <div class="form-group">
                 <label for="name">Tipul {{ $text }}</label>    
-                <select name="type" class="form-control" multiple>
+                <select name="type[]" class="form-control" multiple>
                     @forelse ($data as $item)
-                        <option value="{{ $item->id }}"> {{ $item->type }} </option>
-                        @empty
+                        <option value="{{ $item->id }}"
+                            @if(old('type'))
+                                @if (in_array($item->id,old('type')))
+                                    selected="selected"
+                                @endif
+                            @endif> {{ $item->type }} </option>
+                    @empty
                         Reincarca pagina!
                         @endforelse
                     </select>

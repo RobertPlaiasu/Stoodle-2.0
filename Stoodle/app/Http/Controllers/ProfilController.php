@@ -32,8 +32,8 @@ class ProfilController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'type' => 'required'
+            'name' => 'required|max:255|unique:profils,name',
+            'type' => 'required|exists:profil_types,id'
         ]);
 
         $profil = new Profil;
@@ -50,20 +50,26 @@ class ProfilController extends Controller
     {
         $item = $profil;
         $text = 'profil';
-        return view('admin.edit', compact( 'item', 'text' ));
+        $hasType = true;
+        $data = ProfilType::all();
+        $typeSelected = $profil->profilType()->pluck('profil_type_id')->toArray();
+        return view('admin.edit', compact( 'item', 'text','hasType','data','typeSelected'));
     }
 
     public function update(Request $request, Profil $profil )
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required|max:255',
+            'type' => 'required|exists:profils,id'
         ]);
         
         $profil->name = $request->name;
         $profil->timestamps = false;
         $profil->save();
+        $profil->profilType()->sync( $request->type );
+        $profil->save();
         
-        return redirect('admin/profil/');
+        return redirect('admin/profil');
     }
 
     public function destroy( Profil $profil )

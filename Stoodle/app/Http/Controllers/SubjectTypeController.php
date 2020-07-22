@@ -33,13 +33,13 @@ class SubjectTypeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required|max:255|unique:subject_type,type'
         ]);
 
-        $profil = new SubjectType;
-        $profil->type = $request->name;
-        $profil->timestamps = false;
-        $profil->save();
+        $subjectType = new SubjectType;
+        $subjectType->type = $request->name;
+        $subjectType->timestamps = false;
+        $subjectType->save();
         
         return redirect()->back();
     }
@@ -48,13 +48,14 @@ class SubjectTypeController extends Controller
     {
         $item = $subjectType;
         $text = 'subjectType';
-        return view('admin.edit', compact( 'item', 'text' ));
+        $hasType = false;
+        return view('admin.edit', compact( 'item', 'text','hasType' ));
     }
 
     public function update(Request $request, SubjectType $subjectType )
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required|max:255'
         ]);
         
         $subjectType->type = $request->name;

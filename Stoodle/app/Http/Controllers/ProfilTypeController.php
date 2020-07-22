@@ -34,13 +34,13 @@ class ProfilTypeController extends Controller
     {
 
         $request->validate([
-            'name' => 'required'
+            'name' => 'required|max:255|unique:profil_types'
         ]);
 
-        $profil = new ProfilType;
-        $profil->type = $request->name;
-        $profil->timestamps = false;
-        $profil->save();
+        $profilType = new ProfilType;
+        $profilType->type = $request->name;
+        $profilType->timestamps = false;
+        $profilType->save();
         
         return redirect()->back();
     }
@@ -49,13 +49,14 @@ class ProfilTypeController extends Controller
     {
         $item = $profilType;
         $text = 'profilType';
-        return view('admin.edit', compact( 'item', 'text' ));
+        $hasType = false;
+        return view('admin.edit', compact( 'item', 'text','hasType'));
     }
 
     public function update(Request $request, ProfilType $profilType )
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required|max:255'
         ]);
         
         $profilType->type = $request->name;

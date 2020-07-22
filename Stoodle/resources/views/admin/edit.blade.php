@@ -21,9 +21,13 @@
         @if ( $hasType )
         <div class="form-group">
                 <label for="name">Tipul {{ $text }}</label>    
-                <select name="type" class="form-control" multiple>
+                <select name="type[]" class="form-control" multiple>
                     @forelse ($data as $item)
-                        <option value="{{ $item->id }}"> {{ $item->type }} </option>
+                        
+                        <option value="{{ $item->id }}"
+                            @if (in_array($item->id,$typeSelected))
+                                selected="selected"
+                            @endif> {{ $item->type }} </option>
                     @empty
                         Reincarca pagina!
                         @endforelse
