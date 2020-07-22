@@ -26,13 +26,14 @@ class SubjectController extends Controller
         $data = subjectType::all();
         $text = 'subject';
         $hasType = true;
-        return view('admin.create', compact( 'data', 'text', 'hasType' ));
+        return view('admin.create', compact( 'data', 'text', 'hasType' ,''));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required|max:255|unique:subjects,name',
+            'type' => 'required|exists:subject_types,id'
         ]);
 
         $subject = new Subject;
@@ -49,17 +50,23 @@ class SubjectController extends Controller
     {
         $item = $subject;
         $text = 'subject';
-        return view('admin.edit', compact( 'item', 'text' ));
+        $hasType = true;
+        $data = subjectType::all();
+        $typeSelected = $subject->subjectType()->pluck('subject_type_id')->toArray();
+        return view('admin.edit', compact( 'item', 'text', 'hasType','typeSelected' ,'data'));
     }
 
     public function update(Request $request, Subject $subject )
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required|max:255',
+            'type' => 'required|exists:subject_types,id'
         ]);
         
         $subject->name = $request->name;
         $subject->timestamps = false;
+        $subject->save();
+        $subject->subjectType()->sync( $request->type );
         $subject->save();
         
         return redirect('admin/subject/');

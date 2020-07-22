@@ -31,7 +31,7 @@ class BookController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required|unique:books,name|max:255'
         ]);
 
         $book = new Book;
@@ -53,7 +53,7 @@ class BookController extends Controller
     public function update(Request $request, Book $book )
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required|max:255'
         ]);
         
         $book->name = $request->name;
