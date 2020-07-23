@@ -17,6 +17,8 @@ class RegisterTest extends TestCase
 
         $response
             ->assertSuccessful()
+            //* Checkif navbar loads correctly
+            ->assertSee('autentificare')
             ->assertViewIs('auth.register');
     }
 

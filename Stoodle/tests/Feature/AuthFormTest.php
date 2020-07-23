@@ -22,6 +22,8 @@ class AuthFormTest extends TestCase
         //* Assert
         $response
             ->assertSuccessful()
+            //* Checkif navbar loads correctly
+            ->assertSee( $user->name )
             ->assertSee("Bun venit in familia Stoodle!");
     }
 

@@ -10,7 +10,7 @@ use App\User;
 class ContactPageTest extends TestCase
 {
     use RefreshDatabase;
-    
+
     public function test_contact_page_loads_corectlly()
     {
         $user = factory(User::class)->make(
@@ -34,6 +34,8 @@ class ContactPageTest extends TestCase
         
         $response
             ->assertSuccessful()
+            //* Checkif navbar loads correctly
+            ->assertSee( $user->name )
             ->assertSee("Contact");
     }
 }

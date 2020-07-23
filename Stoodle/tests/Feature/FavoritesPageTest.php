@@ -47,7 +47,6 @@ class FavoritesPageTest extends TestCase
         $response
             ->assertSuccessful()
             ->assertSee( $college->name );
-
     }
 
     public function generateUser()

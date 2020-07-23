@@ -20,6 +20,8 @@ class QuestionsPageTest extends TestCase
         
         $response
             ->assertSuccessful()
+            //* Checkif navbar loads correctly
+            ->assertSee( $user->name )
             ->assertSee("Intrebari fregvente");
     }
 
