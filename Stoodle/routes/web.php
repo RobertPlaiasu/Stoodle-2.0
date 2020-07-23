@@ -29,6 +29,11 @@ Route::get('facultati-favorite', 'InfoUserController@myFavorites')->middleware('
 Route::get('/form', 'InfoUserController@index')->name('form');
 Route::post('/form', 'InfoUserController@store');
 
+//*Google API
+Route::get('/login/google','Auth\LoginController@googleApi');
+Route::get('/login/google/redirect','Auth\LoginController@googleApiRedirect');
+
+
 //* College routes
 Route::resource('facultati', 'CollegeController');
  

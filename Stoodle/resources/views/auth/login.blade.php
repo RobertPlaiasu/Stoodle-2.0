@@ -41,8 +41,8 @@
                 <a href="{{ route('password.request') }}">Reseteaza-ti parola!</a>
             </div>
 
-            <a class="btn btn-outline-dark" 
-                role="button" style="text-transform:none; width: 100%; padding: 1em; margin: .3em 0;">
+            <a class="btn btn-outline-dark" href="http://localhost:8000/login/google"
+            role="button" style="text-transform:none; width: 100%; padding: 1em; margin: .3em 0;">
                 <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" 
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
                 Conecteaza-te cu Google

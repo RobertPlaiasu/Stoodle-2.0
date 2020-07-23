@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Hash;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
+use Str;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -27,6 +32,33 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    public function googleApi()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    
+    public function googleApiRedirect()
+    {
+        $user = Socialite::driver('google')->user();
+
+        // $user->token;
+
+        $user = User::firstOrCreate([
+            'email' => $user->email
+        ],[
+            'name' => $user->name,
+            'password' => Hash::make(Str::random(24)),
+            'google_id' => $user->id,
+        ]);
+
+        $user->markEmailAsVerified();
+
+        Auth::login($user, true);
+
+        return redirect('form');
+    }
     
     public function showLoginForm()
     {
