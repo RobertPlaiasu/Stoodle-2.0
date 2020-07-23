@@ -1,94 +1,10 @@
-    // .row{
-    //     flex-wrap: wrap;
-    //     flex: 1 1 0px;
-    //     font-family: 'Barlow', sans-serif;
-    // }
-
-    .card {
-        max-width: 20em;
-        min-width: 225px;
-        // border: 0;
-        padding: 0;
-        margin: 1rem;
-        color: $black;
-        strong{
-            font-weight: 800;
-        }
+.card {
+    max-width: 20em;
+    min-width: 225px;
+    padding: 0;
+    margin: 1em auto;
+    color: $black;
+    strong{
+        font-weight: 800;
     }
-
-    // .backgrounded{
-    //     min-height: 10em;
-    //     background-color: black;
-    //     background-size: cover;
-    //     border-top-left-radius: 8px;
-    //     border-top-right-radius: 8px;
-    // }
-
-    // .name{
-    //     background-color: $red;
-    //     padding: 1rem 1rem;
-    //     height: 100%;
-    // }
-
-    // .prop {
-    //     background: $blue;
-    //     padding: 1rem 0;
-    // }
-
-    // .fav{
-    //     background: $red;
-    //     padding: 1rem 0;
-    //     cursor: pointer;
-    // }
-
-    // .extra {
-    //     background: $yellow;
-    //     border-bottom-left-radius: 8px;
-    //     border-bottom-right-radius: 8px;
-    //     padding: 1rem;
-    // }
-    // .extra a{
-    //     color: $black;
-    //     text-transform: uppercase;
-    // }
-
-    // .prop .col {
-    //     font-size: 12px;
-    //     margin: 0.1rem 0;
-    // }
-
-    // i {
-    //     margin-left: 3px;
-    // }
-
-    // .college-card {
-    //     width: 20%;
-    //     background-color: $indigo;
-    //     padding: 4em 2em;
-    //     margin: 10em;
-    //     color: $yellow!important;
-    //     font-weight: 700;
-
-    //     a {
-    //         color: $yellow!important;
-    //         font-size: 1.7em;
-    //         &:hover {
-    //             color: $white!important;
-    //             transition: .3s;
-    //         }
-    //     }
-
-    //     img {
-    //         border-radius: 50%;
-    //         width: 40%;
-    //         position: absolute;
-    //         top: -35%;
-    //         left: 30%;
-    //     }
-
-    //     &:last-of-type > img{
-    //         width: 50%;
-    //         left: 25;
-    //         top: -30%;
-    //     }
-    // }
+}
