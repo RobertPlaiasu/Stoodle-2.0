@@ -11169,10 +11169,9 @@ a.text-dark:focus {
 #background {
   width: 100vw;
   height: 50vh;
-  background-attachment: fixed;
-  background-repeat: none;
-  background-size: cover;
-  background-position: bottom;
+  background-attachment: fixed !important;
+  background-size: cover !important;
+  background-position: bottom !important;
   -webkit-filter: brightness(30%);
           filter: brightness(30%);
 }
