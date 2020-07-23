@@ -31,18 +31,16 @@ class RegisterTest extends TestCase
         $response->assertRedirect('/facultati');
     }
 
-    public function a_user_can_register_with_correct_credentials()
+    public function test_user_can_register_with_correct_credentials()
     {
-        $response = $this->post('/register', [
+        $response = $this->post('register', [
             'name' => 'Joe',
             'email' => 'testemail@test.com',
             'password' => 'passwordtest',
             'password_confirmation' => 'passwordtest'
         ]);
 
-        $response
-            ->assertSuccessful()
-            ->assertRedirect('/facultati');
+        $response->assertRedirect('/facultati');
     }
 
     public function test_user_cannot_register_with_incorrect_password()

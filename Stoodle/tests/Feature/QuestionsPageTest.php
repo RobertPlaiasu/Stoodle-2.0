@@ -22,7 +22,7 @@ class QuestionsPageTest extends TestCase
             ->assertSuccessful()
             //* Checkif navbar loads correctly
             ->assertSee( $user->name )
-            ->assertSee("Intrebari fregvente");
+            ->assertSee("Intrebari frecvente");
     }
 
     public function test_questions_are_visible()
