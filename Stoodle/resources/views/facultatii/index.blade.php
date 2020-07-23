@@ -4,6 +4,7 @@
 
 @section('content')
     <div class="text-center mx-auto container">
+        <h1>Acasa</h1>
         {{-- Search Bar --}}
         <div id="search" class="mx-4 my-3">
             <input onkeyup="sort()" class="form-control"
