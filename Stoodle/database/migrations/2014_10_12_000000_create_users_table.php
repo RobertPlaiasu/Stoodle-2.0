@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->string('google_id');
+            $table->string('google_id')->nullable()->default(NULL);
             $table->boolean('admin')->default(0);
             $table->boolean('job')->nullable()->default(NULL);
             $table->tinyInteger('passion_intensity')->nullable()->default(NULL);
