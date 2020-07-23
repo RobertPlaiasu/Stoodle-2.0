@@ -10,6 +10,7 @@ use App\User;
 
 class PassionTypeController extends Controller
 {
+    //TODO: variables for class | One class ? 
     public function __construct()
     {
         $this->middleware(['auth', 'verified', 'admin']);    

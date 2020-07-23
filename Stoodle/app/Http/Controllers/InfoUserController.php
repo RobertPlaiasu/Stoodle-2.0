@@ -25,6 +25,8 @@ class InfoUserController extends Controller
         $this->middleware(['auth','verified']);
     }
 
+
+    //TODO: naming 
     public function index()
     {
         $counties = County::all();

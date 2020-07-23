@@ -16,6 +16,8 @@ use Illuminate\Http\Request;
 class CollegeController extends Controller
 {
     use Sort,FormTrait;
+
+    //Todo: make class variables or methods/ repo type methods - docs on skype
     /**
      * Display a listing of the resource.
      *
@@ -51,6 +53,8 @@ class CollegeController extends Controller
         $universities = University::all();
 
         //* Create an array with all the data from databse
+
+        //TODO: remove variables that are used only once
         $data  = [
             'counties' => $counties,
             'passions' => $passions,
@@ -74,9 +78,10 @@ class CollegeController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validateUpdateOrCreate($request);
+        $this->validateUpdateOrCreate($request); //TODO: validate class | SOLID
 
-        //* Check if all the subjects selected ar diferrent
+        //* Check if all the subjects selected are diferrent 
+        //TODO: naming
         if($this->verifyMultipleInputs(
             $request->subject1,
             $request->subject2,
@@ -104,7 +109,9 @@ class CollegeController extends Controller
         //! If the college doesn't exist return 404
         $college = College::findOrFail( $id );
         $user = auth()->user();
+        //todo: COMPATIBILITY!!!!!
         $college->compability = $this->collegeCompability($user,$college);
+
         //* Display facultatii/show page with the found college as argument
         return view('facultatii.show', compact('college'));
     }
@@ -129,7 +136,7 @@ class CollegeController extends Controller
         $profils = Profil::all();
         $universities = University::all();
 
-        //* Create an array with all the data from datab
+        //* Create an array with all the data from data
         $data  = [
             'counties' => $counties,
             'passions' => $passions,

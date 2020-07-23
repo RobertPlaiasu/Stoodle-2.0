@@ -1,10 +1,9 @@
 #background{
     width: 100vw;
     height: 50vh;
-    background-attachment: fixed;
-    background-repeat: none;
-    background-size: cover;
-    background-position: bottom;
+    background-attachment: fixed !important;
+    background-size: cover !important;
+    background-position: bottom !important;
     filter: brightness(30%);
 }
 #description{
