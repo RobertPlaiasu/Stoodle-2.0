@@ -9,6 +9,9 @@
         <li class="list-group-item links">
             <a href="/facultati/create"> Adauga o facultate noua </a><br>
         </li>
+        <li class="list-group-item links">
+            <a href="/university/create"> Adauga o universitate noua </a><br>
+        </li>
     @foreach ($text as $item)
         <li class="list-group-item links">
             <a href="/admin/{{ $item }}"> Manager {{ $item }} </a><br>

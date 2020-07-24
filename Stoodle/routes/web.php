@@ -41,34 +41,34 @@ Route::resource('facultati', 'CollegeController');
 Route::get('/admin', 'AdminController@index');
 
 //* Passion routes
-Route::resource('admin/passion', 'PassionController');
+Route::resource('/admin/passion', 'PassionController');
 
 //* Passion type routes
-Route::resource('admin/passionType', 'PassionTypeController');
+Route::resource('/admin/passionType', 'PassionTypeController');
 
 //* Profil routes
-Route::resource('admin/profil', 'ProfilController');
+Route::resource('/admin/profil', 'ProfilController');
 
 //* Profil type routes
-Route::resource('admin/profilType', 'ProfilTypeController');
+Route::resource('/admin/profilType', 'ProfilTypeController');
 
 //* Subjects routes
-Route::resource('admin/subject', 'SubjectController'); 
+Route::resource('/admin/subject', 'SubjectController'); 
 
 //* Subjects type routes
-Route::resource('admin/subjectType', 'SubjectTypeController');
+Route::resource('/admin/subjectType', 'SubjectTypeController');
 
 //* Book routes
-Route::resource('admin/book', 'BookController');
+Route::resource('/admin/book', 'BookController');
 
 //* University routes
-Route::resource('admin/university', 'UniversityController');
+Route::resource('university', 'UniversityController');
 
 //* County routes
-Route::resource('admin/county', 'CountyController');
+Route::resource('/admin/county', 'CountyController');
 
 //* Region routes
-Route::resource('admin/region', 'RegionController');
+Route::resource('/admin/region', 'RegionController');
 
 
 Auth::routes(['verify' => true]);

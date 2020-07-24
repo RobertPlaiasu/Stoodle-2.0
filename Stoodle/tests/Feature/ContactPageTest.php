@@ -30,7 +30,7 @@ class ContactPageTest extends TestCase
             ]
         );
 
-        $response = $this->actingAs($user)->get('/facultati');
+        $response = $this->actingAs($user)->get('/contact');
         
         $response
             ->assertSuccessful()
