@@ -12,7 +12,7 @@
         <div class="card w-100" style="max-width: 100em">
             <div class="card-body ">
                 <div class="float-right links">
-                    <a href="/admin/{{ $text }}/create" class="m-0">
+                    <a href="{{ $text }}/create" class="m-0">
                         adauga un {{ $text }}
                         <i class="fa fa-plus" aria-hidden="true"></i>
                     </a>
@@ -25,8 +25,8 @@
                 <li class="list-group-item w-100">
                     {{ $item->type ?? $item->name }}
                     <div class="float-right links d-flex justi-content-cetenr align-items-center">
-                        <a href="/admin/{{ $text }}/{{ $item->id }}/edit" class="p-0"> <i class="fa fa-pencil" aria-hidden="true"></i> </a>
-                        <form action="/admin/{{ $text }}/{{ $item->id }}" method="POST">
+                        <a href="{{ $text }}/{{ $item->id }}/edit" class="p-0"> <i class="fa fa-pencil" aria-hidden="true"></i> </a>
+                        <form action="{{ $text }}/{{ $item->id }}" method="POST">
                             @method('DELETE')
                             @csrf
                             

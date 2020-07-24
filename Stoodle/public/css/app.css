@@ -11200,11 +11200,11 @@ a.text-dark:focus {
   color: #00A089;
 }
 
-#learn-more {
+.backgrounded-list-item {
   background-color: #00A089;
 }
 
-#learn-more a {
+.backgrounded-list-item a {
   color: white;
 }
 

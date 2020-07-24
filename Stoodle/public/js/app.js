@@ -1928,8 +1928,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['id', 'image', 'name', 'university', 'compatility', 'county', 'isfavorite']
+  props: {
+    id: String,
+    image: String,
+    name: String,
+    university: Object,
+    compatibility: String,
+    county: String,
+    isfavorite: String
+  }
 });
 
 /***/ }),
@@ -37590,8 +37599,10 @@ var render = function() {
         staticStyle: { "font-weight": "bold" }
       },
       [
-        _c("li", { staticClass: "list-group-item" }, [
-          _vm._v(" " + _vm._s(_vm.university) + " ")
+        _c("li", { staticClass: "list-group-item backgrounded-list-item" }, [
+          _c("a", { attrs: { href: "../university/" + _vm.university.id } }, [
+            _vm._v(" " + _vm._s(_vm.university.name) + " ")
+          ])
         ]),
         _vm._v(" "),
         _c("li", { staticClass: "list-group-item" }, [
@@ -37599,7 +37610,7 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("li", { staticClass: "list-group-item" }, [
-          _vm._v("Compatibilitatelitatea: " + _vm._s(_vm.compatility))
+          _vm._v("Compatibilitatelitatea: " + _vm._s(_vm.compatibility))
         ]),
         _vm._v(" "),
         _c(
@@ -37613,17 +37624,13 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _c(
-          "li",
-          { staticClass: "list-group-item", attrs: { id: "learn-more" } },
-          [
-            _c(
-              "a",
-              { attrs: { href: "facultati/" + _vm.id, target: "_top" } },
-              [_vm._v("Afla mai mult")]
-            )
-          ]
-        )
+        _c("li", { staticClass: "list-group-item backgrounded-list-item" }, [
+          _c(
+            "a",
+            { attrs: { href: "../facultati/" + _vm.id, target: "_top" } },
+            [_vm._v("Afla mai mult")]
+          )
+        ])
       ]
     )
   ])
@@ -50215,8 +50222,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\xampp\htdocs\Stoodle-2.0\Stoodle\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\xampp\htdocs\Stoodle-2.0\Stoodle\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Xampp\htdocs\Stoodle-2.0\Stoodle\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Xampp\htdocs\Stoodle-2.0\Stoodle\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
