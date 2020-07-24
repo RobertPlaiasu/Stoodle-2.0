@@ -78,4 +78,15 @@ class UniversityController extends Controller
         $university->delete();
         return redirect('/university');
     }
+
+    private function ifFileExists( $request, $university ) :void
+    {
+        if($request->hasFile('image'))
+        {
+            $university->image = $request->image->store('images','public');
+
+            $image = Image::make(public_path('storage/'.$university->image))->fit(300,300);
+            $image->save();
+        }
+    }
 }

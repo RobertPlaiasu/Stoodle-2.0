@@ -17,8 +17,8 @@ class CreateUniversitiesTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('image')->default('default.jpg');
-            $table->longText('description')->default('descriere');
-            $table->string('url')->default('//www.google.com');
+            $table->longText('description');
+            $table->string('url');
             $table->timestamps();
         });
     }
