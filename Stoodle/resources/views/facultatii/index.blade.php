@@ -18,7 +18,7 @@
                     id = {{ $college->id }}
                     image = "{{ asset('storage/'.$college->image) }}"
                     name = "{{ $college->name }}"
-                    :university = {{ $college->university }}
+                    :university = "{{ $college->university }}"
                     compatibility = "{{ $college->compability }}"
                     county = "{{ $college->county->name }}"
                     isfavorite = {{ $college->favorited() ? true : false }}
