@@ -47,7 +47,7 @@ Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
                         id = {{ $college->id }}
                         image = "{{ asset('storage/'.$college->image) }}"
                         name = "{{ $college->name }}"
-                        :university = {{ $college->university }}
+                        :university = "{{ $college->university }}"
                         compatility = "{{ $college->compability }}"
                         county = "{{ $college->county->name }}"
                         isfavorite = {{ $college->favorited() ? true : false }}
