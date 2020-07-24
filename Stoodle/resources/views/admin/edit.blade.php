@@ -6,7 +6,7 @@
 <div class="mx-auto container mt-4">
 
     <h1> Schimba {{ $text }} in baza de date</h1>
-    <form action="{{ $text }}/{{ $item->id }}" method="post">
+    <form action="/admin/{{ $text }}/{{ $item->id }}" method="post">
         @csrf
         @method('PATCH')
         <div class="form-group">
