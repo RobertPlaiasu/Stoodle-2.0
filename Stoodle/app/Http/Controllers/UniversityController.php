@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\University;
 use App\User;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class UniversityController extends Controller
 {
