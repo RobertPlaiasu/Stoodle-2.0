@@ -10,7 +10,7 @@
             <input onkeyup="sort()" class="form-control"
                 type="text" placeholder="cauta" id="search_field" aria-label="Search">
         </div>
-        
+
         {{-- Display colleges --}}
         <div class="d-flex flex-wrap">
             @forelse ($colleges as $college)
@@ -18,8 +18,8 @@
                     id = {{ $college->id }}
                     image = "{{ asset('storage/'.$college->image) }}"
                     name = "{{ $college->name }}"
-                    university = "{{ $college->university->name }}"
-                    compatility = "{{ $college->compability }}"
+                    :university = {{ $college->university }}
+                    compatibility = "{{ $college->compability }}"
                     county = "{{ $college->county->name }}"
                     isfavorite = {{ $college->favorited() ? true : false }}
                 ></college-card>

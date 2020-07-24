@@ -10,6 +10,7 @@ use App\Book;
 use App\Subject;
 use App\Profil;
 use App\University;
+use Faker\Factory;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 
@@ -32,7 +33,7 @@ class CollegeController extends Controller
 
     public function index()
     {
-        $colleges = $this->getAllColleges(College::all());
+        $colleges = $this->getAllColleges( Factory( College::class, 50 )->create() );
         usort($colleges, array($this , "compareCollege") );
         return view('facultatii.index')->with('colleges',$colleges);
     }

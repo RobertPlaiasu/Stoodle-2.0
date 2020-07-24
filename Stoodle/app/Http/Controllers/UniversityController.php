@@ -10,7 +10,8 @@ class UniversityController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'verified', 'admin']);    
+        $this->middleware(['auth', 'verified', 'admin'])->except('show');  
+        $this->middleware( [ 'auth', 'verified', 'checkForm' ])->only('show');  
     }
 
     public function index()
@@ -22,49 +23,59 @@ class UniversityController extends Controller
 
     public function create()
     {
-        $text = 'university';
-        $hasType = false;
-        return view('admin.create', compact( 'text', 'hasType' ));
+        return view('university.create');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:255|unique:universities,name'
-        ]);
+            'name' => 'required|max:255|unique:universities,name',
+            'image' => 'sometimes|file|image|mimes:jpeg,png,jpg|max:1999',
+            'url' => 'required|url|max:255',
+            'description' => 'required|min:200|max:30000',
+        ]); 
 
         $university = new University;
         $university->name = $request->name;
-        $university->timestamps = false;
+        $university->description = $request->description;
+        $university->url = $request->url;
+        $university->ifFileExists( $request, $university);
         $university->save();
         
-        return redirect('admin/university');
+        return redirect('/university');
+    }
+
+    public function show( University $university )
+    {
+        return view('university.show', compact( 'university' ));
     }
 
     public function edit( University $university )
     {
-        $item = $university;
-        $text = 'university';
-        $hasType = false;
-        return view('admin.edit', compact( 'item', 'text','hasType' ));
+        return view('university.edit', compact( 'university' ));
     }
 
-    public function update(Request $request, University $university )
+    public function update( Request $request, University $university )
     {
         $request->validate([
-            'name' => 'required|max:255'
-        ]);
-        
+            'name' => 'required|max:255',
+            'image' => 'sometimes|file|image|mimes:jpeg,png,jpg|max:1999',
+            'url' => 'required|url|max:255',
+            'description' => 'required|min:200|max:30000',
+        ]); 
+            
         $university->name = $request->name;
-        $university->timestamps = false;
+        $university->description = $request->description;
+        $university->url = $request->url;
+        $university->ifFileExists( $request, $university);
         $university->save();
         
-        return redirect('admin/university/');
+        return redirect('university/'. $university->id );
     }
 
     public function destroy( University $university )
     {
         $university->delete();
-        return redirect('/admin/university');
+        return redirect('/university');
     }
 }

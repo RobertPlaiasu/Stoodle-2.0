@@ -76,6 +76,6 @@ class PassionController extends Controller
     public function destroy( Passion $passion )
     {
         $passion->delete();
-        return redirect('/admin/passion');
+        return redirect('admin/passion');
     }
 }

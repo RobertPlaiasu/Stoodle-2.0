@@ -6,7 +6,7 @@
 <div class="mx-auto container mt-4">
 
     <h1> Adaugare {{ $text }} in baza de date</h1>
-    <form action="/admin/{{ $text }}" method="post">
+    <form action="{{ $text }}" method="post">
         @csrf
 
         <div class="form-group">
