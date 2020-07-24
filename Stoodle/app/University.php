@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Intervention\Image\Facades\Image;
+
 use Illuminate\Database\Eloquent\Model;
 
 class University extends Model
