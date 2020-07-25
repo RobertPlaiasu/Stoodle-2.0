@@ -10,7 +10,11 @@ use App\User;
 
 class PassionTypeController extends Controller
 {
-    //TODO: variables for class | One class ? 
+    use AdminTrait;
+
+    private $text = 'passionType';
+    private $hasType = false; 
+    
     public function __construct()
     {
         $this->middleware(['auth', 'verified', 'admin']);    
@@ -18,17 +22,15 @@ class PassionTypeController extends Controller
 
     public function index()
     {
-        $data = PassionType::all();
-        $text = 'passionType';
-        return view('admin.show', compact( 'data', 'text' ));
+        return view('admin.show')->with('data',PassionType::all())
+                                ->with('text',$this->text);
     }
 
     public function create()
     {
-        $data = PassionType::all();
-        $text = 'passionType';
-        $hasType = false;
-        return view('admin.create', compact( 'data', 'text', 'hasType' ));
+        return view('admin.create')->with('data',PassionType::all())
+                                   ->with('text',$this->text)
+                                   ->with('hasType',$this->hasType);
     }
 
     public function store(Request $request)
@@ -38,19 +40,16 @@ class PassionTypeController extends Controller
         ]);
 
         $passionType = new PassionType;
-        $passionType->type = $request->name;
-        $passionType->timestamps = false;
-        $passionType->save();
+        $this->saveType($passionType,$request);
         
-        return redirect()->back();
+        return redirect('admin/passionType');
     }
 
     public function edit( PassionType $passionType )
     {
-        $item = $passionType;
-        $text = 'passionType';
-        $hasType = false;
-        return view('admin.edit', compact( 'item', 'text','hasType'));
+        return view('admin.edit')->with('item',$passionType)
+                                ->with('text',$this->text)
+                                ->with('hasType',$this->hasType);
     }
 
     public function update(Request $request, PassionType $passionType )
@@ -59,9 +58,7 @@ class PassionTypeController extends Controller
             'name' => 'required|max:255'
         ]);
         
-        $passionType->type = $request->name;
-        $passionType->timestamps = false;
-        $passionType->save();
+        $this->saveType($passionType,$request);
         
         return redirect('admin/passionType');
     }

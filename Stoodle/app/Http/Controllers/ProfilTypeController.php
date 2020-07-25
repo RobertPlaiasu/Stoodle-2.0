@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class ProfilTypeController extends Controller
 {
+    use AdminTrait;
+
+    private $text = 'profilType';
+    private $hasType = false; 
+    
     public function __construct()
     {
         $this->middleware(['auth', 'verified', 'admin']);   
@@ -15,42 +20,36 @@ class ProfilTypeController extends Controller
 
     public function index()
     {
-        $data = ProfilType::all();
-        $text = 'profilType';
-        return view('admin.show', compact( 'data', 'text' ));
+        return view('admin.show')->with('data',ProfilType::all())
+                                ->with('text',$this->text);
 
     }
 
     public function create()
     {
-        $data = ProfilType::all();
-        $text = 'profilType';
-        $hasType = false;
-        return view('admin.create', compact( 'data', 'text', 'hasType' ));
-
+        return view('admin.create')->with('data',ProfilType::all())
+                                    ->with('text',$this->text)
+                                    ->with('hasType',$this->hasType);
     }
   
     public function store(Request $request)
     {
 
         $request->validate([
-            'name' => 'required|max:255|unique:profil_types'
+            'name' => 'required|max:255|unique:profil_types,type'
         ]);
 
         $profilType = new ProfilType;
-        $profilType->type = $request->name;
-        $profilType->timestamps = false;
-        $profilType->save();
+        $this->saveType($profilType,$request);
         
-        return redirect()->back();
+        return redirect('admin/profilType');
     }
 
     public function edit( ProfilType $profilType )
     {
-        $item = $profilType;
-        $text = 'profilType';
-        $hasType = false;
-        return view('admin.edit', compact( 'item', 'text','hasType'));
+        return view('admin.edit')->with('item',$profilType)
+                                 ->with('text',$this->text)
+                                 ->with('hasType',$this->hasType);
     }
 
     public function update(Request $request, ProfilType $profilType )
@@ -59,11 +58,9 @@ class ProfilTypeController extends Controller
             'name' => 'required|max:255'
         ]);
         
-        $profilType->type = $request->name;
-        $profilType->timestamps = false;
-        $profilType->save();
-        
-        return redirect('admin/profilType/');
+        $this->saveType($profilType,$request);
+
+        return redirect('admin/profilType');
     }
 
     public function destroy( ProfilType $profilType )

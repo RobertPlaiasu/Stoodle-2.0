@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class SubjectTypeController extends Controller
 {
+    use AdminTrait;
+
+    private $text = 'subjectType';
+    private $hasType = false;
+
     public function __construct()
     {
         $this->middleware(['auth', 'verified', 'admin']);
@@ -15,41 +20,35 @@ class SubjectTypeController extends Controller
 
     public function index()
     {
-        $data = SubjectType::all();
-        $text = 'subjectType';
-        return view('admin.show', compact( 'data', 'text' ));
+        return view('admin.show')->with('data',SubjectType::all())
+                                  ->with('text',$this->text);
 
     }
 
     public function create()
     {
-        $data = SubjectType::all();
-        $text = 'subjectType';
-        $hasType = false;
-        return view('admin.create', compact( 'data', 'text', 'hasType' ));
+        return view('admin.create')->with('text',$this->text)
+                                    ->with('hasType',$this->hasType);
 
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:255|unique:subject_type,type'
+            'name' => 'required|max:255|unique:subject_types,type'
         ]);
 
         $subjectType = new SubjectType;
-        $subjectType->type = $request->name;
-        $subjectType->timestamps = false;
-        $subjectType->save();
+        $this->saveType($subjectType,$request);
         
-        return redirect()->back();
+        return redirect('admin/subjectType');
     }
 
     public function edit( SubjectType $subjectType )
     {
-        $item = $subjectType;
-        $text = 'subjectType';
-        $hasType = false;
-        return view('admin.edit', compact( 'item', 'text','hasType' ));
+        return view('admin.edit')->with('item',$subjectType)
+                                ->with('text',$this->text)
+                                ->with('hasType',$this->hasType);
     }
 
     public function update(Request $request, SubjectType $subjectType )
@@ -58,11 +57,9 @@ class SubjectTypeController extends Controller
             'name' => 'required|max:255'
         ]);
         
-        $subjectType->type = $request->name;
-        $subjectType->timestamps = false;
-        $subjectType->save();
+        $this->saveType($subjectType,$request);
         
-        return redirect('admin/subjectType/');
+        return redirect('admin/subjectType');
     }
 
     public function destroy( SubjectType $subjectType )

@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class CountyController extends Controller
 {
+    use AdminTrait;
+
+    private $hasType = true;
+    private $text = 'county';
+
     public function __construct()
     {
 
@@ -16,18 +21,15 @@ class CountyController extends Controller
 
     public function index()
     {
-        $data = County::all();
-        $text = 'county';
-        $hasType = true;
-        return view('admin.show', compact( 'data', 'text' ));
+        return view('admin.show')->with('data',County::all())
+                                 ->with('text',$this->text);
     }
 
     public function create()
     {
-        $data = Region::all();
-        $text = 'county';
-        $hasType = true;
-        return view('admin.create', compact( 'data', 'text', 'hasType' ));
+        return view('admin.create')->with('data',Region::all())
+                                   ->with('text',$this->text)
+                                   ->with('hasType',$this->hasType);
     }
 
     public function store(Request $request,County $county)
@@ -37,23 +39,18 @@ class CountyController extends Controller
             'type' => 'required|exists:regions,id'
         ]);
 
-        $county->name = $request->name;
-        $county->timestamps = false;
-        $county->save();
-        $county->region()->attach( $request->type );
-        $county->save();
+        $this->saveCounty($county,$request);
         
         return redirect('admin/county');
     }
 
     public function edit( County $county )
     {
-        $data = Region::all();
-        $item = $county;
-        $text = 'county';
-        $hasType = true;
-        $typeSelected = $county->region()->pluck('region_id')->toArray();
-        return view('admin.edit', compact( 'item', 'text','hasType','data','typeSelected'));
+        return view('admin.edit')->with('typeSelected',$county->region()->pluck('region_id')->toArray())
+                                 ->with('item',$county)
+                                 ->with('data',Region::all())
+                                 ->with('hasType',$this->hasType)
+                                 ->with('text',$this->text);
     }
 
     public function update(Request $request,County $county)
@@ -62,11 +59,8 @@ class CountyController extends Controller
             'name' => 'required|max:255',
             'type' => 'required|exists:regions,id'
         ]);
-        $county->name = $request->name;
-        $county->timestamps = false;
-        $county->save();
-        $county->region()->sync($request->type);
-        $county->save();
+        
+        $this->saveCounty($county,$request);
 
         return redirect('admin/county');
     }
@@ -75,5 +69,12 @@ class CountyController extends Controller
     {
         $county->delete();
         return redirect('/admin/county');
+    }
+
+    private function saveCounty($county,$request)
+    {
+        $this->saveData($county,$request);
+        $county->region()->sync($request->type);
+        $county->save();
     }
 }
