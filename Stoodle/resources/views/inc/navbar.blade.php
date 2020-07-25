@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark shadow-sm">
     <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -33,7 +33,7 @@
                     <a href="{{ url('/intrebari') }}" class="nav-link">Intrebari</a>
                 </li>
 
-                <li class="nav-item ml-auto">
+                <li class="nav-item" id="nav-profile">
                     <div class="dropdown">
                         <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ Auth::user()->name }}
