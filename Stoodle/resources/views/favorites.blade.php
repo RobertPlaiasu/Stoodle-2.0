@@ -14,11 +14,11 @@
         <div class="d-flex">
             @forelse ($myFavorites as $college)
                 <college-card
-                    id = {{ $college->id }}
+                    id = "{{ $college->id }}"
                     image = "{{ asset('storage/'.$college->image) }}"
                     name = "{{ $college->name }}"
-                    :university = "{{ $college->university->name }}"
-                    compability = "{{ $college->compability }}"
+                    :university = "{{ $college->university }}"
+                    compatibility = "{{ $college->compability }}"
                     county = "{{ $college->county->name }}"
                     link = "{{ $college->url }}"
                     isfavorite = {{ $college->favorited() ? "true" : "false" }}
