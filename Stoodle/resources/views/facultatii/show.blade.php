@@ -47,12 +47,6 @@
                 {{ $college->description }}
             </p>
         </div>
-
-        <favorite 
-            class="backgrounded-favorite-button"
-            :college={{ $college->id }} 
-            :favorited="{{ $college->favorited() ? "true" : "false" }}"
-        ></favorite>
         
         <footer id="college_show_footer" class="mt-4">
             {{-- Link to the college's website --}}
