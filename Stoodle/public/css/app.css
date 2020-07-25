@@ -10939,7 +10939,7 @@ a.text-dark:focus {
   max-width: 20em;
   min-width: 225px;
   padding: 0;
-  margin: 1rem;
+  margin: 1em auto;
   color: #0a0a0a;
 }
 
@@ -11200,11 +11200,11 @@ a.text-dark:focus {
   color: #00A089;
 }
 
-#learn-more {
+.backgrounded-list-item {
   background-color: #00A089;
 }
 
-#learn-more a {
+.backgrounded-list-item a {
   color: white;
 }
 

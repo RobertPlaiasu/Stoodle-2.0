@@ -16,6 +16,9 @@ class CreateUniversitiesTable extends Migration
         Schema::create('universities', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->string('image')->default('default.jpg');
+            $table->longText('description');
+            $table->string('url');
             $table->timestamps();
         });
     }

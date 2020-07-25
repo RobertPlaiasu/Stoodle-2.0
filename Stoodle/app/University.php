@@ -2,6 +2,7 @@
 
 namespace App;
 
+
 use Illuminate\Database\Eloquent\Model;
 
 class University extends Model
@@ -12,5 +13,7 @@ class University extends Model
         return $this->hasMany(College::class);
 
     } 
+
+    
     
 }
