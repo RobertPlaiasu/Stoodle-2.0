@@ -14,8 +14,45 @@ class AdminController extends Controller
     
     public function index()
     {
-        $text = ['passion', 'passionType', 'profil', 'profilType',
-                 'subject', 'subjectType', 'book','county','region'];
-        return view('admin.index', compact('text'));
-    }
+        $panels = [ 
+            [
+                "link" => "passion",
+                "text" => "pasiuni" 
+            ],
+            [ 
+                "link" => "passionType",
+                "text" => "tipuri de pasiuni" 
+            ],
+            [ 
+                "link" => "profil",
+                "text" => "profiluri" 
+            ],
+            [ 
+                "link" => "profilType",
+                "text" => "tipuri de profil" 
+            ],
+            [ 
+                "link" => "subject",
+                "text" => "subiecte" 
+            ],
+            [ 
+                "link" => "subjectType",
+                "text" => "tipuri de subiecte" 
+            ],
+            [ 
+                "link" => "book",
+                "text" => "carti" 
+            ],
+            [ 
+                "link" => "county",
+                "text" => "judete" 
+            ],
+            [ 
+                "link" => "region",
+                "text" => "regiuni" 
+            ],
+        ];
+
+        return view('admin.index', compact('panels'));
+     }
 }
