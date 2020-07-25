@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\book;
+use App\Book;
 use App\User;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
+    use AdminTrait;
+    
+    private $hasType = false;
+    private $text = 'book';
+
     public function __construct()
     {
         $this->middleware(['auth', 'verified', 'admin']);
@@ -16,16 +21,16 @@ class BookController extends Controller
     public function index()
     {
         $data = Book::all();
-        $text = 'book';
-        return view('admin.show', compact( 'data', 'text' ));
+        return view('admin.show')->with('data',$data)
+                                ->with('hasType',$this->hasType)
+                                ->with('text',$this->text);
     }
 
     public function create()
     {
-        $data = NULL;
-        $text = 'book';
-        $hasType = false;
-        return view('admin.create', compact( 'data', 'text', 'hasType' ));
+        return view('admin.create')
+                                   ->with('hasType',$this->hasType)
+                                   ->with('text',$this->text);
     }
 
     public function store(Request $request)
@@ -35,19 +40,16 @@ class BookController extends Controller
         ]);
 
         $book = new Book;
-        $book->name = $request->name;
-        $book->timestamps = false;
-        $book->save();
-        
+        $this->saveData($book,$request);
         return redirect('admin/book');
     }
 
     public function edit( Book $book )
     {
         $item = $book;
-        $text = 'book';
-        $hasType = false;
-        return view('admin.edit', compact( 'item', 'text' ,'hasType' ));
+        return view('admin.edit')->with('item',$item)
+                                ->with('hasType',$this->hasType)
+                                ->with('text',$this->text);;
     }
 
     public function update(Request $request, Book $book )
@@ -56,11 +58,9 @@ class BookController extends Controller
             'name' => 'required|max:255'
         ]);
         
-        $book->name = $request->name;
-        $book->timestamps = false;
-        $book->save();
+        $this->saveData($book,$request);
         
-        return redirect('admin/book/');
+        return redirect('admin/book');
     }
 
     public function destroy( Book $book )

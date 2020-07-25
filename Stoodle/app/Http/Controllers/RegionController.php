@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class RegionController extends Controller
 {
+    use AdminTrait;
+
+    private $text = 'region';
+    private $hasType = false;
+
     public function __construct()
     {
         $this->middleware(['auth', 'verified', 'admin']);    
@@ -14,17 +19,15 @@ class RegionController extends Controller
 
     public function index()
     {
-        $data = Region::all();
-        $text = 'region';
-        return view('admin.show', compact( 'data', 'text' ));
+        return view('admin.show')->with('data',Region::all())
+                                ->with('text',$this->text);;
     }
 
     public function create()
     {
-        $data = Region::all();
-        $text = 'region';
-        $hasType = false;
-        return view('admin.create', compact( 'data', 'text', 'hasType' ));
+        return view('admin.create')->with('data',Region::all())
+                                    ->with('text',$this->text)
+                                    ->with('hasType',$this->hasType);
     }
 
     public function store(Request $request)
@@ -34,19 +37,16 @@ class RegionController extends Controller
         ]);
 
         $region = new Region;
-        $region->type = $request->name;
-        $region->timestamps = false;
-        $region->save();
+        $this->saveType($region,$request);
         
-        return redirect()->back();
+        return redirect('admin/region');
     }
 
     public function edit(Region $region )
     {
-        $item = $region;
-        $text = 'region';
-        $hasType = false;
-        return view('admin.edit', compact( 'item', 'text','hasType'));
+        return view('admin.edit')->with('item',$region)
+                                ->with('text',$this->text)
+                                ->with('hasType',$this->hasType);
     }
 
     public function update(Request $request, Region $region )
@@ -55,9 +55,7 @@ class RegionController extends Controller
             'name' => 'required|max:255'
         ]);
         
-        $region->type = $request->name;
-        $region->timestamps = false;
-        $region->save();
+        $this->saveType($region,$request);
         
         return redirect('admin/region');
     }

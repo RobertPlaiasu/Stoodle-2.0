@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class PassionController extends Controller
 {
+    use AdminTrait;
+
+    private $hasType = true;
+    private $text = 'passion';
+
     public function __construct()
     {
 
@@ -17,17 +22,15 @@ class PassionController extends Controller
 
     public function index()
     {
-        $data = Passion::all();
-        $text = 'passion';
-        return view('admin.show', compact( 'data', 'text' ));
+        return view('admin.show')->with('text',$this->text)
+                                 ->with('data',Passion::all());
     }
 
     public function create()
     {
-        $data = PassionType::all();
-        $text = 'passion';
-        $hasType = true;
-        return view('admin.create', compact( 'data', 'text', 'hasType' ));
+        return view('admin.create')->with('data',PassionType::all())
+                                   ->with('text',$this->text)
+                                   ->with('hasType',$this->hasType);
     }
 
     public function store(Request $request)
@@ -38,23 +41,18 @@ class PassionController extends Controller
         ]);
 
         $passion = new Passion;
-        $passion->name = $request->name;
-        $passion->timestamps = false;
-        $passion->save();
-        $passion->passionType()->attach( $request->type );
-        $passion->save();
+        $this->savePassion($passion,$request);
         
         return redirect('admin/passion');
     }
 
     public function edit( Passion $passion )
     {
-        $item = $passion;
-        $text = 'passion';
-        $hasType = true;
-        $data = PassionType::all();
-        $typeSelected = $passion->passionType()->pluck('passion_type_id')->toArray();
-        return view('admin.edit', compact( 'item', 'text','hasType','data','typeSelected'));
+        return view('admin.edit')->with('typeSelected',$passion->passionType()->pluck('passion_type_id')->toArray())
+                                 ->with('item',$passion)
+                                 ->with('data',PassionType::all())
+                                 ->with('hasType',$this->hasType)
+                                 ->with('text',$this->text);
     }
 
     public function update(Request $request, Passion $passion )
@@ -64,11 +62,7 @@ class PassionController extends Controller
             'type' => 'required|exists:passion_types,id'
         ]);
         
-        $passion->name = $request->name;
-        $passion->timestamps = false;
-        $passion->save();
-        $passion->passionType()->sync($request->type);
-        $passion->save();
+        $this->savePassion($passion,$request);
 
         return redirect('admin/passion');
     }
@@ -77,5 +71,12 @@ class PassionController extends Controller
     {
         $passion->delete();
         return redirect('/admin/passion');
+    }
+
+    private function savePassion($passion,$request)
+    {
+        $this->saveData($passion,$request);
+        $passion->passionType()->sync($request->type);
+        $passion->save();
     }
 }

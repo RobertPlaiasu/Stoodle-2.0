@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class ProfilController extends Controller
 {
+    use AdminTrait;
+
+    private $text = 'profil';
+    private $hasType = true;
+
     public function __construct()
     {
         $this->middleware(['auth', 'verified', 'admin']);   
@@ -16,17 +21,15 @@ class ProfilController extends Controller
 
     public function index()
     {
-        $data = Profil::all();
-        $text = 'profil';
-        return view('admin.show', compact( 'data', 'text' ));
+        return view('admin.show')->with('data',Profil::all())
+                                 ->with('text',$this->text);
     }
 
     public function create()
     {
-        $data = ProfilType::all();
-        $text = 'profil';
-        $hasType = true;
-        return view('admin.create', compact( 'data', 'text', 'hasType' ));
+        return view('admin.create')->with('data',ProfilType::all())
+                                    ->with('text',$this->text)
+                                    ->with('hasType',$this->hasType);
     }
 
     public function store(Request $request)
@@ -37,23 +40,18 @@ class ProfilController extends Controller
         ]);
 
         $profil = new Profil;
-        $profil->name = $request->name;
-        $profil->timestamps = false;
-        $profil->save();
-        $profil->profilType()->sync( $request->type );
-        $profil->save();
+        $this->saveProfil($profil,$request);
         
         return redirect('admin/profil');
     }
 
     public function edit( Profil $profil )
     {
-        $item = $profil;
-        $text = 'profil';
-        $hasType = true;
-        $data = ProfilType::all();
-        $typeSelected = $profil->profilType()->pluck('profil_type_id')->toArray();
-        return view('admin.edit', compact( 'item', 'text','hasType','data','typeSelected'));
+        return view('admin.edit')->with('typeSelected',$profil->profilType()->pluck('profil_type_id')->toArray())
+                                ->with('item',$profil)
+                                ->with('data',ProfilType::all())
+                                ->with('hasType',$this->hasType)
+                                ->with('text',$this->text);
     }
 
     public function update(Request $request, Profil $profil )
@@ -63,12 +61,7 @@ class ProfilController extends Controller
             'type' => 'required|exists:profils,id'
         ]);
         
-        $profil->name = $request->name;
-        $profil->timestamps = false;
-        $profil->save();
-        $profil->profilType()->sync( $request->type );
-        $profil->save();
-        
+        $this->saveProfil($profil,$request);
         return redirect('admin/profil');
     }
 
@@ -76,5 +69,12 @@ class ProfilController extends Controller
     {
         $profil->delete();
         return redirect('/admin/profil');
+    }
+
+    private function saveProfil($profil,$request)
+    {
+        $this->saveData($profil,$request);
+        $profil->profilType()->sync( $request->type );
+        $profil->save();
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\FormController;
+
 use App\College;
 use App\County;
 use App\Passion;
@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 
 class CollegeController extends Controller
 {
-    use Sort,FormTrait;
+    use SortTrait;
 
     //Todo: make class variables or methods/ repo type methods - docs on skype
     /**
@@ -44,29 +44,9 @@ class CollegeController extends Controller
      */
     public function create()
     {      
-        //* Get all the data needed from the databse
-        $counties = County::all();
-        $passions = Passion::all();
-        $books = Book::all();
-        $subjects = Subject::all();
-        $profils = Profil::all();
-        $universities = University::all();
-
-        //* Create an array with all the data from databse
-
-        //TODO: remove variables that are used only once
-        $data  = [
-            'counties' => $counties,
-            'passions' => $passions,
-            'books' => $books,
-            'subjects' => $subjects,
-            'profils' => $profils,
-            'universities' => $universities
-        ]; 
-
         //* Display facultatii/create page with data and text needed as arguments
         return view('facultatii.create')
-            ->with('data', $data)
+            ->with('data', $this->getData(University::all()))
             ->with('text', $this->generateFormText());
     }
 
@@ -81,8 +61,7 @@ class CollegeController extends Controller
         $this->validateUpdateOrCreate($request); //TODO: validate class | SOLID
 
         //* Check if all the subjects selected are diferrent 
-        //TODO: naming
-        if($this->verifyMultipleInputs(
+        if($this->verifySubjectSame(
             $request->subject1,
             $request->subject2,
             $request->subject3
@@ -124,31 +103,10 @@ class CollegeController extends Controller
      */
     public function edit($id)
     {
-        //* Get the college form the databse based on id
-        //! If the college doesn't exist return 404
         $college = College::findOrFail( $id );
-
-        //* Get all the data from the database
-        $counties = County::all();
-        $passions = Passion::all();
-        $books = Book::all();
-        $subjects = Subject::all();
-        $profils = Profil::all();
-        $universities = University::all();
-
-        //* Create an array with all the data from data
-        $data  = [
-            'counties' => $counties,
-            'passions' => $passions,
-            'books' => $books,
-            'subjects' => $subjects,
-            'profils' => $profils,
-            'universities' => $universities
-        ]; 
-
         //* Display facultatii/edit page with the found college, data from the database and the needed text as arguments
         return view('facultatii.edit', compact('college'))
-            ->with('data', $data)
+            ->with('data', $this->getData(University::all()))
             ->with('text', $this->generateFormText());
     }
 
@@ -167,7 +125,7 @@ class CollegeController extends Controller
 
         $this->validateUpdateOrCreate($request);        
         //* Check if all the subjects selected ar diferrent
-        if($this->verifyMultipleInputs(
+        if($this->verifySubjectSame(
             $request->subject1,
             $request->subject2,
             $request->subject3

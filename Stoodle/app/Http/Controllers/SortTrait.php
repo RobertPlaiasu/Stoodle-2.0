@@ -1,8 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\County;
+use App\Passion;
+use App\Book;
+use App\Subject;
+use App\Profil;
 
-trait Sort 
+trait SortTrait 
 {
 
     private function getAllColleges($colleges) :array
@@ -192,5 +197,23 @@ trait Sort
     {
         return $college1->compability < $college2->compability;
     }
+
+    private function verifySubjectSame(int $input1 , int $input2, int $input3)
+    {
+        return ($input1 === $input2 || $input1 === $input3 || $input2 === $input3);
+    }
+
+    private function getData($universities = null)
+    {
+        return [
+            'counties' => County::all(),
+            'passions' => Passion::all(),
+            'books' => Book::all(),
+            'subjects' => Subject::all(),
+            'profils' => Profil::all(),
+            'universities' => $universities,
+        ];
+    }
+
 
 }

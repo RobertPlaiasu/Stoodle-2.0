@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 
 class InfoUserController extends Controller
 {
-    use FormTrait,Sort;
+    use SortTrait;
 
     public function __construct()
     {
@@ -29,22 +29,8 @@ class InfoUserController extends Controller
     //TODO: naming 
     public function index()
     {
-        $counties = County::all();
-        $passions = Passion::all();
-        $books = Book::all();
-        $subjects = Subject::all();
-        $profils = Profil::all();
-
-        $data = [
-            'counties' => $counties,
-            'passions' => $passions,
-            'books' => $books,
-            'subjects' => $subjects,
-            'profils' => $profils
-        ];
-
         return view('/form')
-            ->with('data', $data)
+            ->with('data', $this->getData())
             ->with('text', $this->generateFormText());
     }
 
@@ -68,7 +54,7 @@ class InfoUserController extends Controller
             ]);
 
         
-        if ( $this->verifyMultipleInputs(
+        if ( $this->verifySubjectSame(
             $request->subject1,
             $request->subject2,
             $request->subject3

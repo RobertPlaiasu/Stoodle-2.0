@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class SubjectController extends Controller
 {
+    use AdminTrait;
+
+    private $text = 'subject';
+    private $hasType = true;
+
     public function __construct()
     {
         $this->middleware(['auth', 'verified', 'admin']);
@@ -16,17 +21,15 @@ class SubjectController extends Controller
 
     public function index()
     {
-        $data = Subject::all();
-        $text = 'subject';
-        return view('admin.show', compact( 'data', 'text' ));
+        return view('admin.show')->with('data',Subject::all())
+                                 ->with('text',$this->text);
     }
 
     public function create()
     {
-        $data = subjectType::all();
-        $text = 'subject';
-        $hasType = true;
-        return view('admin.create', compact( 'data', 'text', 'hasType' ));
+        return view('admin.create')->with('data',SubjectType::all())
+                                    ->with('text',$this->text)
+                                    ->with('hasType',$this->hasType);
     }
 
     public function store(Request $request)
@@ -37,23 +40,18 @@ class SubjectController extends Controller
         ]);
 
         $subject = new Subject;
-        $subject->name = $request->name;
-        $subject->timestamps = false;
-        $subject->save();
-        $subject->subjectType()->attach( $request->type );
-        $subject->save();
+        $this->saveSubject($subject,$request);
         
         return redirect('admin/subject');
     }
 
     public function edit( Subject $subject )
     {
-        $item = $subject;
-        $text = 'subject';
-        $hasType = true;
-        $data = subjectType::all();
-        $typeSelected = $subject->subjectType()->pluck('subject_type_id')->toArray();
-        return view('admin.edit', compact( 'item', 'text', 'hasType','typeSelected' ,'data'));
+        return view('admin.edit')->with('typeSelected',$subject->subjectType()->pluck('subject_type_id')->toArray())
+                                ->with('item',$subject)
+                                ->with('data',SubjectType::all())
+                                ->with('hasType',$this->hasType)
+                                ->with('text',$this->text);
     }
 
     public function update(Request $request, Subject $subject )
@@ -63,11 +61,7 @@ class SubjectController extends Controller
             'type' => 'required|exists:subject_types,id'
         ]);
         
-        $subject->name = $request->name;
-        $subject->timestamps = false;
-        $subject->save();
-        $subject->subjectType()->sync( $request->type );
-        $subject->save();
+        $this->saveSubject($subject , $request);
         
         return redirect('admin/subject/');
     }
@@ -76,5 +70,12 @@ class SubjectController extends Controller
     {
         $subject->delete();
         return redirect('/admin/subject');
+    }
+
+    private function saveSubject($subject,$request)
+    {
+        $this->saveData($subject,$request);
+        $subject->subjectType()->sync( $request->type);
+        $subject->save();
     }
 }
