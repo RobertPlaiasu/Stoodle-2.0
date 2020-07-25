@@ -11200,6 +11200,13 @@ a.text-dark:focus {
   color: #00A089;
 }
 
+.backgrounded-favorite-button a {
+  background: #00A089;
+  color: white !important;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+}
+
 .backgrounded-list-item {
   background-color: #00A089;
 }

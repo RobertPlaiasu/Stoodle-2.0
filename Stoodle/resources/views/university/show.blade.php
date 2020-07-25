@@ -50,7 +50,7 @@ Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
                         :university = "{{ $college->university }}"
                         compatility = "{{ $college->compability }}"
                         county = "{{ $college->county->name }}"
-                        isfavorite = {{ $college->favorited() ? true : false }}
+                        isfavorite = {{ $college->favorited() ? "true" : "false" }}
                     ></college-card>
                 @empty
                     Nu avem nicio facultate care sa apartina acestei universitati in baza noastra de date

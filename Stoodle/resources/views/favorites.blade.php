@@ -21,7 +21,7 @@
                     compability = "{{ $college->compability }}"
                     county = "{{ $college->county->name }}"
                     link = "{{ $college->url }}"
-                    isfavorite = {{ $college->favorited() ? true : false }}
+                    isfavorite = {{ $college->favorited() ? "true" : "false" }}
                 ></college-card>
             @empty
                 {{-- If there are no colleges display next content --}}
