@@ -1,5 +1,18 @@
-.nav-link{
-    color: #ffffff!important;
-    font-weight: 600;
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+
+    .nav-link{
+        color: #ffffff!important;
+        font-weight: 600;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+    }
+    #nav-profile{
+        margin-right: 6em;
+        margin-left: auto !important;
+    }
+
+@media (max-width: 576px){
+
+        #nav-profile{
+            margin-left: 0 !important;
+        }
+    
 }

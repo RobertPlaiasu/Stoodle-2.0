@@ -36,13 +36,25 @@
         {{-- Display the college descriptiomn --}}
         <hr>
 
-        <div id="description">
+        <favorite 
+            class="backgrounded-favorite-button"
+            :college={{ $college->id }} 
+            :favorited="{{ $college->favorited() ? "true" : "false" }}"
+        ></favorite>
+
+        <div id="description" class="my-4">
             <p>
                 {{ $college->description }}
             </p>
         </div>
+
+        <favorite 
+            class="backgrounded-favorite-button"
+            :college={{ $college->id }} 
+            :favorited="{{ $college->favorited() ? "true" : "false" }}"
+        ></favorite>
         
-        <footer id="college_show_footer">
+        <footer id="college_show_footer" class="mt-4">
             {{-- Link to the college's website --}}
             <a href="{{ $college->url }}" target="_blank">Siteul facultatii <i class="fa fa-arrow-right" aria-hidden="true"></i> </a>
             <br>
@@ -50,12 +62,9 @@
             {{-- Edit option for admins --}}
             @if( Auth::user()->admin )
                 <a href="/facultati/{{ $college->id }}/edit">Editeaza facultatea <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-            @endif
-            
-                   
+            @endif          
         </footer>
         <div class="text-muted mt-4 mb-5">
-            
             <small>Actualizat pe {{ $college->updated_at }}</small>
         </div>
 
