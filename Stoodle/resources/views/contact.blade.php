@@ -3,10 +3,8 @@
 @section('title', 'Contact')
 
 @section('content')
-<div id="showcase">
-  <div class="display-1">
-    Vrei sa ne contactezi?
-  </div>
+<div class="text-center">
+  <h1>Vrei sa ne contactezi?</h1>
   <div class="content d-flex align-items-center justify-content-center">
       <div class="card" style="width: 18rem;">
           <img class="card-img-top" src="{{ asset('img/grigo.jpg') }}" alt="Grigorescu Alexandru">
