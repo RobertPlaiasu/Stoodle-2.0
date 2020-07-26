@@ -4,36 +4,41 @@ namespace App\Http\Controllers;
 
 use App\Region;
 use Illuminate\Http\Request;
+use App\CustomClass\PanelText;
 
 class RegionController extends Controller
 {
     use AdminTrait;
 
-    private $text = 'region';
-    private $hasType = false;
+    private $text;
+    private $hasType;
 
     public function __construct()
     {
+        $this->hasType = false;
+        $this->text = new PanelText( 'Regiuni', 'regiune', 'region' );
         $this->middleware(['auth', 'verified', 'admin']);    
     }
 
     public function index()
     {
-        return view('admin.show')->with('data',Region::all())
-                                ->with('text',$this->text);;
+        return view('admin.show')
+            ->with( 'data', Region::all())
+            ->with( 'text', $this->text );
     }
 
     public function create()
     {
-        return view('admin.create')->with('data',Region::all())
-                                    ->with('text',$this->text)
-                                    ->with('hasType',$this->hasType);
+        return view('admin.create')
+            ->with('data', Region::all() )
+            ->with('text', $this->text )
+            ->with('hasType', $this->hasType );
     }
 
-    public function store(Request $request)
+    public function store( Request $request )
     {
         $request->validate([
-            'name' => 'required|unique:regions,type|max:255'
+            'nume' => 'required|unique:regions,type|max:255'
         ]);
 
         $region = new Region;
@@ -42,28 +47,28 @@ class RegionController extends Controller
         return redirect('admin/region');
     }
 
-    public function edit(Region $region )
+    public function edit( Region $region )
     {
-        return view('admin.edit')->with('item',$region)
-                                ->with('text',$this->text)
-                                ->with('hasType',$this->hasType);
+        return view('admin.edit')
+            ->with( 'item', $region )
+            ->with( 'text', $this->text )
+            ->with( 'hasType', $this->hasType );
     }
 
-    public function update(Request $request, Region $region )
+    public function update( Request $request, Region $region )
     {
         $request->validate([
-            'name' => 'required|max:255'
+            'nume' => 'required|max:255'
         ]);
         
-        $this->saveType($region,$request);
+        $this->saveType( $region, $request );
         
-        return redirect('admin/region');
+        return redirect( 'admin/region' );
     }
 
     public function destroy( Region $region )
     {
         $region->delete();
         return redirect()->back();
-
     }
 }

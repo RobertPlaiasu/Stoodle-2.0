@@ -40,7 +40,7 @@ class UniversityController extends Controller
         $university->name = $request->name;
         $university->description = $request->description;
         $university->url = $request->url;
-        $university->ifFileExists( $request, $university);
+        $this->ifFileExists( $request, $university);
         $university->save();
         
         return redirect('/university');

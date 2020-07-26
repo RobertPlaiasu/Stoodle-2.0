@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Introducere facultate')
+@section('title', 'Editare universitate')
 
 @section('content')
     <div class="form">

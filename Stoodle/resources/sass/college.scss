@@ -4,6 +4,15 @@
     color: $green;
 }
 
+.backgrounded-favorite-button{
+    a{
+        background: $green;
+        color: white !important;
+        padding: .5rem 1rem;
+        border-radius: 3px;
+    }
+}
+
 .backgrounded-list-item{
     background-color: $green;
     a{

@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'Creare profil')
+@section('title', $text->printDocumentTitle('Creare'))
 
 @section('content')
 <div class="mx-auto container mt-4">
 
-    <h1> Adaugare {{ $text }} in baza de date</h1>
-    <form action="/admin/{{ $text }}" method="post">
+    <h1> Adaugare o/un {{ $text->printNormalText() }} in baza de date</h1>
+    <form action="/admin/{{ $text->printLink() }}" method="post">
         @csrf
 
         <div class="form-group">
-            <label for="name">Nume {{ $text }}</label>    
-            <input type="text" name="name" value="{{old('name')}}"class="form-control">
-            @error('name')
+            <label for="name">Nume pentru {{ $text->printNormalText() }}</label>    
+            <input type="text" name="nume" value="{{old('nume')}}"class="form-control">
+            @error('nume')
                 <small>
                     {{ $message }}
                 </small>
@@ -20,12 +20,12 @@
             </div>  
             @if ( $hasType )
             <div class="form-group">
-                <label for="name">Tipul {{ $text }}</label>    
-                <select name="type[]" class="form-control" multiple>
+                <label for="name">Tipul pentru {{ $text->printNormalText() }}</label>    
+                <select name="tip[]" class="form-control" multiple>
                     @forelse ($data as $item)
                         <option value="{{ $item->id }}"
-                            @if(old('type'))
-                                @if (in_array($item->id,old('type')))
+                            @if ( old('tip') )
+                                @if ( in_array( $item->id, old('type') ) )
                                     selected="selected"
                                 @endif
                             @endif> {{ $item->type }} </option>
@@ -33,7 +33,7 @@
                         Reincarca pagina!
                         @endforelse
                     </select>
-                    @error('type')
+                    @error('tip')
                     <small>
                         {{ $message }}
                     </small>
